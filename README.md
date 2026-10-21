@@ -18,7 +18,7 @@ PackRisk simulates a hypothetical two-variant pack assembly site (50 components,
 
 All policies are evaluated on the same realizations, including five **held-out** scenarios where the world deliberately behaves differently from the planner's assumptions.
 
-**Results:** see [RESULTS.md](RESULTS.md) (auto-generated from the latest run).
+**Results:** see [RESULTS.md](RESULTS.md) (auto-generated from the latest run). For a plain-language tour of the dashboard, read [WALKTHROUGH.md](WALKTHROUGH.md).
 
 ## Quickstart
 
@@ -60,13 +60,14 @@ python -m packrisk.report
 | `ASSUMPTIONS.md` | Every modeling assumption |
 | `POWERBI_GUIDE.md` | Data model, DAX measures, page layouts |
 | `DEMO_SCRIPT.md` | 2-minute video beat outline |
+| `WALKTHROUGH.md` | Written walkthrough of the dashboard, page by page |
 | `powerbi/` | Power BI Project (`PackRisk.pbip`): semantic model (TMDL), report (PBIR), theme, and the scripts that generate them |
 
 ## Power BI dashboard
 
 Open `powerbi/PackRisk.pbip` in Power BI Desktop. The report reads the CSVs in `outputs/powerbi/`; by default it looks in `C:\packrisk\outputs\powerbi\`. If you cloned the repo somewhere else, set the folder in **Transform data > Edit parameters > DataFolder**, then click **Refresh**.
 
-Pages: Executive Overview, Supplier Performance, Production Risk, Scenario Explorer, Assumptions & Limitations, plus a drill-through Component detail page. Power BI only filters the precomputed results; it doesn't run the optimizer.
+Pages: Supplier Performance, Executive Overview, Production Risk, Scenario Explorer, Assumptions & Limitations, plus a drill-through Component detail page. Power BI only filters the precomputed results; it doesn't run the optimizer.
 
 ## Disclaimer
 

@@ -311,7 +311,7 @@ $pageBg = @(@{ properties = [ordered]@{
       image = @{ image = [ordered]@{ name = (S "bg.png"); url = (ImgItem "bg.png"); scaling = (S "Fill") } }
       transparency = (L "0D") } })
 $pages = [ordered]@{
-  p1_exec = "Executive Overview"; p2_supplier = "Supplier Performance"; p3_production = "Production Risk"
+  p2_supplier = "Supplier Performance"; p1_exec = "Executive Overview"; p3_production = "Production Risk"
   p4_explorer = "Scenario Explorer"; p5_assumptions = "Assumptions & Limitations"; p6_component = "Component detail"
 }
 foreach ($pn in $pages.Keys) {
@@ -326,7 +326,7 @@ foreach ($pn in $pages.Keys) {
   Write-Json (Join-Path $rdef "pages\$pn\page.json") $page
   foreach ($v in $script:pageVisuals[$pn]) { Write-Json (Join-Path $rdef "pages\$pn\visuals\$($v.name)\visual.json") $v }
 }
-Write-Json (Join-Path $rdef "pages\pages.json") ([ordered]@{ '$schema' = "$SCHEMA/pagesMetadata/1.0.0/schema.json"; pageOrder = @($pages.Keys); activePageName = "p1_exec" })
+Write-Json (Join-Path $rdef "pages\pages.json") ([ordered]@{ '$schema' = "$SCHEMA/pagesMetadata/1.0.0/schema.json"; pageOrder = @($pages.Keys); activePageName = "p2_supplier" })
 Write-Json (Join-Path $rdef "version.json") ([ordered]@{ '$schema' = "$SCHEMA/versionMetadata/1.0.0/schema.json"; version = "2.0.0" })
 $items = @(
   [ordered]@{ name = "PackRiskTheme.json"; path = "PackRiskTheme.json"; type = "CustomTheme" },
