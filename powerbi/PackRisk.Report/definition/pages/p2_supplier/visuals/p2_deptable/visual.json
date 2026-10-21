@@ -1,0 +1,191 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p2_deptable",
+    "position":  {
+                     "x":  16,
+                     "y":  474,
+                     "z":  1000,
+                     "height":  206,
+                     "width":  760,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "tableEx",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "dependency_type"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.dependency_type",
+                                                                                           "nativeQueryRef":  "Type",
+                                                                                           "displayName":  "Type"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "dependency_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.dependency_id",
+                                                                                           "nativeQueryRef":  "ID",
+                                                                                           "displayName":  "ID"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "suppliers_exposed"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.suppliers_exposed",
+                                                                                           "nativeQueryRef":  "Suppliers",
+                                                                                           "displayName":  "Suppliers"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "components_exposed"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.components_exposed",
+                                                                                           "nativeQueryRef":  "Parts",
+                                                                                           "displayName":  "Parts"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "single_sourced_components"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.single_sourced_components",
+                                                                                           "nativeQueryRef":  "Singlesourced",
+                                                                                           "displayName":  "Single-sourced"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "weekly_spend_exposed"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.weekly_spend_exposed",
+                                                                                           "nativeQueryRef":  "Weekly spend",
+                                                                                           "displayName":  "Weekly spend"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_shared_dependency"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "min_cover_weeks"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_shared_dependency.min_cover_weeks",
+                                                                                           "nativeQueryRef":  "Min cover wks",
+                                                                                           "displayName":  "Min cover (wks)"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "fact_shared_dependency"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "weekly_spend_exposed"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Descending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "objects":  {
+                                   "total":  [
+                                                 {
+                                                     "properties":  {
+                                                                        "totals":  {
+                                                                                       "expr":  {
+                                                                                                    "Literal":  {
+                                                                                                                    "Value":  "false"
+                                                                                                                }
+                                                                                                }
+                                                                                   }
+                                                                    }
+                                                 }
+                                             ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Shared dependencies (lanes and tier-2 sources)\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

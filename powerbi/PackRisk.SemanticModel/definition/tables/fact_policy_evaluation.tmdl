@@ -1,0 +1,110 @@
+table fact_policy_evaluation
+	lineageTag: a7252720-c5f3-4e02-ae21-168542ef735b
+
+	column scenario_id
+		dataType: string
+		lineageTag: 1aa91992-05f0-4316-8a51-6c7d0eedffcf
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: f5ae1fa3-a71e-4745-b90e-c45ee57bc185
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_lost_packs
+		dataType: double
+		lineageTag: f884274c-a910-445e-8373-38f7fa273069
+		summarizeBy: sum
+		sourceColumn: mean_lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column p90_lost_packs
+		dataType: double
+		lineageTag: 7b18f2b4-7956-425c-9717-696a4197d480
+		summarizeBy: sum
+		sourceColumn: p90_lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_lost_packs
+		dataType: double
+		lineageTag: 4d0854bf-3c5a-4036-8ba1-2fe2e256cb96
+		summarizeBy: sum
+		sourceColumn: max_lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column plan_attainment
+		dataType: double
+		lineageTag: c0be6495-cbad-4ef2-9a81-f38eb7a24b1b
+		summarizeBy: sum
+		sourceColumn: plan_attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_shortage_weeks
+		dataType: double
+		lineageTag: 9d08d305-450b-4380-b7aa-83c6c6312e6d
+		summarizeBy: sum
+		sourceColumn: mean_shortage_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_backlog_pack_weeks
+		dataType: double
+		lineageTag: 9ac584ee-1712-42b5-b8a3-d0bb3ab52432
+		summarizeBy: sum
+		sourceColumn: mean_backlog_pack_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column mitigation_cost
+		dataType: double
+		lineageTag: 3b460eac-134b-4678-8615-42dc87ce5ad4
+		summarizeBy: sum
+		sourceColumn: mitigation_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget_used_share
+		dataType: double
+		lineageTag: 1a924243-f39d-45b2-a821-c3b587267ccc
+		summarizeBy: sum
+		sourceColumn: budget_used_share
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_objective
+		dataType: double
+		lineageTag: 14989c74-193d-4f83-ad26-795045b15ae4
+		summarizeBy: sum
+		sourceColumn: mean_objective
+
+		annotation SummarizationSetBy = Automatic
+
+	column oracle_capture_share
+		dataType: double
+		lineageTag: 1395057a-1a34-4a01-bcff-98c67bb9542f
+		summarizeBy: sum
+		sourceColumn: oracle_capture_share
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_policy_evaluation = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_policy_evaluation.csv"), [Delimiter = ",", Columns = 12, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"mean_lost_packs", type number}, {"p90_lost_packs", type number}, {"max_lost_packs", type number}, {"plan_attainment", type number}, {"mean_shortage_weeks", type number}, {"mean_backlog_pack_weeks", type number}, {"mitigation_cost", type number}, {"budget_used_share", type number}, {"mean_objective", type number}, {"oracle_capture_share", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

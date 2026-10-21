@@ -1,0 +1,71 @@
+table fact_inventory_trace
+	lineageTag: 53821390-b4c2-4a88-bd24-07aac336e197
+
+	column scenario_id
+		dataType: string
+		lineageTag: 9d0f1a32-dc1c-439a-8631-81cb7677a215
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: aa629f0c-037d-4f08-ad5f-f35636bc8612
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column realization_type
+		dataType: string
+		lineageTag: fd5e5b3a-263a-4f0b-bae0-96e9f6050942
+		summarizeBy: none
+		sourceColumn: realization_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a070653-f296-4c92-ab60-a54cc13542cf
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_id
+		dataType: string
+		lineageTag: d19f71b2-ffb4-47f7-9714-6e0cf5eca920
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column inventory_end
+		dataType: double
+		lineageTag: cbe5943e-098c-4696-8ac3-7c62e90cb0e2
+		summarizeBy: sum
+		sourceColumn: inventory_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeks_of_cover
+		dataType: double
+		lineageTag: 01129748-fdc6-4354-b9ae-54d107dc1e1c
+		summarizeBy: sum
+		sourceColumn: weeks_of_cover
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_inventory_trace = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_inventory_trace.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"realization_type", type text}, {"week", Int64.Type}, {"component_id", type text}, {"inventory_end", type number}, {"weeks_of_cover", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

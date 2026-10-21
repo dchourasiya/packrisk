@@ -1,0 +1,79 @@
+table fact_budget_curve
+	lineageTag: 52480f7c-c6dc-4616-90f3-545e20a21dd6
+
+	column scenario_id
+		dataType: string
+		lineageTag: 80e06990-09b2-46cd-9b4e-d429f555ad1f
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget
+		dataType: double
+		formatString: \$#,0
+		lineageTag: f49514ff-bafe-45c3-b7a8-ad1dc6bc0ac2
+		summarizeBy: sum
+		sourceColumn: budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column do_nothing_mean_lost
+		dataType: double
+		lineageTag: 39a54ed2-ca49-4898-941a-68af2b8cc801
+		summarizeBy: sum
+		sourceColumn: do_nothing_mean_lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column stochastic_mean_lost
+		dataType: double
+		lineageTag: e9415f0d-c595-4d50-a9f9-c02e0cd9c567
+		summarizeBy: sum
+		sourceColumn: stochastic_mean_lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column stochastic_p90_lost
+		dataType: double
+		lineageTag: a6b4a2e3-a9bf-47a1-924c-e0ff6e8c4ac6
+		summarizeBy: sum
+		sourceColumn: stochastic_p90_lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column oracle_mean_lost
+		dataType: double
+		lineageTag: 900952ee-0ca3-4a84-8025-bdecc214d8de
+		summarizeBy: sum
+		sourceColumn: oracle_mean_lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column mitigation_cost
+		dataType: double
+		lineageTag: 3ed1f86f-5e2d-4149-97e0-d76a7040a529
+		summarizeBy: sum
+		sourceColumn: mitigation_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column packs_protected
+		dataType: double
+		lineageTag: 89ee30cc-0208-4bd0-a01a-385f3fe38c35
+		summarizeBy: sum
+		sourceColumn: packs_protected
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_budget_curve = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_budget_curve.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"budget", type number}, {"do_nothing_mean_lost", type number}, {"stochastic_mean_lost", type number}, {"stochastic_p90_lost", type number}, {"oracle_mean_lost", type number}, {"mitigation_cost", type number}, {"packs_protected", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

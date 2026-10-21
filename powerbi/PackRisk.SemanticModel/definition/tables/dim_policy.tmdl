@@ -1,0 +1,48 @@
+table dim_policy
+	lineageTag: 8b68fa87-7094-4526-9e8f-f1250d1dbc28
+
+	column policy_id
+		dataType: string
+		lineageTag: 080072a7-4fc5-41e8-a604-5d5502678194
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 77a27541-0876-4d74-be0b-d8474e87d4a6
+		summarizeBy: none
+		sourceColumn: name
+		sortByColumn: sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 0c8f9626-95ba-4971-acd8-f4f520369488
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 722d13d6-e760-486f-9144-3cb7933d4067
+		summarizeBy: none
+		sourceColumn: sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_policy = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_policy.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"policy_id", type text}, {"name", type text}, {"description", type text}, {"sort", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

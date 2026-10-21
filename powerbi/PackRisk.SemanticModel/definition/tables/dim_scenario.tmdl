@@ -1,0 +1,56 @@
+table dim_scenario
+	lineageTag: 69cbd356-038c-450c-8b84-9511b2cdc23c
+
+	column scenario_id
+		dataType: string
+		lineageTag: 14ce5129-5bd1-4194-ab04-0bc76bc6d4b3
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: c729678f-40e1-49f3-ac1f-df02cea128dd
+		summarizeBy: none
+		sourceColumn: name
+		sortByColumn: sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column split
+		dataType: string
+		lineageTag: 00e031f8-0a35-4dde-9b38-6be24a70df0a
+		summarizeBy: none
+		sourceColumn: split
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 45e536db-e6ad-4726-a3a2-6dcbef4268bd
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 098ae658-0955-4a84-9d12-6d09638158a2
+		summarizeBy: none
+		sourceColumn: sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_scenario = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_scenario.csv"), [Delimiter = ",", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"name", type text}, {"split", type text}, {"description", type text}, {"sort", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

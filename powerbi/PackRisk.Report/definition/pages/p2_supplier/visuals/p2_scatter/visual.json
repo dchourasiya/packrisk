@@ -1,0 +1,158 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p2_scatter",
+    "position":  {
+                     "x":  788,
+                     "y":  212,
+                     "z":  1000,
+                     "height":  252,
+                     "width":  476,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "scatterChart",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Category":  {
+                                                                     "projections":  [
+                                                                                         {
+                                                                                             "field":  {
+                                                                                                           "Column":  {
+                                                                                                                          "Expression":  {
+                                                                                                                                             "SourceRef":  {
+                                                                                                                                                               "Entity":  "dim_supplier"
+                                                                                                                                                           }
+                                                                                                                                         },
+                                                                                                                          "Property":  "supplier_id"
+                                                                                                                      }
+                                                                                                       },
+                                                                                             "queryRef":  "dim_supplier.supplier_id",
+                                                                                             "nativeQueryRef":  "supplierid"
+                                                                                         }
+                                                                                     ]
+                                                                 },
+                                                    "X":  {
+                                                              "projections":  [
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "dim_supplier"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "late_rate"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(dim_supplier.late_rate)",
+                                                                                      "nativeQueryRef":  "Late rate",
+                                                                                      "displayName":  "Late rate"
+                                                                                  }
+                                                                              ]
+                                                          },
+                                                    "Y":  {
+                                                              "projections":  [
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "dim_supplier"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "sd_lead_time_days"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(dim_supplier.sd_lead_time_days)",
+                                                                                      "nativeQueryRef":  "Leadtime SD days",
+                                                                                      "displayName":  "Lead-time SD (days)"
+                                                                                  }
+                                                                              ]
+                                                          },
+                                                    "Size":  {
+                                                                 "projections":  [
+                                                                                     {
+                                                                                         "field":  {
+                                                                                                       "Aggregation":  {
+                                                                                                                           "Expression":  {
+                                                                                                                                              "Column":  {
+                                                                                                                                                             "Expression":  {
+                                                                                                                                                                                "SourceRef":  {
+                                                                                                                                                                                                  "Entity":  "dim_supplier"
+                                                                                                                                                                                              }
+                                                                                                                                                                            },
+                                                                                                                                                             "Property":  "spend"
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                           "Function":  0
+                                                                                                                       }
+                                                                                                   },
+                                                                                         "queryRef":  "Sum(dim_supplier.spend)",
+                                                                                         "nativeQueryRef":  "Spend",
+                                                                                         "displayName":  "Spend"
+                                                                                     }
+                                                                                 ]
+                                                             },
+                                                    "Series":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "lane_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.lane_id",
+                                                                                           "nativeQueryRef":  "Lane",
+                                                                                           "displayName":  "Lane"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                }
+                             },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Late rate vs lead-time variability (size = spend)\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

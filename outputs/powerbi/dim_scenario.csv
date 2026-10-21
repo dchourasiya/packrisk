@@ -1,0 +1,12 @@
+scenario_id,name,split,description,sort
+D1,Asia ocean-lane port congestion,development,"All L1 ocean shipments delayed; hits both cell suppliers, electronics, contactors, fire barriers, fasteners.",1
+D2,Semiconductor allocation,development,Tier-2 semiconductor shortage cuts output at the electronics and sensor suppliers together.,2
+D3,Enclosure plant outage,development,Single-supplier capacity loss at the enclosure supplier.,3
+D4,TIM quality hold,development,"Thermal interface material lots quarantined, part scrapped.",4
+D5,Demand mix shift,development,"Long Range plan +20%, Standard Range -10%; purchase orders still follow the old plan.",5
+D6,Port congestion + TIM hold,development,D1 and D4 at the same time.,6
+H1,Europe ocean-lane disruption,held-out,L4 delays longer and more severe than the planner's prior.,7
+H2,Copper shortage,held-out,Tier-2 copper cut hits busbar and harness suppliers together; shorter than prior expects.,8
+H3,Long adhesive quality hold,held-out,"4-week hold with 50% scrap on structural adhesive, outside the planner's prior.",9
+H4,"Port congestion, 30% worse",held-out,"D1, but event delays and background lateness are 30% worse than the planner assumes.",10
+H5,Multi-event combination,held-out,"Mexico truck-lane delay + connector supplier outage + potting foam hold, together.",11

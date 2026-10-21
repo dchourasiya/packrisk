@@ -1,0 +1,301 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p4_actions",
+    "position":  {
+                     "x":  16,
+                     "y":  376,
+                     "z":  1000,
+                     "height":  304,
+                     "width":  616,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "tableEx",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_policy"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "name"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_policy.name",
+                                                                                           "nativeQueryRef":  "Policy",
+                                                                                           "displayName":  "Policy"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_component"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "component_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_component.component_id",
+                                                                                           "nativeQueryRef":  "Component ID",
+                                                                                           "displayName":  "Component ID"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_component"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "name"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_component.name",
+                                                                                           "nativeQueryRef":  "Component",
+                                                                                           "displayName":  "Component"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_actions"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "action"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_actions.action",
+                                                                                           "nativeQueryRef":  "Action",
+                                                                                           "displayName":  "Action"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_actions"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "week"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_actions.week",
+                                                                                           "nativeQueryRef":  "Week",
+                                                                                           "displayName":  "Week"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Aggregation":  {
+                                                                                                                             "Expression":  {
+                                                                                                                                                "Column":  {
+                                                                                                                                                               "Expression":  {
+                                                                                                                                                                                  "SourceRef":  {
+                                                                                                                                                                                                    "Entity":  "fact_actions"
+                                                                                                                                                                                                }
+                                                                                                                                                                              },
+                                                                                                                                                               "Property":  "quantity"
+                                                                                                                                                           }
+                                                                                                                                            },
+                                                                                                                             "Function":  0
+                                                                                                                         }
+                                                                                                     },
+                                                                                           "queryRef":  "Sum(fact_actions.quantity)",
+                                                                                           "nativeQueryRef":  "Quantity",
+                                                                                           "displayName":  "Quantity"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Aggregation":  {
+                                                                                                                             "Expression":  {
+                                                                                                                                                "Column":  {
+                                                                                                                                                               "Expression":  {
+                                                                                                                                                                                  "SourceRef":  {
+                                                                                                                                                                                                    "Entity":  "fact_actions"
+                                                                                                                                                                                                }
+                                                                                                                                                                              },
+                                                                                                                                                               "Property":  "cost"
+                                                                                                                                                           }
+                                                                                                                                            },
+                                                                                                                             "Function":  0
+                                                                                                                         }
+                                                                                                     },
+                                                                                           "queryRef":  "Sum(fact_actions.cost)",
+                                                                                           "nativeQueryRef":  "Cost",
+                                                                                           "displayName":  "Cost"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "fact_actions"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "week"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Ascending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "objects":  {
+                                   "total":  [
+                                                 {
+                                                     "properties":  {
+                                                                        "totals":  {
+                                                                                       "expr":  {
+                                                                                                    "Literal":  {
+                                                                                                                    "Value":  "false"
+                                                                                                                }
+                                                                                                }
+                                                                                   }
+                                                                    }
+                                                 }
+                                             ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027What the plan actually buys\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               },
+    "filterConfig":  {
+                         "filters":  [
+                                         {
+                                             "name":  "filter020",
+                                             "field":  {
+                                                           "Column":  {
+                                                                          "Expression":  {
+                                                                                             "SourceRef":  {
+                                                                                                               "Entity":  "fact_actions"
+                                                                                                           }
+                                                                                         },
+                                                                          "Property":  "policy_id"
+                                                                      }
+                                                       },
+                                             "type":  "Categorical",
+                                             "filter":  {
+                                                            "Version":  2,
+                                                            "From":  [
+                                                                         {
+                                                                             "Name":  "t",
+                                                                             "Entity":  "fact_actions",
+                                                                             "Type":  0
+                                                                         }
+                                                                     ],
+                                                            "Where":  [
+                                                                          {
+                                                                              "Condition":  {
+                                                                                                "In":  {
+                                                                                                           "Expressions":  [
+                                                                                                                               {
+                                                                                                                                   "Column":  {
+                                                                                                                                                  "Expression":  {
+                                                                                                                                                                     "SourceRef":  {
+                                                                                                                                                                                       "Source":  "t"
+                                                                                                                                                                                   }
+                                                                                                                                                                 },
+                                                                                                                                                  "Property":  "policy_id"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                           ],
+                                                                                                           "Values":  [
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P1\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P2\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P3\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P4\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P5\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P6\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ],
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P7\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ]
+                                                                                                                      ]
+                                                                                                       }
+                                                                                            }
+                                                                          }
+                                                                      ]
+                                                        },
+                                             "howCreated":  "User"
+                                         }
+                                     ]
+                     }
+}

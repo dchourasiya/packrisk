@@ -1,0 +1,138 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p5_stress",
+    "position":  {
+                     "x":  16,
+                     "y":  446,
+                     "z":  1000,
+                     "height":  234,
+                     "width":  828,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "tableEx",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_stress_tests"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "test"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_stress_tests.test",
+                                                                                           "nativeQueryRef":  "test"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_stress_tests"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "scenario_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_stress_tests.scenario_id",
+                                                                                           "nativeQueryRef":  "scenarioid"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_stress_tests"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "setting"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_stress_tests.setting",
+                                                                                           "nativeQueryRef":  "setting"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_stress_tests"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "metric"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_stress_tests.metric",
+                                                                                           "nativeQueryRef":  "metric"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "fact_stress_tests"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "value"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "fact_stress_tests.value",
+                                                                                           "nativeQueryRef":  "value"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                }
+                             },
+                   "objects":  {
+                                   "total":  [
+                                                 {
+                                                     "properties":  {
+                                                                        "totals":  {
+                                                                                       "expr":  {
+                                                                                                    "Literal":  {
+                                                                                                                    "Value":  "false"
+                                                                                                                }
+                                                                                                }
+                                                                                   }
+                                                                    }
+                                                 }
+                                             ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Stress tests (all scenarios; not filtered by the scenario slicer)\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

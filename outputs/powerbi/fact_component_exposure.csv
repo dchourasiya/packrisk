@@ -1,0 +1,51 @@
+component_id,name,category,primary_supplier_id,alt_supplier_id,single_sourced,lane_id,tier2_id,weekly_requirement,weekly_spend,starting_cover_weeks,primary_late_rate,primary_otif_rate
+C11,Cell monitoring board,Electronics,S07,,1,L1,T2,6000.0,270000.0,2.0,0.5769,0.3462
+C12,BMS master controller,Electronics,S07,,1,L1,T2,1500.0,240000.0,2.0,0.5769,0.3462
+C30,Thermal insulation pad,Fire safety,S15,,1,L1,T5,12600.0,25200.0,2.0,0.5769,0.4103
+C43,M8 structural bolt,Fasteners,S18,S20,0,L1,,36000.0,9000.0,2.0,0.5769,0.359
+C44,Rivet nut,Fasteners,S18,S20,0,L1,,60000.0,9000.0,2.0,0.5769,0.359
+C14,Precharge contactor,Electrical,S09,,1,L1,,1500.0,33000.0,2.0,0.4359,0.5256
+C23,Thermistor assembly,Electronics,S08,,1,L4,T2,16800.0,33600.0,2.0,0.3205,0.6026
+C16,Pyrotechnic fuse,Electrical,S10,,1,L4,,1500.0,60000.0,2.0,0.2885,0.6731
+C08,Aluminum cell busbar,Electrical,S05,,1,L2,T1,90000.0,72000.0,2.0,0.1731,0.7404
+C10,Current collector plate,Electrical,S05,,1,L2,T1,4800.0,67200.0,2.0,0.1731,0.7404
+C28,Coolant fittings,Thermal,S14,,1,L3,,3000.0,15000.0,2.0,0.0962,0.8654
+C33,Pressure vent valve,Enclosure,S17,,1,L3,T4,3000.0,24000.0,2.0,0.0641,0.859
+C45,Dielectric insulation film (m2),Misc,S20,,1,L3,,3000.0,9000.0,2.0,0.0288,0.875
+C31,Mica fire barrier sheet,Fire safety,S15,,1,L1,T5,6000.0,36000.0,3.0,0.5769,0.4103
+C13,Main HV contactor,Electrical,S09,S10,0,L1,,3000.0,165000.0,3.0,0.4359,0.5256
+C15,Precharge resistor,Electrical,S09,S08,0,L1,,1500.0,9000.0,3.0,0.4359,0.5256
+C24,Isolation monitoring board,Electronics,S08,,1,L4,T2,1500.0,57000.0,3.0,0.3205,0.6026
+C22,HV cable assembly,Electrical,S06,,1,L2,T1,3000.0,84000.0,3.0,0.2949,0.6154
+C50,Ground strap,Electrical,S06,,1,L2,T1,3000.0,9000.0,3.0,0.2949,0.6154
+C04,Cylindrical cell holder,Structure,S19,,1,L2,T4,4800.0,86400.0,3.0,0.2308,0.6731
+C26,Cooling plate,Thermal,S13,,1,L2,T3,900.0,76500.0,3.0,0.2115,0.6923
+C09,Aluminum wire-bond wire (m),Electrical,S05,,1,L2,T1,30000.0,12000.0,3.0,0.1731,0.7404
+C05,Compression end plate,Structure,S16,,1,L3,T3,3600.0,43200.0,3.0,0.1154,0.7967
+C06,Module side rail,Structure,S16,,1,L3,T3,7200.0,64800.0,3.0,0.1154,0.7967
+C35,"Enclosure tray, LR",Enclosure,S16,,1,L3,T3,600.0,186000.0,3.0,0.1154,0.7967
+C36,Enclosure lid,Enclosure,S16,,1,L3,T3,1500.0,135000.0,3.0,0.1154,0.7967
+C40,Underbody shield,Enclosure,S16,,1,L3,T3,1500.0,105000.0,3.0,0.1154,0.7967
+C25,Thermal interface material (kg),Thermal,S12,S17,0,L3,T4,4800.0,96000.0,3.0,0.1026,0.8462
+C20,LV signal connector,Electrical,S11,,1,L3,,3000.0,12000.0,3.0,0.0577,0.9038
+C46,Edge grommet,Misc,S20,,1,L3,,15000.0,4500.0,3.0,0.0288,0.875
+C48,Desiccant pack,Misc,S20,,1,L3,,1500.0,1500.0,3.0,0.0288,0.875
+C02,NMC cylindrical cell,Cells,S03,S04,0,L1,T6,2640000.0,6600000.0,4.0,0.5769,0.4231
+C32,Aerogel cell spacer,Fire safety,S15,,1,L1,T5,45000.0,135000.0,4.0,0.5769,0.4103
+C42,M6 flange bolt,Fasteners,S18,S20,0,L1,,90000.0,9000.0,4.0,0.5769,0.359
+C01,LFP prismatic cell,Cells,S01,S02,0,L1,T6,90000.0,3150000.0,4.0,0.4615,0.5
+C17,Current sensor (shunt),Electronics,S08,,1,L4,T2,1500.0,45000.0,4.0,0.3205,0.6026
+C21,LV module harness,Electrical,S06,,1,L2,T1,1500.0,52500.0,4.0,0.2949,0.6154
+C18,HV service disconnect,Electrical,S10,,1,L4,,1500.0,37500.0,4.0,0.2885,0.6731
+C03,Prismatic cell frame,Structure,S19,,1,L2,T4,90000.0,108000.0,4.0,0.2308,0.6731
+C27,Serpentine cooling tube,Thermal,S13,,1,L2,T3,2400.0,72000.0,4.0,0.2115,0.6923
+C07,Copper module interconnect busbar,Electrical,S05,,1,L2,T1,15600.0,93600.0,4.0,0.1731,0.7404
+C34,"Enclosure tray, SR",Enclosure,S16,,1,L3,T3,900.0,234000.0,4.0,0.1154,0.7967
+C41,Mounting bracket set,Enclosure,S16,,1,L3,T3,1500.0,37500.0,4.0,0.1154,0.7967
+C38,Structural adhesive (kg),Chemicals,S12,S17,0,L3,T4,2280.0,41040.0,4.0,0.1026,0.8462
+C39,Potting foam (kg),Chemicals,S12,,1,L3,T4,3600.0,43200.0,4.0,0.1026,0.8462
+C29,Coolant hose assembly,Thermal,S14,,1,L3,,3000.0,27000.0,4.0,0.0962,0.8654
+C37,Perimeter gasket,Enclosure,S17,,1,L3,T4,1500.0,22500.0,4.0,0.0641,0.859
+C49,Breather membrane,Enclosure,S17,,1,L3,T4,1500.0,6000.0,4.0,0.0641,0.859
+C19,HV output connector,Electrical,S11,,1,L3,,3000.0,54000.0,4.0,0.0577,0.9038
+C47,HV warning label set,Misc,S20,,1,L3,,1500.0,2250.0,4.0,0.0288,0.875

@@ -1,0 +1,58 @@
+{
+  "horizon_weeks": 8,
+  "history_weeks": 26,
+  "plan": {
+    "SR": 900,
+    "LR": 600
+  },
+  "line_capacity": 1600,
+  "penalty_per_lost_pack": 2000,
+  "backlog_penalty_per_pack_week": 100,
+  "budget": 250000,
+  "alt_premium_share": 0.08,
+  "alt_ramp_weeks": 3,
+  "alt_transit_weeks": 1,
+  "alt_capacity_share": 0.3,
+  "extra_capacity_share": 0.2,
+  "extra_holding_cost_share": 0.046,
+  "partial_prob": 0.1,
+  "partial_fraction": [
+    0.5,
+    0.9
+  ],
+  "qh_prob": 0.03,
+  "qh_hold_weeks": [
+    1,
+    2
+  ],
+  "qh_scrap": [
+    0.0,
+    0.2
+  ],
+  "lane_shock_prob": 0.05,
+  "lane_shock_median_days": 7,
+  "lane_shock_sigma": 0.5,
+  "n_prior_samples": 100,
+  "n_ev_samples": 200,
+  "n_eval_realizations": 100,
+  "n_correlation_realizations": 200,
+  "cvar_alpha": 0.9,
+  "cvar_lambda": 0.5,
+  "seed_planner": 42,
+  "seed_world": 2027,
+  "seed_history": 7,
+  "seed_master": 11,
+  "budget_sweep": [
+    0,
+    50000,
+    100000,
+    150000,
+    250000,
+    400000,
+    600000
+  ],
+  "budget_sweep_scenarios": [
+    "D1",
+    "H4"
+  ]
+}

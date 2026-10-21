@@ -1,0 +1,11 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+    "metadata":  {
+                     "type":  "Report",
+                     "displayName":  "PackRisk"
+                 },
+    "config":  {
+                   "version":  "2.0",
+                   "logicalId":  "21faebdd-4819-4e99-965c-e7f0a4ebadad"
+               }
+}

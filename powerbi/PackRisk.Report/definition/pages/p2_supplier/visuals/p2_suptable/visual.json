@@ -1,0 +1,264 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p2_suptable",
+    "position":  {
+                     "x":  16,
+                     "y":  212,
+                     "z":  1000,
+                     "height":  252,
+                     "width":  760,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "tableEx",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "supplier_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.supplier_id",
+                                                                                           "nativeQueryRef":  "supplierid"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "supplies"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.supplies",
+                                                                                           "nativeQueryRef":  "supplies"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "lane_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.lane_id",
+                                                                                           "nativeQueryRef":  "laneid"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "tier2_id"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.tier2_id",
+                                                                                           "nativeQueryRef":  "tier2id"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "otif_rate"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.otif_rate",
+                                                                                           "nativeQueryRef":  "otifrate"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "late_rate"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.late_rate",
+                                                                                           "nativeQueryRef":  "laterate"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "sd_lead_time_days"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.sd_lead_time_days",
+                                                                                           "nativeQueryRef":  "sdleadtimedays"
+                                                                                       },
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_supplier"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "partial_rate"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_supplier.partial_rate",
+                                                                                           "nativeQueryRef":  "partialrate"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "dim_supplier"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "late_rate"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Descending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "objects":  {
+                                   "values":  [
+                                                  {
+                                                      "selector":  {
+                                                                       "data":  [
+                                                                                    {
+                                                                                        "dataViewWildcard":  {
+                                                                                                                 "matchingOption":  1
+                                                                                                             }
+                                                                                    }
+                                                                                ],
+                                                                       "metadata":  "dim_supplier.otif_rate"
+                                                                   },
+                                                      "properties":  {
+                                                                         "backColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Aggregation":  {
+                                                                                                                                                                                       "Expression":  {
+                                                                                                                                                                                                          "Column":  {
+                                                                                                                                                                                                                         "Expression":  {
+                                                                                                                                                                                                                                            "SourceRef":  {
+                                                                                                                                                                                                                                                              "Entity":  "dim_supplier"
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                         "Property":  "otif_rate"
+                                                                                                                                                                                                                     }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                       "Function":  0
+                                                                                                                                                                                   }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient2":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#F6C1C7\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#BFE6DF\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       }
+                                                                     }
+                                                  }
+                                              ],
+                                   "total":  [
+                                                 {
+                                                     "properties":  {
+                                                                        "totals":  {
+                                                                                       "expr":  {
+                                                                                                    "Literal":  {
+                                                                                                                    "Value":  "false"
+                                                                                                                }
+                                                                                                }
+                                                                                   }
+                                                                    }
+                                                 }
+                                             ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Supplier scorecard (sorted by late rate)\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

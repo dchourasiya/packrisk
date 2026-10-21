@@ -1,0 +1,118 @@
+table fact_component_exposure
+	lineageTag: 644ff74f-56d7-4f90-bc1d-e4c486f50b51
+
+	column component_id
+		dataType: string
+		lineageTag: 8ca546da-bb25-4fb2-be2f-eb427e5dfd9f
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 8f33ba16-6748-4fe1-ad1f-802bc12f42af
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 448f2ce2-91e4-4911-8b23-69b1e0a11cb0
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_supplier_id
+		dataType: string
+		lineageTag: a1bb7577-2711-4df0-8640-46f9d699aa91
+		summarizeBy: none
+		sourceColumn: primary_supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column alt_supplier_id
+		dataType: string
+		lineageTag: 8d6411fc-0426-4274-9795-c04a85ecd23b
+		summarizeBy: none
+		sourceColumn: alt_supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column single_sourced
+		dataType: double
+		lineageTag: f6616ad6-d7f6-4ce9-8caa-eca3dfb786f3
+		summarizeBy: sum
+		sourceColumn: single_sourced
+
+		annotation SummarizationSetBy = Automatic
+
+	column lane_id
+		dataType: string
+		lineageTag: 68f24b7b-9321-40b5-bd70-634e70cf45ec
+		summarizeBy: none
+		sourceColumn: lane_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier2_id
+		dataType: string
+		lineageTag: 237b6432-c23f-41ce-9781-7f355d973f85
+		summarizeBy: none
+		sourceColumn: tier2_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_requirement
+		dataType: double
+		lineageTag: 76f171a8-9151-454a-9400-6e38cdd135f1
+		summarizeBy: sum
+		sourceColumn: weekly_requirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_spend
+		dataType: double
+		lineageTag: 70405876-4bcf-4f42-9b0f-172cf517f013
+		summarizeBy: sum
+		sourceColumn: weekly_spend
+
+		annotation SummarizationSetBy = Automatic
+
+	column starting_cover_weeks
+		dataType: double
+		lineageTag: 8e8453da-7c6c-4e17-9317-b73b39ac0f33
+		summarizeBy: sum
+		sourceColumn: starting_cover_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_late_rate
+		dataType: double
+		lineageTag: da8d7d1e-770a-4012-99b0-2e0a490ed1cf
+		summarizeBy: sum
+		sourceColumn: primary_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_otif_rate
+		dataType: double
+		lineageTag: f051e2b8-d14f-4b05-afd1-92611c2ab6ef
+		summarizeBy: sum
+		sourceColumn: primary_otif_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_component_exposure = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_component_exposure.csv"), [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"component_id", type text}, {"name", type text}, {"category", type text}, {"primary_supplier_id", type text}, {"alt_supplier_id", type text}, {"single_sourced", type number}, {"lane_id", type text}, {"tier2_id", type text}, {"weekly_requirement", type number}, {"weekly_spend", type number}, {"starting_cover_weeks", type number}, {"primary_late_rate", type number}, {"primary_otif_rate", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

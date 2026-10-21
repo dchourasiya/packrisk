@@ -1,0 +1,21 @@
+supplier_id,supplies,region,lane_id,tier2_id,lateness_multiplier,po_lines,otif_rate,late_rate,avg_days_late,partial_rate,quality_hold_rate,avg_lead_time_days,sd_lead_time_days,spend
+S01,LFP prismatic cells,Asia,L1,T6,1.0,26.0,0.5,0.4615,3.38,0.0385,0.0385,52.65,4.77,81900000.0
+S02,LFP prismatic cells (alternate),Asia,L1,T6,1.1,,,,,,,,,
+S03,NMC cylindrical cells,Asia,L1,T6,1.6,26.0,0.4231,0.5769,4.27,0.0769,0.0,53.81,6.25,171600000.0
+S04,NMC cylindrical cells (alternate),US,L3,T6,0.8,,,,,,,,,
+S05,"Busbars, current collectors",Mexico,L2,T1,1.0,104.0,0.7404,0.1731,0.88,0.1058,0.0,15.63,3.55,6364800.0
+S06,"HV cables, harnesses",Mexico,L2,T1,1.2,78.0,0.6154,0.2949,1.09,0.1282,0.0,15.99,3.4,3783000.0
+S07,"Electronics (CMB, BMS master)",Asia,L1,T2,1.0,52.0,0.3462,0.5769,5.19,0.1538,0.0,55.27,6.49,13260000.0
+S08,"Sensors, isolation monitor",Europe,L4,T2,0.9,78.0,0.6026,0.3205,1.45,0.0897,0.0,44.08,3.41,3525600.0
+S09,"Contactors, precharge parts",Asia,L1,,1.1,78.0,0.5256,0.4359,3.67,0.0641,0.0,53.12,6.35,5382000.0
+S10,"Pyro fuse, service disconnect",Europe,L4,,1.0,52.0,0.6731,0.2885,1.35,0.0577,0.0,43.75,3.12,2535000.0
+S11,HV / LV connectors,US,L3,,0.7,52.0,0.9038,0.0577,0.1,0.0385,0.0,14.37,1.4,1716000.0
+S12,"TIM, adhesive, potting foam",US,L3,T4,0.9,78.0,0.8462,0.1026,0.15,0.0641,0.0,14.6,1.81,4686240.0
+S13,Cooling plates and tubes,Mexico,L2,T3,1.3,52.0,0.6923,0.2115,1.19,0.0962,0.0,15.87,3.43,3861000.0
+S14,"Hoses, fittings",US,L3,,0.8,52.0,0.8654,0.0962,0.13,0.0577,0.0,14.54,1.75,1092000.0
+S15,"Mica, aerogel barriers",Asia,L1,T5,1.5,78.0,0.4103,0.5769,4.53,0.0641,0.0,53.97,5.76,5101200.0
+S16,"Enclosure trays, lids",US,L3,T3,0.9,182.0,0.7967,0.1154,0.22,0.1044,0.0,14.95,2.34,20943000.0
+S17,"Gaskets, vents, membranes",US,L3,T4,0.8,78.0,0.859,0.0641,0.09,0.0897,0.0,14.72,2.09,1365000.0
+S18,Fasteners,Asia,L1,,1.8,78.0,0.359,0.5769,3.9,0.1282,0.0,53.79,6.13,702000.0
+S19,"Cell frames, holders, plastics",Mexico,L2,T4,1.2,52.0,0.6731,0.2308,0.98,0.1154,0.0,15.79,3.25,5054400.0
+S20,"Labels, film, desiccant, misc.",US,L3,,0.7,104.0,0.875,0.0288,0.05,0.0962,0.0,14.72,2.07,448500.0

@@ -1,0 +1,67 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+    "name":  "p1_exec",
+    "displayName":  "Executive Overview",
+    "displayOption":  "FitToPage",
+    "height":  720,
+    "width":  1280,
+    "objects":  {
+                    "background":  [
+                                       {
+                                           "properties":  {
+                                                              "image":  {
+                                                                            "image":  {
+                                                                                          "name":  {
+                                                                                                       "expr":  {
+                                                                                                                    "Literal":  {
+                                                                                                                                    "Value":  "\u0027bg.png\u0027"
+                                                                                                                                }
+                                                                                                                }
+                                                                                                   },
+                                                                                          "url":  {
+                                                                                                      "expr":  {
+                                                                                                                   "ResourcePackageItem":  {
+                                                                                                                                               "PackageName":  "RegisteredResources",
+                                                                                                                                               "PackageType":  1,
+                                                                                                                                               "ItemName":  "bg.png"
+                                                                                                                                           }
+                                                                                                               }
+                                                                                                  },
+                                                                                          "scaling":  {
+                                                                                                          "expr":  {
+                                                                                                                       "Literal":  {
+                                                                                                                                       "Value":  "\u0027Fill\u0027"
+                                                                                                                                   }
+                                                                                                                   }
+                                                                                                      }
+                                                                                      }
+                                                                        },
+                                                              "transparency":  {
+                                                                                   "expr":  {
+                                                                                                "Literal":  {
+                                                                                                                "Value":  "0D"
+                                                                                                            }
+                                                                                            }
+                                                                               }
+                                                          }
+                                       }
+                                   ],
+                    "outspace":  [
+                                     {
+                                         "properties":  {
+                                                            "color":  {
+                                                                          "solid":  {
+                                                                                        "color":  {
+                                                                                                      "expr":  {
+                                                                                                                   "Literal":  {
+                                                                                                                                   "Value":  "\u0027#0B0F14\u0027"
+                                                                                                                               }
+                                                                                                               }
+                                                                                                  }
+                                                                                    }
+                                                                      }
+                                                        }
+                                     }
+                                 ]
+                }
+}

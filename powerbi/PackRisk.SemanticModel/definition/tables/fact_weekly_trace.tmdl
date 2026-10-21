@@ -1,0 +1,104 @@
+table fact_weekly_trace
+	lineageTag: 66ea618a-feba-44b1-8458-645031a953c0
+
+	column scenario_id
+		dataType: string
+		lineageTag: b9e29f81-135b-4680-a184-c1f26d8c7afa
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: 6b1d53f7-0dbc-4f4b-ad7d-9b1eeac06129
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column realization_type
+		dataType: string
+		lineageTag: ad2af402-7ebe-49a3-9acd-15ba84c703e7
+		summarizeBy: none
+		sourceColumn: realization_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column realization
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ff3b8be-f702-4abd-9e84-7e87ea219572
+		summarizeBy: none
+		sourceColumn: realization
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: a5bdaddb-1b15-4f3b-8c74-211e6a380263
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column variant
+		dataType: string
+		lineageTag: 0f950f00-2221-47e7-a39c-f5192b25cd9c
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	column plan_packs
+		dataType: double
+		lineageTag: d18a4d5b-f288-4429-8383-c023af9a9a40
+		summarizeBy: sum
+		sourceColumn: plan_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column built_packs
+		dataType: double
+		lineageTag: fa40bddc-b047-432f-be67-20eb2ead6971
+		summarizeBy: sum
+		sourceColumn: built_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column cum_plan
+		dataType: double
+		lineageTag: 67f9757d-3722-47df-bccc-6a05e18d96c5
+		summarizeBy: sum
+		sourceColumn: cum_plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column cum_built
+		dataType: double
+		lineageTag: ebbe8143-64e8-4405-b870-e42798f75292
+		summarizeBy: sum
+		sourceColumn: cum_built
+
+		annotation SummarizationSetBy = Automatic
+
+	column gating_component_id
+		dataType: string
+		lineageTag: ed65a2ed-c3ec-4222-a8f9-92cb46c52c57
+		summarizeBy: none
+		sourceColumn: gating_component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_weekly_trace = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_weekly_trace.csv"), [Delimiter = ",", Columns = 11, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"realization_type", type text}, {"realization", Int64.Type}, {"week", Int64.Type}, {"variant", type text}, {"plan_packs", type number}, {"built_packs", type number}, {"cum_plan", type number}, {"cum_built", type number}, {"gating_component_id", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,140 @@
+table dim_supplier
+	lineageTag: 40b31427-3211-4831-ada7-209342a11dad
+
+	column supplier_id
+		dataType: string
+		lineageTag: 8b1d940e-f39e-490c-baaa-080a83f19216
+		summarizeBy: none
+		sourceColumn: supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplies
+		dataType: string
+		lineageTag: 71e6a9f5-d31f-4557-a147-8f5989e9ca0b
+		summarizeBy: none
+		sourceColumn: supplies
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 16610902-6bad-4790-86d8-870b4f9b3ca1
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column lane_id
+		dataType: string
+		lineageTag: c3a107d0-15f5-4ae2-ad41-d82d8904a503
+		summarizeBy: none
+		sourceColumn: lane_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier2_id
+		dataType: string
+		lineageTag: ece3fe01-1d80-450a-ac9c-2fe76b6e207b
+		summarizeBy: none
+		sourceColumn: tier2_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column lateness_multiplier
+		dataType: double
+		lineageTag: e65e31fe-61b4-4777-a929-b0798d52c1ee
+		summarizeBy: sum
+		sourceColumn: lateness_multiplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_lines
+		dataType: double
+		lineageTag: e3d20478-47a9-46bc-bdd4-7ef57c94303f
+		summarizeBy: sum
+		sourceColumn: po_lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column otif_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 529f6709-3621-4b4a-83b7-19f3afd82853
+		summarizeBy: sum
+		sourceColumn: otif_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 5c791834-1967-4184-85a2-619abbdc30fa
+		summarizeBy: sum
+		sourceColumn: late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_days_late
+		dataType: double
+		lineageTag: e1b91e3f-f78b-4af4-9104-31d9ac4774c2
+		summarizeBy: sum
+		sourceColumn: avg_days_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column partial_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 767a7605-44b9-4d76-9b4c-5b5bc2dc92e5
+		summarizeBy: sum
+		sourceColumn: partial_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column quality_hold_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 8a8ee96c-b837-4563-a771-69cc7e3e06a1
+		summarizeBy: sum
+		sourceColumn: quality_hold_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_lead_time_days
+		dataType: double
+		lineageTag: e2193d36-46d7-4d78-bf02-0a8f7361dfcc
+		summarizeBy: sum
+		sourceColumn: avg_lead_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column sd_lead_time_days
+		dataType: double
+		formatString: 0.00
+		lineageTag: 004ed171-b239-4387-8873-d2d43e1218cd
+		summarizeBy: sum
+		sourceColumn: sd_lead_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column spend
+		dataType: double
+		formatString: \$#,0
+		lineageTag: 72a501bb-e3ed-49f7-bd53-72a58b4ce4dd
+		summarizeBy: sum
+		sourceColumn: spend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_supplier = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_supplier.csv"), [Delimiter = ",", Columns = 15, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"supplier_id", type text}, {"supplies", type text}, {"region", type text}, {"lane_id", type text}, {"tier2_id", type text}, {"lateness_multiplier", type number}, {"po_lines", type number}, {"otif_rate", type number}, {"late_rate", type number}, {"avg_days_late", type number}, {"partial_rate", type number}, {"quality_hold_rate", type number}, {"avg_lead_time_days", type number}, {"sd_lead_time_days", type number}, {"spend", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

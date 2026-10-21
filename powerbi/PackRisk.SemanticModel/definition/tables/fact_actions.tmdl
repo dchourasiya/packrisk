@@ -1,0 +1,73 @@
+table fact_actions
+	lineageTag: cd443f3b-2be9-44b7-b8ed-110aeedac688
+
+	column scenario_id
+		dataType: string
+		lineageTag: b5ce58f5-df60-4997-a1bc-1f2ac208d9e6
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: 5c4919f6-4ed1-48e6-ad47-f2f4e24a521f
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_id
+		dataType: string
+		lineageTag: b2b1ea50-c1a3-40e7-99e3-1990010005d4
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column action
+		dataType: string
+		lineageTag: 242fe9b7-d583-4183-8630-e3b6e2e38b9f
+		summarizeBy: none
+		sourceColumn: action
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 63b25d78-aec0-4c42-92c9-a2864e40a48d
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		formatString: #,0
+		lineageTag: 6a859c89-8717-49f3-a7fc-336d74da32e8
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost
+		dataType: double
+		formatString: \$#,0
+		lineageTag: 54e870d1-869f-4b5f-8327-eb952a4d5c9c
+		summarizeBy: sum
+		sourceColumn: cost
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_actions = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_actions.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"component_id", type text}, {"action", type text}, {"week", Int64.Type}, {"quantity", type number}, {"cost", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

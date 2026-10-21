@@ -1,0 +1,56 @@
+{
+  "name": "PackRisk Professional",
+  "dataColors": ["#C8102E", "#5B6770", "#A2AAAD", "#2E5E8C", "#1B998B", "#0F4C5C", "#D4A017", "#7A3E9D", "#E07A5F", "#3D405B"],
+  "good": "#1B998B",
+  "neutral": "#D4A017",
+  "bad": "#C8102E",
+  "maximum": "#C8102E",
+  "center": "#F2C6CC",
+  "minimum": "#FFFFFF",
+  "background": "#FFFFFF",
+  "foreground": "#1F2937",
+  "tableAccent": "#C8102E",
+  "textClasses": {
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 26, "color": "#111827" },
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 11, "color": "#1F2937" },
+    "header": { "fontFace": "Segoe UI Semibold", "fontSize": 10, "color": "#1F2937" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 9, "color": "#4B5563" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#DDE2E8" } }, "radius": 8 }],
+        "dropShadow": [{ "show": true, "color": { "solid": { "color": "#0B0F14" } }, "position": "Outer", "preset": "BottomRight", "transparency": 85 }],
+        "title": [{ "show": true, "fontColor": { "solid": { "color": "#1F2937" } }, "fontSize": 11, "bold": true, "fontFamily": "Segoe UI Semibold" }],
+        "padding": [{ "top": 8, "bottom": 8, "left": 12, "right": 12 }],
+        "categoryAxis": [{ "labelColor": { "solid": { "color": "#4B5563" } }, "gridlineShow": false }],
+        "valueAxis": [{ "labelColor": { "solid": { "color": "#4B5563" } }, "gridlineColor": { "solid": { "color": "#EEF1F5" } } }],
+        "legend": [{ "labelColor": { "solid": { "color": "#374151" } }, "position": "Top" }]
+      }
+    },
+    "textbox": { "*": { "background": [{ "show": false }], "border": [{ "show": false }], "dropShadow": [{ "show": false }] } },
+    "image": { "*": { "background": [{ "show": false }], "border": [{ "show": false }], "dropShadow": [{ "show": false }] } },
+    "card": { "*": { "labels": [{ "color": { "solid": { "color": "#111827" } } }], "categoryLabels": [{ "show": false }] } },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [{ "backColor": { "solid": { "color": "#1F2937" } }, "fontColor": { "solid": { "color": "#FFFFFF" } }, "bold": true }],
+        "values": [{ "backColorPrimary": { "solid": { "color": "#FFFFFF" } }, "backColorSecondary": { "solid": { "color": "#F6F8FA" } }, "fontColorPrimary": { "solid": { "color": "#1F2937" } }, "fontColorSecondary": { "solid": { "color": "#1F2937" } } }],
+        "grid": [{ "gridHorizontal": true, "gridHorizontalColor": { "solid": { "color": "#E5E7EB" } }, "gridVertical": false }]
+      }
+    },
+    "pivotTable": {
+      "*": {
+        "columnHeaders": [{ "backColor": { "solid": { "color": "#1F2937" } }, "fontColor": { "solid": { "color": "#FFFFFF" } }, "bold": true }],
+        "rowHeaders": [{ "fontColor": { "solid": { "color": "#1F2937" } }, "backColor": { "solid": { "color": "#FFFFFF" } } }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "header": [{ "fontColor": { "solid": { "color": "#6B7280" } }, "bold": true }],
+        "items": [{ "fontColor": { "solid": { "color": "#1F2937" } } }]
+      }
+    },
+    "page": { "*": { "outspace": [{ "color": { "solid": { "color": "#0B0F14" } } }] } }
+  }
+}

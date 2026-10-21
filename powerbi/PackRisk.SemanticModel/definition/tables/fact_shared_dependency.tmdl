@@ -1,0 +1,75 @@
+table fact_shared_dependency
+	lineageTag: edd86560-2a25-473c-a60f-77c1b41de51e
+
+	column dependency_type
+		dataType: string
+		lineageTag: d3454475-a224-41f6-8d7a-aef471ec2320
+		summarizeBy: none
+		sourceColumn: dependency_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column dependency_id
+		dataType: string
+		lineageTag: 5aa33201-7e62-475c-a4e5-5ce6f62fdac9
+		summarizeBy: none
+		sourceColumn: dependency_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column suppliers_exposed
+		dataType: double
+		formatString: #,0
+		lineageTag: 8ebf2fad-21c6-4e2f-b92e-3dd71dc03518
+		summarizeBy: sum
+		sourceColumn: suppliers_exposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column components_exposed
+		dataType: double
+		formatString: #,0
+		lineageTag: c327577d-2e17-44b1-8cfa-b3706ac3ed39
+		summarizeBy: sum
+		sourceColumn: components_exposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column single_sourced_components
+		dataType: double
+		formatString: #,0
+		lineageTag: dd4151a4-961f-40a1-8700-f44f597defde
+		summarizeBy: sum
+		sourceColumn: single_sourced_components
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_spend_exposed
+		dataType: double
+		formatString: \$#,0
+		lineageTag: bcdbd9d2-88f2-45f6-b2fa-c08690b7ab62
+		summarizeBy: sum
+		sourceColumn: weekly_spend_exposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column min_cover_weeks
+		dataType: double
+		formatString: 0.0
+		lineageTag: 61e02fd8-35f3-456f-b282-2d6a061153f6
+		summarizeBy: sum
+		sourceColumn: min_cover_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_shared_dependency = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_shared_dependency.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"dependency_type", type text}, {"dependency_id", type text}, {"suppliers_exposed", type number}, {"components_exposed", type number}, {"single_sourced_components", type number}, {"weekly_spend_exposed", type number}, {"min_cover_weeks", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

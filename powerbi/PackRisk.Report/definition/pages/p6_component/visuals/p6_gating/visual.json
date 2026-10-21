@@ -1,0 +1,124 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p6_gating",
+    "position":  {
+                     "x":  648,
+                     "y":  196,
+                     "z":  1000,
+                     "height":  238,
+                     "width":  616,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "clusteredColumnChart",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Category":  {
+                                                                     "projections":  [
+                                                                                         {
+                                                                                             "field":  {
+                                                                                                           "Column":  {
+                                                                                                                          "Expression":  {
+                                                                                                                                             "SourceRef":  {
+                                                                                                                                                               "Entity":  "dim_week"
+                                                                                                                                                           }
+                                                                                                                                         },
+                                                                                                                          "Property":  "week_label"
+                                                                                                                      }
+                                                                                                       },
+                                                                                             "queryRef":  "dim_week.week_label",
+                                                                                             "nativeQueryRef":  "Week",
+                                                                                             "displayName":  "Week"
+                                                                                         }
+                                                                                     ]
+                                                                 },
+                                                    "Y":  {
+                                                              "projections":  [
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Measure":  {
+                                                                                                                    "Expression":  {
+                                                                                                                                       "SourceRef":  {
+                                                                                                                                                         "Entity":  "_Measures"
+                                                                                                                                                     }
+                                                                                                                                   },
+                                                                                                                    "Property":  "Gating Frequency"
+                                                                                                                }
+                                                                                                },
+                                                                                      "queryRef":  "_Measures.Gating Frequency",
+                                                                                      "nativeQueryRef":  "Share of realizations gated",
+                                                                                      "displayName":  "Share of realizations gated"
+                                                                                  }
+                                                                              ]
+                                                          },
+                                                    "Series":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_policy"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "name"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_policy.name",
+                                                                                           "nativeQueryRef":  "Policy",
+                                                                                           "displayName":  "Policy"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "dim_week"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "week_label"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Ascending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Gating share by week\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

@@ -1,0 +1,142 @@
+table dim_component
+	lineageTag: 35928e26-b48f-4716-96a7-1a5cde43f8bc
+
+	column component_id
+		dataType: string
+		lineageTag: c4aa6378-f263-418a-933c-6829e7591919
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 2636e4a0-2173-4715-aa0a-e89ae7496c10
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: e1363489-497a-4999-bb98-b0847197afd3
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_SR
+		dataType: double
+		lineageTag: 48612806-3636-4b74-9285-0d72ac8c0fc5
+		summarizeBy: sum
+		sourceColumn: qty_SR
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_LR
+		dataType: double
+		lineageTag: a2a753ae-5e0a-4a55-8ebc-5bddc829712d
+		summarizeBy: sum
+		sourceColumn: qty_LR
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_supplier_id
+		dataType: string
+		lineageTag: 481f4ed7-4ed5-45a8-b240-9b4faf939d2a
+		summarizeBy: none
+		sourceColumn: primary_supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column alt_supplier_id
+		dataType: string
+		lineageTag: 0895f862-5606-47d8-9244-dced228247dd
+		summarizeBy: none
+		sourceColumn: alt_supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_cost
+		dataType: double
+		lineageTag: c3a1ba62-57c6-41b6-ab07-65783dfae5c0
+		summarizeBy: sum
+		sourceColumn: unit_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column flags
+		dataType: string
+		lineageTag: bfc4275c-99f5-4976-8312-c65755825f41
+		summarizeBy: none
+		sourceColumn: flags
+
+		annotation SummarizationSetBy = Automatic
+
+	column lane_id
+		dataType: string
+		lineageTag: 7bb021d3-3144-4287-a10e-3e7d6de3da59
+		summarizeBy: none
+		sourceColumn: lane_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier2_id
+		dataType: string
+		lineageTag: 6d0b170e-8c20-451f-b558-2c5a1593aeb3
+		summarizeBy: none
+		sourceColumn: tier2_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_requirement
+		dataType: double
+		lineageTag: 5197bdf7-075c-4fdb-860a-461ed72ef132
+		summarizeBy: sum
+		sourceColumn: weekly_requirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_spend
+		dataType: double
+		lineageTag: 370aa0e4-cb40-47f6-a7b9-1f1b4fa23fb6
+		summarizeBy: sum
+		sourceColumn: weekly_spend
+
+		annotation SummarizationSetBy = Automatic
+
+	column starting_cover_weeks
+		dataType: double
+		lineageTag: 41e9c9a1-ebcc-4691-b3db-8f137601463b
+		summarizeBy: sum
+		sourceColumn: starting_cover_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column starting_inventory
+		dataType: double
+		lineageTag: 2e0481b3-d718-4642-b514-324aada2ae91
+		summarizeBy: sum
+		sourceColumn: starting_inventory
+
+		annotation SummarizationSetBy = Automatic
+
+	column single_sourced
+		dataType: boolean
+		lineageTag: 37081198-b1fe-41a6-84e9-8b87d3e4b3ef
+		summarizeBy: none
+		sourceColumn: single_sourced
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_component = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_component.csv"), [Delimiter = ",", Columns = 16, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"component_id", type text}, {"name", type text}, {"category", type text}, {"qty_SR", type number}, {"qty_LR", type number}, {"primary_supplier_id", type text}, {"alt_supplier_id", type text}, {"unit_cost", type number}, {"flags", type text}, {"lane_id", type text}, {"tier2_id", type text}, {"weekly_requirement", type number}, {"weekly_spend", type number}, {"starting_cover_weeks", type number}, {"starting_inventory", type number}, {"single_sourced", type logical}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

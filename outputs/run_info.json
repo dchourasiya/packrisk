@@ -1,0 +1,8 @@
+{
+  "runtime_seconds": 119.0,
+  "lateness_source": "PLACEHOLDER values. Replace by running: python -m packrisk.calibrate --usaid data/raw/<file>.csv",
+  "n_actions": 533,
+  "n_prior_samples": 100,
+  "n_eval_realizations": 100,
+  "budget": 250000
+}

@@ -1,0 +1,38 @@
+table fact_bom
+	lineageTag: 3ab3965c-b10d-4c90-ac01-2e7ee088351f
+
+	column component_id
+		dataType: string
+		lineageTag: b4a1ba8e-b171-48aa-b8af-c6b21a468c87
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column variant
+		dataType: string
+		lineageTag: 887ecd22-9e16-400b-9343-4052a93c7d51
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_per_pack
+		dataType: double
+		lineageTag: 29d6031f-50a4-4f9b-ab67-764e8a7d849c
+		summarizeBy: sum
+		sourceColumn: qty_per_pack
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_bom = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_bom.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"component_id", type text}, {"variant", type text}, {"qty_per_pack", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

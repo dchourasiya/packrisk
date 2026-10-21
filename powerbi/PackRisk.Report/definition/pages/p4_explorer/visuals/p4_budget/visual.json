@@ -1,0 +1,170 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p4_budget",
+    "position":  {
+                     "x":  648,
+                     "y":  376,
+                     "z":  1000,
+                     "height":  304,
+                     "width":  616,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "lineChart",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Category":  {
+                                                                     "projections":  [
+                                                                                         {
+                                                                                             "field":  {
+                                                                                                           "Column":  {
+                                                                                                                          "Expression":  {
+                                                                                                                                             "SourceRef":  {
+                                                                                                                                                               "Entity":  "fact_budget_curve"
+                                                                                                                                                           }
+                                                                                                                                         },
+                                                                                                                          "Property":  "budget"
+                                                                                                                      }
+                                                                                                       },
+                                                                                             "queryRef":  "fact_budget_curve.budget",
+                                                                                             "nativeQueryRef":  "Budget",
+                                                                                             "displayName":  "Budget"
+                                                                                         }
+                                                                                     ]
+                                                                 },
+                                                    "Y":  {
+                                                              "projections":  [
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "fact_budget_curve"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "do_nothing_mean_lost"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(fact_budget_curve.do_nothing_mean_lost)",
+                                                                                      "nativeQueryRef":  "Do nothing mean lost",
+                                                                                      "displayName":  "Do nothing mean lost"
+                                                                                  },
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "fact_budget_curve"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "stochastic_mean_lost"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(fact_budget_curve.stochastic_mean_lost)",
+                                                                                      "nativeQueryRef":  "Stochastic mean lost",
+                                                                                      "displayName":  "Stochastic mean lost"
+                                                                                  },
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "fact_budget_curve"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "stochastic_p90_lost"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(fact_budget_curve.stochastic_p90_lost)",
+                                                                                      "nativeQueryRef":  "Stochastic P90 lost",
+                                                                                      "displayName":  "Stochastic P90 lost"
+                                                                                  },
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Aggregation":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "Column":  {
+                                                                                                                                                          "Expression":  {
+                                                                                                                                                                             "SourceRef":  {
+                                                                                                                                                                                               "Entity":  "fact_budget_curve"
+                                                                                                                                                                                           }
+                                                                                                                                                                         },
+                                                                                                                                                          "Property":  "oracle_mean_lost"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "Function":  0
+                                                                                                                    }
+                                                                                                },
+                                                                                      "queryRef":  "Sum(fact_budget_curve.oracle_mean_lost)",
+                                                                                      "nativeQueryRef":  "Oracle mean lost",
+                                                                                      "displayName":  "Oracle mean lost"
+                                                                                  }
+                                                                              ]
+                                                          }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "fact_budget_curve"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "budget"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Ascending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Lost packs vs mitigation budget\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

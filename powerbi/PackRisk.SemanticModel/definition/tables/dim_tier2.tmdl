@@ -1,0 +1,30 @@
+table dim_tier2
+	lineageTag: 849c7ede-8d24-427b-bd36-8b29f94abf74
+
+	column tier2_id
+		dataType: string
+		lineageTag: 1df3d433-8dd2-44bf-89c5-9176aff09cfe
+		summarizeBy: none
+		sourceColumn: tier2_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shared_input
+		dataType: string
+		lineageTag: 4e2c803f-8858-4793-8322-b28dc1950ae8
+		summarizeBy: none
+		sourceColumn: shared_input
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_tier2 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_tier2.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"tier2_id", type text}, {"shared_input", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

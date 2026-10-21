@@ -1,0 +1,111 @@
+table fact_realization_results
+	lineageTag: 26efa838-bddc-463a-a476-f089d3188e13
+
+	column scenario_id
+		dataType: string
+		lineageTag: 6da2bc8b-f0ca-48b8-ae2c-a7bd9ed3e2bf
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: bba1362d-c65e-43bb-ad3d-01fe15414e00
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column realization
+		dataType: int64
+		formatString: 0
+		lineageTag: 827463e6-7df9-469c-a4e7-c49152e538c2
+		summarizeBy: none
+		sourceColumn: realization
+
+		annotation SummarizationSetBy = Automatic
+
+	column plan_packs
+		dataType: double
+		lineageTag: 5257bf6f-7a36-403d-9bb6-495e77fd5264
+		summarizeBy: sum
+		sourceColumn: plan_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column built_packs
+		dataType: double
+		lineageTag: d83f9afb-f3ed-4671-897d-078e40328309
+		summarizeBy: sum
+		sourceColumn: built_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column lost_packs
+		dataType: double
+		lineageTag: c12c13de-f2f5-4b53-ab22-d6d8861f8da2
+		summarizeBy: sum
+		sourceColumn: lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column attainment
+		dataType: double
+		lineageTag: 85c406fb-3884-4688-8ff4-d9b3973a2013
+		summarizeBy: sum
+		sourceColumn: attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column backlog_pack_weeks
+		dataType: double
+		lineageTag: 9dbaa1a1-7159-41f3-9438-b9b7b3fbbe2b
+		summarizeBy: sum
+		sourceColumn: backlog_pack_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column mitigation_cost
+		dataType: double
+		lineageTag: 9b9e34ef-694f-4b9f-a551-7825d84966d6
+		summarizeBy: sum
+		sourceColumn: mitigation_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column objective
+		dataType: double
+		lineageTag: b9526b0d-69b7-4b48-8961-95a85eb5563b
+		summarizeBy: sum
+		sourceColumn: objective
+
+		annotation SummarizationSetBy = Automatic
+
+	column shortage_weeks
+		dataType: double
+		lineageTag: 429e4cc1-0c98-49c7-84ea-435ee4fd8850
+		summarizeBy: sum
+		sourceColumn: shortage_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_shortage_week
+		dataType: double
+		lineageTag: 157c0305-cb62-4b62-92e8-28bf438d5acb
+		summarizeBy: sum
+		sourceColumn: first_shortage_week
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_realization_results = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_realization_results.csv"), [Delimiter = ",", Columns = 12, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"realization", Int64.Type}, {"plan_packs", type number}, {"built_packs", type number}, {"lost_packs", type number}, {"attainment", type number}, {"backlog_pack_weeks", type number}, {"mitigation_cost", type number}, {"objective", type number}, {"shortage_weeks", type number}, {"first_shortage_week", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

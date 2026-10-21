@@ -1,0 +1,145 @@
+table fact_receipts
+	lineageTag: 1a254fcd-675f-4ee6-a565-9c386f657c72
+
+	column po_id
+		dataType: string
+		lineageTag: 2a9dc74a-be1b-4b17-a9eb-047ecf9967c5
+		summarizeBy: none
+		sourceColumn: po_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplier_id
+		dataType: string
+		lineageTag: 3c0a6f54-8fe7-45ba-a582-d5be276d113d
+		summarizeBy: none
+		sourceColumn: supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_id
+		dataType: string
+		lineageTag: 8c50cd61-4733-4260-a9af-0c625c7ddded
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column lane_id
+		dataType: string
+		lineageTag: 5db80b9e-1115-43d2-81c0-0eda73d732f8
+		summarizeBy: none
+		sourceColumn: lane_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_day
+		dataType: double
+		lineageTag: c3730167-d763-4c6d-8bd4-0978fbbb751f
+		summarizeBy: sum
+		sourceColumn: order_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column scheduled_day
+		dataType: double
+		lineageTag: af7d6fc1-1257-4060-a760-78da9df09b93
+		summarizeBy: sum
+		sourceColumn: scheduled_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_ordered
+		dataType: double
+		lineageTag: be604c45-51a8-40f2-9a83-b95cf5bacaa0
+		summarizeBy: sum
+		sourceColumn: qty_ordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_cost
+		dataType: double
+		lineageTag: 0f9cce9f-2589-48e4-b748-fe7ae48124d0
+		summarizeBy: sum
+		sourceColumn: unit_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column quality_hold
+		dataType: double
+		lineageTag: 25af1eee-3286-4da0-ab1b-bec065c00822
+		summarizeBy: sum
+		sourceColumn: quality_hold
+
+		annotation SummarizationSetBy = Automatic
+
+	column receipt_seq
+		dataType: double
+		lineageTag: be1155c6-a0a1-4adc-ba6f-4b5430e167ab
+		summarizeBy: sum
+		sourceColumn: receipt_seq
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_day
+		dataType: double
+		lineageTag: df2c03b7-a8dd-4a1a-9d5b-e6d9fd83ea54
+		summarizeBy: sum
+		sourceColumn: received_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_received
+		dataType: double
+		lineageTag: 8d7e8003-e13e-4638-9415-4c666f8450c1
+		summarizeBy: sum
+		sourceColumn: qty_received
+
+		annotation SummarizationSetBy = Automatic
+
+	column scheduled_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: dcb3fac5-a67f-42cc-9ec3-1a01c1c702b6
+		summarizeBy: none
+		sourceColumn: scheduled_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 05b19b90-ff55-43f7-b366-77a31546d685
+		summarizeBy: none
+		sourceColumn: received_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: b251b5ba-3205-488e-9945-b17ef65a3245
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_late
+		dataType: double
+		lineageTag: 3b25ef02-1ba8-46c6-ad82-29dfcd987e47
+		summarizeBy: sum
+		sourceColumn: days_late
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_receipts = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_receipts.csv"), [Delimiter = ",", Columns = 16, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"po_id", type text}, {"supplier_id", type text}, {"component_id", type text}, {"lane_id", type text}, {"order_day", type number}, {"scheduled_day", type number}, {"qty_ordered", type number}, {"unit_cost", type number}, {"quality_hold", type number}, {"receipt_seq", type number}, {"received_day", type number}, {"qty_received", type number}, {"scheduled_date", type date}, {"received_date", type date}, {"order_date", type date}, {"days_late", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

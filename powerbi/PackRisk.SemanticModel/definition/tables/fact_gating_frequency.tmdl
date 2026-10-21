@@ -1,0 +1,63 @@
+table fact_gating_frequency
+	lineageTag: 200ba1a7-480e-4b54-830e-9864df03b576
+
+	column scenario_id
+		dataType: string
+		lineageTag: 236e0513-b509-4c44-a2d1-a9cd8aed8c9d
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: 0e3048ae-5b65-4269-b87d-fd6655aac31c
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 4308aa81-32af-451b-9fcb-0f2308426219
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column variant
+		dataType: string
+		lineageTag: e1c49d71-96de-4025-b52e-8fcc48e8c386
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_id
+		dataType: string
+		lineageTag: e3944cf9-7992-4106-8cc5-614ee033c719
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column share_of_realizations
+		dataType: double
+		lineageTag: 35b6c93d-51a0-4142-86f3-cce6b41c453f
+		summarizeBy: sum
+		sourceColumn: share_of_realizations
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_gating_frequency = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_gating_frequency.csv"), [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"scenario_id", type text}, {"policy_id", type text}, {"week", Int64.Type}, {"variant", type text}, {"component_id", type text}, {"share_of_realizations", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

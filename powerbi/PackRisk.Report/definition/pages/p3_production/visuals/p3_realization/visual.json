@@ -1,0 +1,138 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p3_realization",
+    "position":  {
+                     "x":  16,
+                     "y":  116,
+                     "z":  5,
+                     "height":  70,
+                     "width":  300,
+                     "tabOrder":  5
+                 },
+    "visual":  {
+                   "visualType":  "slicer",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Column":  {
+                                                                                                                        "Expression":  {
+                                                                                                                                           "SourceRef":  {
+                                                                                                                                                             "Entity":  "dim_realization_type"
+                                                                                                                                                         }
+                                                                                                                                       },
+                                                                                                                        "Property":  "realization_type"
+                                                                                                                    }
+                                                                                                     },
+                                                                                           "queryRef":  "dim_realization_type.realization_type",
+                                                                                           "nativeQueryRef":  "realizationtype"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                }
+                             },
+                   "objects":  {
+                                   "data":  [
+                                                {
+                                                    "properties":  {
+                                                                       "mode":  {
+                                                                                    "expr":  {
+                                                                                                 "Literal":  {
+                                                                                                                 "Value":  "\u0027Dropdown\u0027"
+                                                                                                             }
+                                                                                             }
+                                                                                }
+                                                                   }
+                                                }
+                                            ],
+                                   "selection":  [
+                                                     {
+                                                         "properties":  {
+                                                                            "singleSelect":  {
+                                                                                                 "expr":  {
+                                                                                                              "Literal":  {
+                                                                                                                              "Value":  "true"
+                                                                                                                          }
+                                                                                                          }
+                                                                                             }
+                                                                        }
+                                                     }
+                                                 ],
+                                   "header":  [
+                                                  {
+                                                      "properties":  {
+                                                                         "show":  {
+                                                                                      "expr":  {
+                                                                                                   "Literal":  {
+                                                                                                                   "Value":  "true"
+                                                                                                               }
+                                                                                               }
+                                                                                  },
+                                                                         "text":  {
+                                                                                      "expr":  {
+                                                                                                   "Literal":  {
+                                                                                                                   "Value":  "\u0027Realization\u0027"
+                                                                                                               }
+                                                                                               }
+                                                                                  }
+                                                                     }
+                                                  }
+                                              ],
+                                   "general":  [
+                                                   {
+                                                       "properties":  {
+                                                                          "filter":  {
+                                                                                         "filter":  {
+                                                                                                        "Version":  2,
+                                                                                                        "From":  [
+                                                                                                                     {
+                                                                                                                         "Name":  "t",
+                                                                                                                         "Entity":  "dim_realization_type",
+                                                                                                                         "Type":  0
+                                                                                                                     }
+                                                                                                                 ],
+                                                                                                        "Where":  [
+                                                                                                                      {
+                                                                                                                          "Condition":  {
+                                                                                                                                            "In":  {
+                                                                                                                                                       "Expressions":  [
+                                                                                                                                                                           {
+                                                                                                                                                                               "Column":  {
+                                                                                                                                                                                              "Expression":  {
+                                                                                                                                                                                                                 "SourceRef":  {
+                                                                                                                                                                                                                                   "Source":  "t"
+                                                                                                                                                                                                                               }
+                                                                                                                                                                                                             },
+                                                                                                                                                                                              "Property":  "realization_type"
+                                                                                                                                                                                          }
+                                                                                                                                                                           }
+                                                                                                                                                                       ],
+                                                                                                                                                       "Values":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          {
+                                                                                                                                                                              "Literal":  {
+                                                                                                                                                                                              "Value":  "\u0027severe (P90)\u0027"
+                                                                                                                                                                                          }
+                                                                                                                                                                          }
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                   }
+                                                                                                                                        }
+                                                                                                                      }
+                                                                                                                  ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                   }
+                                               ]
+                               },
+                   "drillFilterOtherVisuals":  true,
+                   "syncGroup":  {
+                                     "groupName":  "RealizationSync",
+                                     "fieldChanges":  true,
+                                     "filterChanges":  true
+                                 }
+               }
+}

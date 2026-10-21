@@ -1,0 +1,9 @@
+{
+  "source": "PLACEHOLDER values. Replace by running: python -m packrisk.calibrate --usaid data/raw/<file>.csv",
+  "lanes": {
+    "L1": {"p_late": 0.30, "median_days": 5.0, "sigma": 0.8},
+    "L2": {"p_late": 0.15, "median_days": 2.0, "sigma": 0.6},
+    "L3": {"p_late": 0.10, "median_days": 1.5, "sigma": 0.5},
+    "L4": {"p_late": 0.25, "median_days": 4.0, "sigma": 0.8}
+  }
+}

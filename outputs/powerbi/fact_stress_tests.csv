@@ -1,0 +1,29 @@
+test,scenario_id,setting,metric,value
+Correlation (do nothing),D1,correlated,mean_lost_packs,1033.6252035963446
+Correlation (do nothing),D1,correlated,p90_lost_packs,2600.0
+Correlation (do nothing),D1,correlated,p95_lost_packs,2700.0
+Correlation (do nothing),D1,correlated,prob_any_loss,0.725
+Correlation (do nothing),D1,independent,mean_lost_packs,1294.5600210867394
+Correlation (do nothing),D1,independent,p90_lost_packs,2600.0
+Correlation (do nothing),D1,independent,p95_lost_packs,2700.0
+Correlation (do nothing),D1,independent,prob_any_loss,0.855
+Planner correlation assumption,D1,planner assumes correlation,mean_lost_packs,74.52266448356812
+Planner correlation assumption,D1,planner assumes correlation,p90_lost_packs,105.62474433349409
+Planner correlation assumption,D1,planner assumes correlation,mitigation_cost,181246.43563275412
+Planner correlation assumption,D1,planner assumes independence,mean_lost_packs,103.13780041215973
+Planner correlation assumption,D1,planner assumes independence,p90_lost_packs,578.0829650892811
+Planner correlation assumption,D1,planner assumes independence,mitigation_cost,175789.01831145198
+Correlation (do nothing),D2,correlated,mean_lost_packs,1682.9267600551982
+Correlation (do nothing),D2,correlated,p90_lost_packs,3445.168612704866
+Correlation (do nothing),D2,correlated,p95_lost_packs,3792.6868533214665
+Correlation (do nothing),D2,correlated,prob_any_loss,0.91
+Correlation (do nothing),D2,independent,mean_lost_packs,1986.7623330987212
+Correlation (do nothing),D2,independent,p90_lost_packs,3636.2842118217477
+Correlation (do nothing),D2,independent,p95_lost_packs,3873.532292750299
+Correlation (do nothing),D2,independent,prob_any_loss,0.985
+Planner correlation assumption,D2,planner assumes correlation,mean_lost_packs,1035.4760332854328
+Planner correlation assumption,D2,planner assumes correlation,p90_lost_packs,2548.7665409903557
+Planner correlation assumption,D2,planner assumes correlation,mitigation_cost,250000.0
+Planner correlation assumption,D2,planner assumes independence,mean_lost_packs,1076.614366332823
+Planner correlation assumption,D2,planner assumes independence,p90_lost_packs,2616.560948336549
+Planner correlation assumption,D2,planner assumes independence,mitigation_cost,249999.99999999994

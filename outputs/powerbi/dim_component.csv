@@ -1,0 +1,51 @@
+component_id,name,category,qty_SR,qty_LR,primary_supplier_id,alt_supplier_id,unit_cost,flags,lane_id,tier2_id,weekly_requirement,weekly_spend,starting_cover_weeks,starting_inventory,single_sourced
+C01,LFP prismatic cell,Cells,100.0,0.0,S01,S02,35.0,QH,L1,T6,90000.0,3150000.0,4.0,360000.0,False
+C02,NMC cylindrical cell,Cells,0.0,4400.0,S03,S04,2.5,QH,L1,T6,2640000.0,6600000.0,4.0,10560000.0,False
+C03,Prismatic cell frame,Structure,100.0,0.0,S19,,1.2,,L2,T4,90000.0,108000.0,4.0,360000.0,True
+C04,Cylindrical cell holder,Structure,0.0,8.0,S19,,18.0,,L2,T4,4800.0,86400.0,3.0,14400.0,True
+C05,Compression end plate,Structure,4.0,0.0,S16,,12.0,,L3,T3,3600.0,43200.0,3.0,10800.0,True
+C06,Module side rail,Structure,8.0,0.0,S16,,9.0,,L3,T3,7200.0,64800.0,3.0,21600.0,True
+C07,Copper module interconnect busbar,Electrical,12.0,8.0,S05,,6.0,,L2,T1,15600.0,93600.0,4.0,62400.0,True
+C08,Aluminum cell busbar,Electrical,100.0,0.0,S05,,0.8,,L2,T1,90000.0,72000.0,2.0,180000.0,True
+C09,Aluminum wire-bond wire (m),Electrical,0.0,50.0,S05,,0.4,,L2,T1,30000.0,12000.0,3.0,90000.0,True
+C10,Current collector plate,Electrical,0.0,8.0,S05,,14.0,,L2,T1,4800.0,67200.0,2.0,9600.0,True
+C11,Cell monitoring board,Electronics,4.0,4.0,S07,,45.0,,L1,T2,6000.0,270000.0,2.0,12000.0,True
+C12,BMS master controller,Electronics,1.0,1.0,S07,,160.0,,L1,T2,1500.0,240000.0,2.0,3000.0,True
+C13,Main HV contactor,Electrical,2.0,2.0,S09,S10,55.0,,L1,,3000.0,165000.0,3.0,9000.0,False
+C14,Precharge contactor,Electrical,1.0,1.0,S09,,22.0,,L1,,1500.0,33000.0,2.0,3000.0,True
+C15,Precharge resistor,Electrical,1.0,1.0,S09,S08,6.0,,L1,,1500.0,9000.0,3.0,4500.0,False
+C16,Pyrotechnic fuse,Electrical,1.0,1.0,S10,,40.0,,L4,,1500.0,60000.0,2.0,3000.0,True
+C17,Current sensor (shunt),Electronics,1.0,1.0,S08,,30.0,,L4,T2,1500.0,45000.0,4.0,6000.0,True
+C18,HV service disconnect,Electrical,1.0,1.0,S10,,25.0,,L4,,1500.0,37500.0,4.0,6000.0,True
+C19,HV output connector,Electrical,2.0,2.0,S11,,18.0,,L3,,3000.0,54000.0,4.0,12000.0,True
+C20,LV signal connector,Electrical,2.0,2.0,S11,,4.0,,L3,,3000.0,12000.0,3.0,9000.0,True
+C21,LV module harness,Electrical,1.0,1.0,S06,,35.0,,L2,T1,1500.0,52500.0,4.0,6000.0,True
+C22,HV cable assembly,Electrical,2.0,2.0,S06,,28.0,,L2,T1,3000.0,84000.0,3.0,9000.0,True
+C23,Thermistor assembly,Electronics,8.0,16.0,S08,,2.0,,L4,T2,16800.0,33600.0,2.0,33600.0,True
+C24,Isolation monitoring board,Electronics,1.0,1.0,S08,,38.0,,L4,T2,1500.0,57000.0,3.0,4500.0,True
+C25,Thermal interface material (kg),Thermal,3.0,3.5,S12,S17,20.0,SL;QH,L3,T4,4800.0,96000.0,3.0,14400.0,False
+C26,Cooling plate,Thermal,1.0,0.0,S13,,85.0,,L2,T3,900.0,76500.0,3.0,2700.0,True
+C27,Serpentine cooling tube,Thermal,0.0,4.0,S13,,30.0,,L2,T3,2400.0,72000.0,4.0,9600.0,True
+C28,Coolant fittings,Thermal,2.0,2.0,S14,,5.0,,L3,,3000.0,15000.0,2.0,6000.0,True
+C29,Coolant hose assembly,Thermal,2.0,2.0,S14,,9.0,,L3,,3000.0,27000.0,4.0,12000.0,True
+C30,Thermal insulation pad,Fire safety,10.0,6.0,S15,,2.0,,L1,T5,12600.0,25200.0,2.0,25200.0,True
+C31,Mica fire barrier sheet,Fire safety,4.0,4.0,S15,,6.0,,L1,T5,6000.0,36000.0,3.0,18000.0,True
+C32,Aerogel cell spacer,Fire safety,50.0,0.0,S15,,3.0,,L1,T5,45000.0,135000.0,4.0,180000.0,True
+C33,Pressure vent valve,Enclosure,2.0,2.0,S17,,8.0,,L3,T4,3000.0,24000.0,2.0,6000.0,True
+C34,"Enclosure tray, SR",Enclosure,1.0,0.0,S16,,260.0,,L3,T3,900.0,234000.0,4.0,3600.0,True
+C35,"Enclosure tray, LR",Enclosure,0.0,1.0,S16,,310.0,,L3,T3,600.0,186000.0,3.0,1800.0,True
+C36,Enclosure lid,Enclosure,1.0,1.0,S16,,90.0,,L3,T3,1500.0,135000.0,3.0,4500.0,True
+C37,Perimeter gasket,Enclosure,1.0,1.0,S17,,15.0,,L3,T4,1500.0,22500.0,4.0,6000.0,True
+C38,Structural adhesive (kg),Chemicals,1.2,2.0,S12,S17,18.0,SL;QH,L3,T4,2280.0,41040.0,4.0,9120.0,False
+C39,Potting foam (kg),Chemicals,0.0,6.0,S12,,12.0,SL;QH,L3,T4,3600.0,43200.0,4.0,14400.0,True
+C40,Underbody shield,Enclosure,1.0,1.0,S16,,70.0,,L3,T3,1500.0,105000.0,3.0,4500.0,True
+C41,Mounting bracket set,Enclosure,1.0,1.0,S16,,25.0,,L3,T3,1500.0,37500.0,4.0,6000.0,True
+C42,M6 flange bolt,Fasteners,60.0,60.0,S18,S20,0.1,,L1,,90000.0,9000.0,4.0,360000.0,False
+C43,M8 structural bolt,Fasteners,24.0,24.0,S18,S20,0.25,,L1,,36000.0,9000.0,2.0,72000.0,False
+C44,Rivet nut,Fasteners,40.0,40.0,S18,S20,0.15,,L1,,60000.0,9000.0,2.0,120000.0,False
+C45,Dielectric insulation film (m2),Misc,2.0,2.0,S20,,3.0,,L3,,3000.0,9000.0,2.0,6000.0,True
+C46,Edge grommet,Misc,10.0,10.0,S20,,0.3,,L3,,15000.0,4500.0,3.0,45000.0,True
+C47,HV warning label set,Misc,1.0,1.0,S20,,1.5,,L3,,1500.0,2250.0,4.0,6000.0,True
+C48,Desiccant pack,Misc,1.0,1.0,S20,,1.0,,L3,,1500.0,1500.0,3.0,4500.0,True
+C49,Breather membrane,Enclosure,1.0,1.0,S17,,4.0,,L3,T4,1500.0,6000.0,4.0,6000.0,True
+C50,Ground strap,Electrical,2.0,2.0,S06,,3.0,,L2,T1,3000.0,9000.0,3.0,9000.0,True

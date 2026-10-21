@@ -1,0 +1,5 @@
+lane_id,description,base_lead_weeks,expedite_mode,expedite_cost_share
+L1,"Asia to US West Coast, ocean",6,air,0.15
+L2,"Mexico to site, truck",1,team driver,0.03
+L3,"US domestic, truck",1,none,0.0
+L4,"Europe to US, ocean",5,air,0.15

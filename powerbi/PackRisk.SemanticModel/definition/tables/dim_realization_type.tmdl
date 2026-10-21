@@ -1,0 +1,31 @@
+table dim_realization_type
+	lineageTag: 7d3e5d3a-f624-4422-b742-a663f31d50bf
+
+	column realization_type
+		dataType: string
+		lineageTag: acd661bf-c52e-4df3-a682-ff1c8d136233
+		summarizeBy: none
+		sourceColumn: realization_type
+		sortByColumn: sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 7be01428-d07d-466f-9841-710726f71cb9
+		summarizeBy: none
+		sourceColumn: sort
+		isHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_realization_type = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [realization_type = text, sort = Int64.Type], {{"median", 1}, {"severe (P90)", 2}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

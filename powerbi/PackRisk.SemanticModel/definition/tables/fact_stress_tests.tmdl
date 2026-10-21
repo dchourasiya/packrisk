@@ -1,0 +1,55 @@
+table fact_stress_tests
+	lineageTag: f1be1978-542a-4075-a96b-f5003d49a1b8
+
+	column test
+		dataType: string
+		lineageTag: 82c5d0cb-901d-40ae-ba84-27ec085bc12b
+		summarizeBy: none
+		sourceColumn: test
+
+		annotation SummarizationSetBy = Automatic
+
+	column scenario_id
+		dataType: string
+		lineageTag: bcf854bd-be31-4b27-bcd8-52b0ff586254
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: a49e6b1b-3697-4397-99ae-c1fe00572ace
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric
+		dataType: string
+		lineageTag: 2b063c6a-51a6-464e-812c-b39c15b1b9d0
+		summarizeBy: none
+		sourceColumn: metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 7d2f41f0-c49b-4957-915f-8d7cd06dc3f2
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_stress_tests = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_stress_tests.csv"), [Delimiter = ",", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"test", type text}, {"scenario_id", type text}, {"setting", type text}, {"metric", type text}, {"value", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

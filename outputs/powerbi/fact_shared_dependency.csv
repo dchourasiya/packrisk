@@ -1,0 +1,11 @@
+dependency_type,dependency_id,suppliers_exposed,components_exposed,single_sourced_components,weekly_spend_exposed,min_cover_weeks
+Shipping lane,L1,6,13,6,10690200.0,2.0
+Shipping lane,L3,6,21,19,1163490.0,2.0
+Shipping lane,L2,4,11,11,733200.0,2.0
+Shipping lane,L4,2,5,5,233100.0,2.0
+Tier-2 source,T6,2,2,0,9750000.0,4.0
+Tier-2 source,T3,2,9,9,954000.0,3.0
+Tier-2 source,T2,2,5,5,645600.0,2.0
+Tier-2 source,T4,3,8,6,427140.0,2.0
+Tier-2 source,T1,2,7,7,390300.0,2.0
+Tier-2 source,T5,1,3,3,196200.0,2.0

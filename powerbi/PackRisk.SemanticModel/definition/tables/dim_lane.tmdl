@@ -1,0 +1,54 @@
+table dim_lane
+	lineageTag: f1055a05-c438-485f-abaf-b87ec4f96f86
+
+	column lane_id
+		dataType: string
+		lineageTag: 0b1efa14-18cf-4d04-8b77-089f414000dc
+		summarizeBy: none
+		sourceColumn: lane_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: d448c2a8-7ffa-405a-82ae-b1cae96be298
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column base_lead_weeks
+		dataType: double
+		lineageTag: 70e0cec8-f0b1-45cc-a566-7e9ce81c7eda
+		summarizeBy: sum
+		sourceColumn: base_lead_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column expedite_mode
+		dataType: string
+		lineageTag: 0b1c5e49-55c5-4186-bcca-2edf1fda4122
+		summarizeBy: none
+		sourceColumn: expedite_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column expedite_cost_share
+		dataType: double
+		lineageTag: 252903c1-4a87-4bd2-8d5a-a3413d550642
+		summarizeBy: sum
+		sourceColumn: expedite_cost_share
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_lane = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_lane.csv"), [Delimiter = ",", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"lane_id", type text}, {"description", type text}, {"base_lead_weeks", type number}, {"expedite_mode", type text}, {"expedite_cost_share", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,8 @@
+policy_id,name,description,sort
+P1,Do nothing,Keep the current inventory policy; no mitigation spend.,1
+P2,Worst-supplier first,Spend the budget on suppliers with the highest historical late rate.,2
+P3,Lowest-cover first,Spend the budget on components with the fewest weeks of inventory.,3
+P4,Deterministic LP,Optimize against one average scenario (mean delays).,4
+P5,Stochastic LP,Optimize the expected outcome across sampled scenarios.,5
+P6,Stochastic LP + CVaR,Stochastic LP that also penalizes the worst 10% of scenarios.,6
+P7,Oracle (perfect foresight),"Same constraints, but knows the realized scenario. Upper bound.",7
