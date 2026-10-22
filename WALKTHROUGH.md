@@ -2,6 +2,10 @@
 
 A text version of the demo, for readers who'd rather read than watch. It follows the dashboard's page order. All numbers are for scenario **D1 (Asia ocean-lane port congestion)** unless stated otherwise.
 
+![Executive Overview](docs/images/2_executive_overview.png)
+
+The full dashboard is also available as a [PDF](docs/PackRisk_Dashboard.pdf).
+
 ## In three lines
 
 - When Asia's ocean shipping congests, doing nothing loses about **1,037** of 12,000 planned battery packs over 8 weeks.

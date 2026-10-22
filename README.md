@@ -20,6 +20,18 @@ All policies are evaluated on the same realizations, including five **held-out**
 
 **Results:** see [RESULTS.md](RESULTS.md) (auto-generated from the latest run). For a plain-language tour of the dashboard, read [WALKTHROUGH.md](WALKTHROUGH.md).
 
+## Dashboard preview
+
+![Executive Overview](docs/images/2_executive_overview.png)
+
+| Supplier Performance | Production Risk |
+|---|---|
+| ![Supplier Performance](docs/images/1_supplier_performance.png) | ![Production Risk](docs/images/3_production_risk.png) |
+| **Scenario Explorer** | **Assumptions & Limitations** |
+| ![Scenario Explorer](docs/images/4_scenario_explorer.png) | ![Assumptions](docs/images/5_assumptions.png) |
+
+Full dashboard as a PDF (no Power BI needed): [docs/PackRisk_Dashboard.pdf](docs/PackRisk_Dashboard.pdf). Scenario shown: D1, Asia ocean-lane port congestion.
+
 ## Quickstart
 
 ```bash
@@ -63,6 +75,7 @@ python -m packrisk.report
 | `POWERBI_GUIDE.md` | Data model, DAX measures, page layouts |
 | `DEMO_SCRIPT.md` | 2-minute video beat outline |
 | `WALKTHROUGH.md` | Written walkthrough of the dashboard, page by page |
+| `docs/` | Dashboard PDF and page images |
 | `powerbi/` | Power BI Project (`PackRisk.pbip`): semantic model (TMDL), report (PBIR), theme, and the scripts that generate them |
 
 ## Power BI dashboard
