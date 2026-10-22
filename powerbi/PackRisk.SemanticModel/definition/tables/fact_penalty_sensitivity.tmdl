@@ -1,0 +1,80 @@
+table fact_penalty_sensitivity
+	lineageTag: 50cfe66b-64da-4ad1-b992-167fd3a16f30
+
+	column penalty_per_lost_pack
+		dataType: double
+		lineageTag: 21257eaa-3509-455f-acb4-1efbf1dd6c31
+		summarizeBy: sum
+		sourceColumn: penalty_per_lost_pack
+
+		annotation SummarizationSetBy = Automatic
+
+	column scenario_id
+		dataType: string
+		lineageTag: cb40c8ab-f488-40b2-8046-6a0a1774e032
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: fac63671-047e-49e3-af30-de0a2e0ba7f7
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_lost_packs
+		dataType: double
+		lineageTag: cbad0c9e-a66b-4469-a907-90cb5a959223
+		summarizeBy: sum
+		sourceColumn: mean_lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column p90_lost_packs
+		dataType: double
+		lineageTag: 948803cd-afef-4fb8-9b0d-8a26af86ed07
+		summarizeBy: sum
+		sourceColumn: p90_lost_packs
+
+		annotation SummarizationSetBy = Automatic
+
+	column mitigation_cost
+		dataType: double
+		lineageTag: f7250410-67fb-408d-9a29-3a9e063b3d35
+		summarizeBy: sum
+		sourceColumn: mitigation_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_objective
+		dataType: double
+		lineageTag: c855bdf9-6fff-42e4-b6c9-2cc3dd147030
+		summarizeBy: sum
+		sourceColumn: mean_objective
+
+		annotation SummarizationSetBy = Automatic
+
+	column penalty_label
+		dataType: string
+		lineageTag: ca90eff0-26e0-40b6-a5bf-047228aa5a2e
+		summarizeBy: none
+		sourceColumn: penalty_label
+		sortByColumn: penalty_per_lost_pack
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_penalty_sensitivity = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_penalty_sensitivity.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"penalty_per_lost_pack", type number}, {"scenario_id", type text}, {"policy_id", type text}, {"mean_lost_packs", type number}, {"p90_lost_packs", type number}, {"mitigation_cost", type number}, {"mean_objective", type number}}, "en-US"),
+				    Labeled = Table.AddColumn(Typed, "penalty_label", each "$" & Number.ToText([penalty_per_lost_pack] / 1000, "0") & "K", type text)
+				in
+				    Labeled
+
+	annotation PBI_ResultType = Table

@@ -1,9 +1,9 @@
 table dim_component
-	lineageTag: 35928e26-b48f-4716-96a7-1a5cde43f8bc
+	lineageTag: 54c7f016-bc6d-477b-92a1-44af7c28c0e1
 
 	column component_id
 		dataType: string
-		lineageTag: c4aa6378-f263-418a-933c-6829e7591919
+		lineageTag: a60c1183-a2fe-46f7-9ddc-b32b893d2036
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -11,7 +11,7 @@ table dim_component
 
 	column name
 		dataType: string
-		lineageTag: 2636e4a0-2173-4715-aa0a-e89ae7496c10
+		lineageTag: 52d34ce7-470b-4105-bf80-36325e0bed0f
 		summarizeBy: none
 		sourceColumn: name
 
@@ -19,7 +19,7 @@ table dim_component
 
 	column category
 		dataType: string
-		lineageTag: e1363489-497a-4999-bb98-b0847197afd3
+		lineageTag: 1ae22794-a088-4cba-b0d6-eaa8836fa0b2
 		summarizeBy: none
 		sourceColumn: category
 
@@ -27,7 +27,7 @@ table dim_component
 
 	column qty_SR
 		dataType: double
-		lineageTag: 48612806-3636-4b74-9285-0d72ac8c0fc5
+		lineageTag: ab6593c8-0e07-418d-8329-8eb10ac58ab4
 		summarizeBy: sum
 		sourceColumn: qty_SR
 
@@ -35,7 +35,7 @@ table dim_component
 
 	column qty_LR
 		dataType: double
-		lineageTag: a2a753ae-5e0a-4a55-8ebc-5bddc829712d
+		lineageTag: c0b63682-f7f9-4e67-82d3-29ff364e0e5c
 		summarizeBy: sum
 		sourceColumn: qty_LR
 
@@ -43,7 +43,7 @@ table dim_component
 
 	column primary_supplier_id
 		dataType: string
-		lineageTag: 481f4ed7-4ed5-45a8-b240-9b4faf939d2a
+		lineageTag: 042b7e44-de18-4a30-a21c-4308efb118ac
 		summarizeBy: none
 		sourceColumn: primary_supplier_id
 
@@ -51,7 +51,7 @@ table dim_component
 
 	column alt_supplier_id
 		dataType: string
-		lineageTag: 0895f862-5606-47d8-9244-dced228247dd
+		lineageTag: 6d29e511-f6e9-4465-afdc-69ca127d10d8
 		summarizeBy: none
 		sourceColumn: alt_supplier_id
 
@@ -59,7 +59,7 @@ table dim_component
 
 	column unit_cost
 		dataType: double
-		lineageTag: c3a1ba62-57c6-41b6-ab07-65783dfae5c0
+		lineageTag: b45afe60-c132-493c-bfec-bd865b861d3b
 		summarizeBy: sum
 		sourceColumn: unit_cost
 
@@ -67,7 +67,7 @@ table dim_component
 
 	column flags
 		dataType: string
-		lineageTag: bfc4275c-99f5-4976-8312-c65755825f41
+		lineageTag: 84c5f92a-f445-4f6d-a760-245fe4ec02c5
 		summarizeBy: none
 		sourceColumn: flags
 
@@ -75,7 +75,7 @@ table dim_component
 
 	column lane_id
 		dataType: string
-		lineageTag: 7bb021d3-3144-4287-a10e-3e7d6de3da59
+		lineageTag: 27316040-4f5d-4fd9-933a-5d0d2bb3a228
 		summarizeBy: none
 		sourceColumn: lane_id
 
@@ -83,7 +83,7 @@ table dim_component
 
 	column tier2_id
 		dataType: string
-		lineageTag: 6d0b170e-8c20-451f-b558-2c5a1593aeb3
+		lineageTag: a3bad712-d088-44b4-9b11-fe340285a641
 		summarizeBy: none
 		sourceColumn: tier2_id
 
@@ -91,7 +91,7 @@ table dim_component
 
 	column weekly_requirement
 		dataType: double
-		lineageTag: 5197bdf7-075c-4fdb-860a-461ed72ef132
+		lineageTag: 5bfe89e4-a17e-4501-98e8-583255e41cc0
 		summarizeBy: sum
 		sourceColumn: weekly_requirement
 
@@ -99,7 +99,7 @@ table dim_component
 
 	column weekly_spend
 		dataType: double
-		lineageTag: 370aa0e4-cb40-47f6-a7b9-1f1b4fa23fb6
+		lineageTag: b5b541b9-8b64-4f2a-9c8e-f9f638c3d11a
 		summarizeBy: sum
 		sourceColumn: weekly_spend
 
@@ -107,7 +107,7 @@ table dim_component
 
 	column starting_cover_weeks
 		dataType: double
-		lineageTag: 41e9c9a1-ebcc-4691-b3db-8f137601463b
+		lineageTag: 88b86e37-5643-47bd-a5e0-329ab3e19343
 		summarizeBy: sum
 		sourceColumn: starting_cover_weeks
 
@@ -115,7 +115,7 @@ table dim_component
 
 	column starting_inventory
 		dataType: double
-		lineageTag: 2e0481b3-d718-4642-b514-324aada2ae91
+		lineageTag: 89720ace-942f-4630-8d5a-02fa341fb4a5
 		summarizeBy: sum
 		sourceColumn: starting_inventory
 
@@ -123,7 +123,7 @@ table dim_component
 
 	column single_sourced
 		dataType: boolean
-		lineageTag: 37081198-b1fe-41a6-84e9-8b87d3e4b3ef
+		lineageTag: e801260b-4667-4214-9f95-af1423203721
 		summarizeBy: none
 		sourceColumn: single_sourced
 

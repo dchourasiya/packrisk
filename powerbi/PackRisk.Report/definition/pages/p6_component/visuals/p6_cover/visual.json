@@ -60,12 +60,12 @@
                                                                                                                                                              "Entity":  "dim_policy"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "name"
+                                                                                                                        "Property":  "plain_name"
                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_policy.name",
-                                                                                           "nativeQueryRef":  "Policy",
-                                                                                           "displayName":  "Policy"
+                                                                                           "queryRef":  "dim_policy.plain_name",
+                                                                                           "nativeQueryRef":  "Strategy",
+                                                                                           "displayName":  "Strategy"
                                                                                        }
                                                                                    ]
                                                                }
@@ -103,7 +103,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Weeks of cover by policy\u0027"
+                                                                                                                                 "Value":  "\u0027Weeks of stock left, by strategy\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

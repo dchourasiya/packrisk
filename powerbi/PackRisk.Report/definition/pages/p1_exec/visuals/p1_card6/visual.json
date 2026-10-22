@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Net return on spend\u0027"
+                                                                                                                                 "Value":  "\u0027Saved per $1 spent\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

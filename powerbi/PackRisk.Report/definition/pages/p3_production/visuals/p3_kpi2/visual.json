@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Lost packs P90 - Do nothing\u0027"
+                                                                                                                                 "Value":  "\u0027Lost packs, bad case (do nothing)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -106,7 +106,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter012",
+                                             "name":  "filter011",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

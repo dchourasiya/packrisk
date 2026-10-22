@@ -1,9 +1,9 @@
 table dim_tier2
-	lineageTag: 849c7ede-8d24-427b-bd36-8b29f94abf74
+	lineageTag: 51e386f3-5ae9-4703-9d11-e23624d39a4c
 
 	column tier2_id
 		dataType: string
-		lineageTag: 1df3d433-8dd2-44bf-89c5-9176aff09cfe
+		lineageTag: 33220953-9d7f-4bcb-8284-63e0045a3457
 		summarizeBy: none
 		sourceColumn: tier2_id
 
@@ -11,7 +11,7 @@ table dim_tier2
 
 	column shared_input
 		dataType: string
-		lineageTag: 4e2c803f-8858-4793-8322-b28dc1950ae8
+		lineageTag: f3a2a4ce-6825-45eb-9da2-6a5ece794de6
 		summarizeBy: none
 		sourceColumn: shared_input
 

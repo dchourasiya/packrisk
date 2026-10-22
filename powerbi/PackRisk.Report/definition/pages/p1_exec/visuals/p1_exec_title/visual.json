@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "Battery-pack supply risk. KPIs compare the Stochastic LP plan (P5) with Do nothing (P1) for the selected scenario.",
+                                                                                                                      "value":  "Battery-pack supply risk. KPIs compare the smart plan (stochastic optimization) with doing nothing, for the selected scenario.",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#C9D1D9"

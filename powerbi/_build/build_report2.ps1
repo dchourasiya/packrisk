@@ -139,6 +139,7 @@ function Container($v, [bool]$show, $bg = "#FFFFFF", $border = "#DDE2E8") {
 function Ensure-Objects($v) { if (-not $v.objects) { $v.objects = [ordered]@{} } }
 function CardColor($v, $hex) { $v.objects.labels[0].properties.color = @{ solid = @{ color = (S $hex) } }; $v }
 function DataColor($v, $hex) { Ensure-Objects $v; $v.objects.dataPoint = @(@{ properties = @{ fill = @{ solid = @{ color = (S $hex) } } } }); $v }
+function Margin($v, $pct = 45) { Ensure-Objects $v; $v.objects.categoryAxis = @(@{ properties = @{ maxMarginFactor = (L "$($pct)L") } }); $v }
 function KPI($measure, $title, $color, $size = 22) { $c = V-Card (Meas $measure) $title $size; if ($color) { $c = CardColor $c $color }; $c }
 
 $RED = "#C8102E"; $TEAL = "#1B998B"; $CHAR = "#3E4A59"; $STEEL = "#2E5E8C"
@@ -162,18 +163,18 @@ function PolicyF($id) { FIn "dim_policy" "policy_id" @($id) }
 
 # ================= Page 1: Executive Overview =================
 $pg = "p1_exec"
-Add-Furniture $pg "Executive Overview" "Battery-pack supply risk. KPIs compare the Stochastic LP plan (P5) with Do nothing (P1) for the selected scenario."
+Add-Furniture $pg "Executive Overview" "Battery-pack supply risk. KPIs compare the smart plan (stochastic optimization) with doing nothing, for the selected scenario."
 $head = V-Card (Meas "Headline") "" 14
 $head.visualContainerObjects = (NoTitle)
 Add-Visual $pg "p1_headline" 16 116 1248 50 (CardColor (Container $head $true "#FFFFFF" "#C8102E") "#111827")
 $cards = @(
-  @{ m = "Lost Packs (mean)"; t = "Lost: Do nothing"; p = "P1"; c = $RED },
-  @{ m = "Lost Packs (mean)"; t = "Lost: Stochastic LP"; p = "P5"; c = $TEAL },
+  @{ m = "Lost Packs (mean)"; t = "Lost: do nothing"; p = "P1"; c = $RED },
+  @{ m = "Lost Packs (mean)"; t = "Lost: smart plan"; p = "P5"; c = $TEAL },
   @{ m = "Packs Protected vs Do Nothing"; t = "Packs protected"; p = "P5"; c = $TEAL },
-  @{ m = "Expected Cost Avoided"; t = "Net cost avoided"; p = "P5"; c = $TEAL },
-  @{ m = "Mitigation Spend"; t = "Mitigation spend"; p = "P5"; c = $CHAR },
-  @{ m = "Return on Mitigation"; t = "Net return on spend"; p = "P5"; c = $STEEL },
-  @{ m = "Oracle Capture"; t = "Oracle capture"; p = "P5"; c = $STEEL })
+  @{ m = "Expected Cost Avoided"; t = "Net savings"; p = "P5"; c = $TEAL },
+  @{ m = "Mitigation Spend"; t = "Spend on fixes"; p = "P5"; c = $CHAR },
+  @{ m = "Return on Mitigation"; t = "Saved per `$1 spent"; p = "P5"; c = $STEEL },
+  @{ m = "Oracle Capture"; t = "Share of best possible"; p = "P5"; c = $STEEL })
 for ($i = 0; $i -lt $cards.Count; $i++) {
   $c = $cards[$i]
   $kv = KPI $c.m $c.t $c.c 20
@@ -184,16 +185,20 @@ $desc = V-Card (Meas "Scenario Description") "" 10
 $desc.visualContainerObjects = (NoTitle)
 Add-Visual $pg "p1_desc" 16 274 1248 34 (CardColor $desc "#374151")
 Add-Visual $pg "p1_costbar" 16 316 470 364 (DataColor (V-Chart "clusteredBarChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_policy" "name") "Policy")); Y = (Role (Proj (Meas "Expected Total Cost"))) }) "Expected total cost by policy" ([ordered]@{ field = (Col "dim_policy" "name"); direction = "Ascending" })) $CHAR)
+      Category = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")); Y = (Role (Proj (Meas "Expected Total Cost"))) }) "Expected total cost by strategy (lower is better)" ([ordered]@{ field = (Col "dim_policy" "plain_name"); direction = "Ascending" })) $CHAR)
 Add-Visual $pg "p1_gating" 496 316 430 364 (DataColor (V-Chart "clusteredBarChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_component" "name") "Component")); Y = (Role (Proj (Meas "Gated Share"))) }) "Top 5 gating parts (Do nothing)" ([ordered]@{ field = (Meas "Gated Share"); direction = "Descending" })) $RED) @((PolicyF "P1"), (FTopN "dim_component" "name" "Gated Share" 5))
-$gauge = V-Chart "gauge" ([ordered]@{ Y = (Role (Proj (Meas "Budget Used %") "Budget used")) }) "Budget used of `$250K (Stochastic LP)" $null ([ordered]@{
-    axis = @(@{ properties = [ordered]@{ min = (L "0D"); max = (L "1D") } }) })
-Add-Visual $pg "p1_gauge" 936 316 328 148 (DataColor $gauge $TEAL) @(PolicyF "P5")
+      Category = (Role (Proj (Col "dim_component" "name") "Component")); Y = (Role (Proj (Meas "Gated Share"))) }) "Top 5 parts that stop the line (if we do nothing)" ([ordered]@{ field = (Meas "Gated Share"); direction = "Descending" })) $RED) @((PolicyF "P1"), (FTopN "dim_component" "name" "Gated Share" 5))
+# Penalty test: net savings of the smart plan vs doing nothing if a lost pack is worth $1K / $2K / $4K
+$pen = V-Chart "clusteredColumnChart" ([ordered]@{
+    Category = (Role (Proj (Col "fact_penalty_sensitivity" "penalty_label") "Value of a lost pack"))
+    Y = (Role (Proj (Meas "Penalty Test Net Saving") "Net savings")) }) "Net savings by value of a lost pack" ([ordered]@{ field = (Col "fact_penalty_sensitivity" "penalty_label"); direction = "Ascending" })
+$pen = DataColor $pen $TEAL
+$pen.objects.labels = @(@{ properties = [ordered]@{ show = (L "true"); labelPrecision = (L "1L") } })
+Add-Visual $pg "p1_penalty" 936 316 328 148 $pen
 # Held-out evidence: scenarios the planner was never tuned on (ignores the scenario slicer)
-Add-Visual $pg "p1_ho1" 936 472 328 64 (KPI "Held-out Wins" "Held-out H1-H5: beats Do nothing" $TEAL 16)
-Add-Visual $pg "p1_ho2" 936 544 328 64 (KPI "Held-out Packs Protected (avg)" "Held-out: packs protected per scenario" $TEAL 16)
-Add-Visual $pg "p1_ho3" 936 616 328 64 (& { $hv = KPI "Held-out Cost Avoided" "Held-out: net cost avoided (total)" $TEAL 16; $hv.objects.labels[0].properties.labelPrecision = (L "1L"); $hv })
+Add-Visual $pg "p1_ho1" 936 472 328 64 (KPI "Held-out Wins" "Unseen test scenarios won (H1-H5)" $TEAL 16)
+Add-Visual $pg "p1_ho2" 936 544 328 64 (KPI "Held-out Packs Protected (avg)" "Unseen tests: packs saved per scenario" $TEAL 16)
+Add-Visual $pg "p1_ho3" 936 616 328 64 (& { $hv = KPI "Held-out Cost Avoided" "Unseen tests: total net savings" $TEAL 16; $hv.objects.labels[0].properties.labelPrecision = (L "1L"); $hv })
 
 # ================= Page 2: Supplier Performance =================
 $pg = "p2_supplier"
@@ -220,39 +225,39 @@ Add-Visual $pg "p2_callout" 788 474 476 206 (Container (V-Text @(
 # ================= Page 3: Production Risk =================
 $pg = "p3_production"
 Add-Furniture $pg "Production Risk" "Severe (P90) realization is the default: in the median realization most policies show no shortfall."
-Add-Visual $pg "p3_realization" 16 116 300 70 (V-Slicer "dim_realization_type" "realization_type" "Realization" $true "Dropdown" @("severe (P90)") "RealizationSync") $null 5
-$k = @(@{ m = "Plan Attainment"; t = "Plan attainment - Do nothing"; c = $CHAR }, @{ m = "Lost Packs (P90)"; t = "Lost packs P90 - Do nothing"; c = $RED }, @{ m = "Backlog Pack-Weeks"; t = "Backlog pack-weeks - Do nothing"; c = $STEEL })
+Add-Visual $pg "p3_realization" 16 116 300 70 (V-Slicer "dim_realization_type" "outcome" "Outcome" $true "Dropdown" @("Bad case (worst 10%)") "RealizationSync") $null 5
+$k = @(@{ m = "Plan Attainment"; t = "Share of plan built (do nothing)"; c = $CHAR }, @{ m = "Lost Packs (P90)"; t = "Lost packs, bad case (do nothing)"; c = $RED }, @{ m = "Backlog Pack-Weeks"; t = "Backlog pack-weeks (do nothing)"; c = $STEEL })
 for ($i = 0; $i -lt $k.Count; $i++) { Add-Visual $pg "p3_kpi$($i+1)" (328 + $i * 315) 116 306 70 (KPI $k[$i].m $k[$i].t $k[$i].c 18) @(PolicyF "P1") }
 Add-Visual $pg "p3_shortfall" 16 196 616 238 (V-Chart "lineChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Shortfall vs Plan")))
-      Series = (Role (Proj (Col "dim_policy" "name") "Policy")) }) "Cumulative shortfall vs plan (packs)" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" })) @(FIn "dim_policy" "policy_id" @("P1", "P2", "P5", "P7"))
+      Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "Cumulative shortfall vs plan (packs)" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" })) @(FIn "dim_policy" "policy_id" @("P1", "P2", "P5", "P7"))
 Add-Visual $pg "p3_cover" 648 196 616 238 (V-Chart "lineChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Weeks of Cover")))
-      Series = (Role (Proj (Col "dim_component" "name") "Component")) }) "Weeks of cover - top 5 gating parts (Do nothing)" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" })) @((PolicyF "P1"), (FTopN "dim_component" "name" "Gated Share" 5))
+      Series = (Role (Proj (Col "dim_component" "name") "Component")) }) "Weeks of stock left: top 5 problem parts (do nothing)" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" })) @((PolicyF "P1"), (FTopN "dim_component" "name" "Gated Share" 5))
 $heat = V-Chart "pivotTable" ([ordered]@{
     Rows = (Role (Proj (Col "dim_component" "name") "Component")); Columns = (Role (Proj (Col "dim_week" "week_label") "Week"))
-    Values = (Role (Proj (Meas "Gating Frequency") "Share of realizations gated")) }) "Gating heatmap - share of realizations where the part stops the line (Do nothing)" $null ([ordered]@{
+    Values = (Role (Proj (Meas "Gating Frequency") "Share of runs")) }) "How often each part stops the line, by week (do nothing; SR + LR added together)" $null ([ordered]@{
     values = (Gradient (Meas "Gating Frequency") "_Measures.Gating Frequency" "#FFFFFF" "#C8102E") })
 Add-Visual $pg "p3_heatmap" 16 444 1248 236 $heat @((PolicyF "P1"), (FMeasure "Gating Frequency" 1 "0D"))
 
 # ================= Page 4: Scenario Explorer =================
 $pg = "p4_explorer"
 Add-Furniture $pg "Scenario Explorer" "Pick policies to compare. Right-click a component in the actions table > Drill through > Component detail."
-Add-Visual $pg "p4_policy" 16 116 250 250 (V-Slicer "dim_policy" "name" "Policy (multi-select)" $false "Basic" $null $null) @(FIn "dim_policy" "policy_id" $P1to7) 5
+Add-Visual $pg "p4_policy" 16 116 250 250 (V-Slicer "dim_policy" "plain_name" "Strategy (pick any)" $false "Basic" $null $null) @(FIn "dim_policy" "policy_id" $P1to7) 5
 Add-Visual $pg "p4_lostbar" 278 116 660 250 (V-Chart "clusteredBarChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_policy" "name") "Policy")); Y = (Role (Proj (Meas "Lost Packs (mean)")), (Proj (Meas "Lost Packs (P90)"))) }) "Lost packs by policy - mean and P90" ([ordered]@{ field = (Col "dim_policy" "name"); direction = "Ascending" }))
-Add-Visual $pg "p4_vss" 950 116 314 110 (KPI "VSS (`$)" "Value of stochastic solution (P4 - P5 cost)" $TEAL 24)
+      Category = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")); Y = (Role (Proj (Meas "Lost Packs (mean)") "Average"), (Proj (Meas "Lost Packs (P90)") "Bad case (P90)")) }) "Lost packs by strategy: average vs bad case (worst 10%)" ([ordered]@{ field = (Col "dim_policy" "plain_name"); direction = "Ascending" }))
+Add-Visual $pg "p4_vss" 950 116 314 110 (KPI "VSS (`$)" "Value of planning for uncertainty" $TEAL 24)
 Add-Visual $pg "p4_budgetnote" 950 236 314 130 (Container (V-Text @(
       (P "NOTE" 9 $true "#C8102E"),
       (P "Budget curves exist only for D1 and H4." 12 $true "#111827"),
       (P "For other scenarios the budget chart is empty. It shows lost packs as the mitigation budget grows." 9 $false "#4B5563"))) $true)
-$actCols = @((Proj (Col "dim_policy" "name") "Policy"), (Proj (Col "dim_component" "component_id") "Component ID"), (Proj (Col "dim_component" "name") "Component"),
+$actCols = @((Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "dim_component" "component_id") "Component ID"), (Proj (Col "dim_component" "name") "Component"),
   (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost"))
 Add-Visual $pg "p4_actions" 16 376 616 304 (V-Chart "tableEx" ([ordered]@{ Values = (Role $actCols) }) "What the plan actually buys" ([ordered]@{ field = (Col "fact_actions" "week"); direction = "Ascending" })) @(FIn "fact_actions" "policy_id" $P1to7)
 Add-Visual $pg "p4_budget" 648 376 616 304 (V-Chart "lineChart" ([ordered]@{
       Category = (Role (Proj (Col "fact_budget_curve" "budget") "Budget"))
-      Y = (Role (Proj (Agg "fact_budget_curve" "do_nothing_mean_lost" 0) "Do nothing mean lost"), (Proj (Agg "fact_budget_curve" "stochastic_mean_lost" 0) "Stochastic mean lost"),
-        (Proj (Agg "fact_budget_curve" "stochastic_p90_lost" 0) "Stochastic P90 lost"), (Proj (Agg "fact_budget_curve" "oracle_mean_lost" 0) "Oracle mean lost")) }) "Lost packs vs mitigation budget" ([ordered]@{ field = (Col "fact_budget_curve" "budget"); direction = "Ascending" }))
+      Y = (Role (Proj (Agg "fact_budget_curve" "do_nothing_mean_lost" 0) "Do nothing (average)"), (Proj (Agg "fact_budget_curve" "stochastic_mean_lost" 0) "Smart plan (average)"),
+        (Proj (Agg "fact_budget_curve" "stochastic_p90_lost" 0) "Smart plan (bad case)"), (Proj (Agg "fact_budget_curve" "oracle_mean_lost" 0) "Perfect foresight (average)")) }) "Lost packs vs mitigation budget" ([ordered]@{ field = (Col "fact_budget_curve" "budget"); direction = "Ascending" }))
 
 # ================= Page 5: Assumptions & Limitations =================
 $pg = "p5_assumptions"
@@ -279,6 +284,7 @@ Add-Visual $pg "p5_text2" 436 178 408 258 (Container (V-Text @(
       (P "- Static two-stage: all actions decided once at week 0." 8),
       (P "- Deterministic LP, Stochastic LP (100 samples), CVaR variant; oracle solves the same LP with perfect knowledge." 8),
       (P "- Planning (seed 42) and evaluation (seed 2027) samples are independent." 8),
+      (P "- Penalty test: at `$1K, `$2K and `$4K per lost pack, the smart plan beats doing nothing in 33 of 33 cases." 8),
       (P "6. Known limitations" 10 $true "#111827"),
       (P "- Simulated operations; placeholder delays; calibration source is not battery parts." 8),
       (P "- No rolling re-planning, no backlog recovery after capacity cuts, no MOQs or integer lots." 8),
@@ -294,16 +300,19 @@ Add-Visual $pg "p5_corr" 856 446 408 234 (V-Chart "tableEx" ([ordered]@{ Values 
 # ================= Hidden drill-through: Component detail =================
 $pg = "p6_component"
 Add-Furniture $pg "Component detail" "Drill-through page. Use the back arrow (top left) or Ctrl+click it to return."
-Add-Visual $pg "p6_realization" 16 116 300 70 (V-Slicer "dim_realization_type" "realization_type" "Realization" $true "Dropdown" @("severe (P90)") "RealizationSync") $null 5
+Add-Visual $pg "p6_realization" 16 116 300 70 (V-Slicer "dim_realization_type" "outcome" "Outcome" $true "Dropdown" @("Bad case (worst 10%)") "RealizationSync") $null 5
 Add-Visual $pg "p6_name" 328 116 936 70 (V-Card (Agg "dim_component" "name" 3) "Component" 18)
 Add-Visual $pg "p6_cover" 16 196 616 238 (V-Chart "lineChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Weeks of Cover")))
-      Series = (Role (Proj (Col "dim_policy" "name") "Policy")) }) "Weeks of cover by policy" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
+      Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "Weeks of stock left, by strategy" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
 Add-Visual $pg "p6_gating" 648 196 616 238 (V-Chart "clusteredColumnChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Gating Frequency") "Share of realizations gated"))
-      Series = (Role (Proj (Col "dim_policy" "name") "Policy")) }) "Gating share by week" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
-Add-Visual $pg "p6_actions" 16 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "dim_policy" "name") "Policy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "Actions bought for this component") @(FIn "fact_actions" "policy_id" $P1to7)
+      Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Gating Frequency") "Share of runs"))
+      Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "How often this part stops the line, by week" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
+Add-Visual $pg "p6_actions" 16 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "Actions bought for this component") @(FIn "fact_actions" "policy_id" $P1to7)
 Add-Visual $pg "p6_supplier" 648 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) })) }) "Primary supplier scorecard") @(FMeasure "Is Primary Supplier" 0 "1L")
+
+# Wider category labels on bar charts whose axis holds strategy or part names
+foreach ($pv in $script:pageVisuals.Values) { foreach ($v in $pv) { if ($v.name -in "p1_costbar", "p1_gating", "p4_lostbar") { [void](Margin $v.visual) } } }
 
 # ---------- write pages ----------
 function ImgItem($n) { [ordered]@{ expr = @{ ResourcePackageItem = [ordered]@{ PackageName = "RegisteredResources"; PackageType = 1; ItemName = $n } } } }

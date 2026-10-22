@@ -4,7 +4,7 @@ _All operational data is simulated. Results are "in simulation", never business 
 
 - Delay parameters: PLACEHOLDER values. Replace by running: python -m packrisk.calibrate --usaid data/raw/<file>.csv
 - 100 planning samples per scenario; 100 evaluation realizations per scenario
-- Mitigation budget: $250,000 per 8-week horizon; runtime 119.0s
+- Mitigation budget: $250,000 per 8-week horizon; runtime 218.3s
 
 ## Mean lost packs (8-week horizon, plan = 12,000 packs)
 
@@ -87,6 +87,50 @@ VSS = expected total cost of the deterministic LP minus the stochastic LP. Oracl
 | H4 | 600000 | 187,021 | 368 | 1,049 | 0 | 1,655 |
 
 ![budget](outputs/figures/budget_curve.png)
+
+## Penalty sensitivity (lost-pack penalty $1k / $2k / $4k)
+
+Every policy except the oracle is re-planned with each penalty and evaluated on the same realizations; the backlog penalty stays at $100 per pack-week.
+
+- The stochastic LP has lower expected total cost than doing nothing in **33 of 33** scenario-penalty combinations.
+- It is the lowest-cost policy, or within 5% of it, in **22 of 33**.
+- The lowest-cost policy is one of the two stochastic LPs (with or without CVaR) in **33 of 33**; no heuristic or deterministic plan is ever cheapest.
+
+| Penalty | Scenario | Do nothing lost | Stochastic LP lost | Stochastic LP spend ($k) | Net saving vs do nothing ($k) | Lowest-cost policy |
+|---|---|---|---|---|---|---|
+| $1,000 | D1 Asia ocean-lane port congestion | 1,037 | 74 | 179 | 1,409 | Stochastic LP |
+| $1,000 | D2 Semiconductor allocation | 1,738 | 1,038 | 250 | 610 | Stochastic LP |
+| $1,000 | D3 Enclosure plant outage | 60 | 46 | 14 | 3 | Stochastic LP + CVaR |
+| $1,000 | D4 TIM quality hold | 97 | 58 | 3 | 48 | Stochastic LP |
+| $1,000 | D5 Demand mix shift | 257 | 85 | 29 | 195 | Stochastic LP |
+| $1,000 | D6 Port congestion + TIM hold | 1,032 | 95 | 165 | 1,408 | Stochastic LP |
+| $1,000 | H1 Europe ocean-lane disruption | 1,674 | 218 | 39 | 2,318 | Stochastic LP + CVaR |
+| $1,000 | H2 Copper shortage | 258 | 19 | 35 | 295 | Stochastic LP |
+| $1,000 | H3 Long adhesive quality hold | 52 | 37 | 6 | 16 | Stochastic LP |
+| $1,000 | H4 Port congestion, 30% worse | 2,024 | 388 | 176 | 2,492 | Stochastic LP + CVaR |
+| $1,000 | H5 Multi-event combination | 295 | 83 | 16 | 357 | Stochastic LP |
+| $2,000 | D1 Asia ocean-lane port congestion | 1,037 | 75 | 181 | 2,367 | Stochastic LP + CVaR |
+| $2,000 | D2 Semiconductor allocation | 1,738 | 1,035 | 250 | 1,313 | Stochastic LP + CVaR |
+| $2,000 | D3 Enclosure plant outage | 60 | 46 | 18 | 14 | Stochastic LP + CVaR |
+| $2,000 | D4 TIM quality hold | 97 | 58 | 3 | 87 | Stochastic LP |
+| $2,000 | D5 Demand mix shift | 257 | 84 | 34 | 365 | Stochastic LP |
+| $2,000 | D6 Port congestion + TIM hold | 1,032 | 93 | 174 | 2,340 | Stochastic LP |
+| $2,000 | H1 Europe ocean-lane disruption | 1,674 | 218 | 39 | 3,774 | Stochastic LP + CVaR |
+| $2,000 | H2 Copper shortage | 258 | 19 | 35 | 535 | Stochastic LP |
+| $2,000 | H3 Long adhesive quality hold | 52 | 37 | 6 | 31 | Stochastic LP |
+| $2,000 | H4 Port congestion, 30% worse | 2,024 | 368 | 187 | 4,167 | Stochastic LP + CVaR |
+| $2,000 | H5 Multi-event combination | 295 | 83 | 22 | 563 | Stochastic LP + CVaR |
+| $4,000 | D1 Asia ocean-lane port congestion | 1,037 | 75 | 181 | 4,292 | Stochastic LP + CVaR |
+| $4,000 | D2 Semiconductor allocation | 1,738 | 1,035 | 250 | 2,718 | Stochastic LP + CVaR |
+| $4,000 | D3 Enclosure plant outage | 60 | 46 | 18 | 42 | Stochastic LP + CVaR |
+| $4,000 | D4 TIM quality hold | 97 | 58 | 3 | 164 | Stochastic LP |
+| $4,000 | D5 Demand mix shift | 257 | 81 | 46 | 713 | Stochastic LP + CVaR |
+| $4,000 | D6 Port congestion + TIM hold | 1,032 | 93 | 200 | 4,191 | Stochastic LP |
+| $4,000 | H1 Europe ocean-lane disruption | 1,674 | 218 | 80 | 6,646 | Stochastic LP + CVaR |
+| $4,000 | H2 Copper shortage | 258 | 19 | 35 | 1,014 | Stochastic LP |
+| $4,000 | H3 Long adhesive quality hold | 52 | 37 | 6 | 61 | Stochastic LP |
+| $4,000 | H4 Port congestion, 30% worse | 2,024 | 329 | 205 | 7,644 | Stochastic LP + CVaR |
+| $4,000 | H5 Multi-event combination | 295 | 83 | 25 | 984 | Stochastic LP + CVaR |
 
 ## Correlation stress tests
 

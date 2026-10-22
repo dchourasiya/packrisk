@@ -23,11 +23,11 @@
                                                                                                                                                              "Entity":  "dim_policy"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "name"
+                                                                                                                        "Property":  "plain_name"
                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_policy.name",
-                                                                                           "nativeQueryRef":  "name"
+                                                                                           "queryRef":  "dim_policy.plain_name",
+                                                                                           "nativeQueryRef":  "plainname"
                                                                                        }
                                                                                    ]
                                                                }
@@ -73,7 +73,7 @@
                                                                          "text":  {
                                                                                       "expr":  {
                                                                                                    "Literal":  {
-                                                                                                                   "Value":  "\u0027Policy (multi-select)\u0027"
+                                                                                                                   "Value":  "\u0027Strategy (pick any)\u0027"
                                                                                                                }
                                                                                                }
                                                                                   }
@@ -86,7 +86,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter019",
+                                             "name":  "filter018",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

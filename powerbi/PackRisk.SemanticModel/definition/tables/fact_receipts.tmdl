@@ -1,9 +1,9 @@
 table fact_receipts
-	lineageTag: 1a254fcd-675f-4ee6-a565-9c386f657c72
+	lineageTag: 064437f9-943e-4939-a31f-110cd690253d
 
 	column po_id
 		dataType: string
-		lineageTag: 2a9dc74a-be1b-4b17-a9eb-047ecf9967c5
+		lineageTag: 096e3b62-ccd6-49e8-82d2-fa2749f82337
 		summarizeBy: none
 		sourceColumn: po_id
 
@@ -11,7 +11,7 @@ table fact_receipts
 
 	column supplier_id
 		dataType: string
-		lineageTag: 3c0a6f54-8fe7-45ba-a582-d5be276d113d
+		lineageTag: e88731eb-23a2-46d7-a390-81573814d86c
 		summarizeBy: none
 		sourceColumn: supplier_id
 
@@ -19,7 +19,7 @@ table fact_receipts
 
 	column component_id
 		dataType: string
-		lineageTag: 8c50cd61-4733-4260-a9af-0c625c7ddded
+		lineageTag: c9947204-1e90-45ae-a6ec-67d541758ccc
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -27,7 +27,7 @@ table fact_receipts
 
 	column lane_id
 		dataType: string
-		lineageTag: 5db80b9e-1115-43d2-81c0-0eda73d732f8
+		lineageTag: 615005a5-c2cd-454e-b1ff-06b168c333fd
 		summarizeBy: none
 		sourceColumn: lane_id
 
@@ -35,7 +35,7 @@ table fact_receipts
 
 	column order_day
 		dataType: double
-		lineageTag: c3730167-d763-4c6d-8bd4-0978fbbb751f
+		lineageTag: da803d17-7d04-411d-bc7e-1a8fd86ba994
 		summarizeBy: sum
 		sourceColumn: order_day
 
@@ -43,7 +43,7 @@ table fact_receipts
 
 	column scheduled_day
 		dataType: double
-		lineageTag: af7d6fc1-1257-4060-a760-78da9df09b93
+		lineageTag: 0f78979e-3af4-4ea1-bd9b-60704d3ee8e3
 		summarizeBy: sum
 		sourceColumn: scheduled_day
 
@@ -51,7 +51,7 @@ table fact_receipts
 
 	column qty_ordered
 		dataType: double
-		lineageTag: be604c45-51a8-40f2-9a83-b95cf5bacaa0
+		lineageTag: 24b9bc5c-2581-4684-9bb0-7d7142a31334
 		summarizeBy: sum
 		sourceColumn: qty_ordered
 
@@ -59,7 +59,7 @@ table fact_receipts
 
 	column unit_cost
 		dataType: double
-		lineageTag: 0f9cce9f-2589-48e4-b748-fe7ae48124d0
+		lineageTag: e4c8f923-2d2b-479f-b7db-ff7549d8dd73
 		summarizeBy: sum
 		sourceColumn: unit_cost
 
@@ -67,7 +67,7 @@ table fact_receipts
 
 	column quality_hold
 		dataType: double
-		lineageTag: 25af1eee-3286-4da0-ab1b-bec065c00822
+		lineageTag: a90b2c03-9810-425b-8d52-a2639db1d487
 		summarizeBy: sum
 		sourceColumn: quality_hold
 
@@ -75,7 +75,7 @@ table fact_receipts
 
 	column receipt_seq
 		dataType: double
-		lineageTag: be1155c6-a0a1-4adc-ba6f-4b5430e167ab
+		lineageTag: 180e85bd-67cd-4df5-b83f-3dc598f1fe79
 		summarizeBy: sum
 		sourceColumn: receipt_seq
 
@@ -83,7 +83,7 @@ table fact_receipts
 
 	column received_day
 		dataType: double
-		lineageTag: df2c03b7-a8dd-4a1a-9d5b-e6d9fd83ea54
+		lineageTag: 2c22631e-c862-47f2-833e-997c59f0c2f6
 		summarizeBy: sum
 		sourceColumn: received_day
 
@@ -91,7 +91,7 @@ table fact_receipts
 
 	column qty_received
 		dataType: double
-		lineageTag: 8d7e8003-e13e-4638-9415-4c666f8450c1
+		lineageTag: 0b21d635-5190-4d97-a1cd-0f17f55219b9
 		summarizeBy: sum
 		sourceColumn: qty_received
 
@@ -100,7 +100,7 @@ table fact_receipts
 	column scheduled_date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: dcb3fac5-a67f-42cc-9ec3-1a01c1c702b6
+		lineageTag: 849566a4-6dbd-4772-b586-6775d2ac26d2
 		summarizeBy: none
 		sourceColumn: scheduled_date
 
@@ -109,7 +109,7 @@ table fact_receipts
 	column received_date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: 05b19b90-ff55-43f7-b366-77a31546d685
+		lineageTag: 57d86289-083e-43ae-88a9-a46b4768c053
 		summarizeBy: none
 		sourceColumn: received_date
 
@@ -118,7 +118,7 @@ table fact_receipts
 	column order_date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: b251b5ba-3205-488e-9945-b17ef65a3245
+		lineageTag: 054160b1-bf9f-485a-9ee2-40a343e2ed28
 		summarizeBy: none
 		sourceColumn: order_date
 
@@ -126,7 +126,7 @@ table fact_receipts
 
 	column days_late
 		dataType: double
-		lineageTag: 3b25ef02-1ba8-46c6-ad82-29dfcd987e47
+		lineageTag: 31590da5-d75c-4bf7-8583-563da6e66c0c
 		summarizeBy: sum
 		sourceColumn: days_late
 

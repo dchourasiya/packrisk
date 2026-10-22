@@ -93,6 +93,16 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
+                                                                                                                      "value":  "- Penalty test: at $1K, $2K and $4K per lost pack, the smart plan beats doing nothing in 33 of 33 cases.",
+                                                                                                                      "textStyle":  {
+                                                                                                                                        "fontSize":  "8pt"
+                                                                                                                                    }
+                                                                                                                  }
+                                                                                                              ]
+                                                                                             },
+                                                                                             {
+                                                                                                 "textRuns":  [
+                                                                                                                  {
                                                                                                                       "value":  "6. Known limitations",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "10pt",

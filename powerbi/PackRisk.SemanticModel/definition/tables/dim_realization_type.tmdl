@@ -1,9 +1,9 @@
 table dim_realization_type
-	lineageTag: 7d3e5d3a-f624-4422-b742-a663f31d50bf
+	lineageTag: e3476662-ad51-4e89-8366-bebbce000c1f
 
 	column realization_type
 		dataType: string
-		lineageTag: acd661bf-c52e-4df3-a682-ff1c8d136233
+		lineageTag: dfcfcf33-3b9a-4931-bc7b-863a64015332
 		summarizeBy: none
 		sourceColumn: realization_type
 		sortByColumn: sort
@@ -13,10 +13,19 @@ table dim_realization_type
 	column sort
 		dataType: int64
 		formatString: 0
-		lineageTag: 7be01428-d07d-466f-9841-710726f71cb9
+		lineageTag: 4659d083-d495-43a5-9e38-5864306d88ae
 		summarizeBy: none
 		sourceColumn: sort
 		isHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column outcome
+		dataType: string
+		lineageTag: dc293eaa-ba02-454c-a9fd-452b1de9e052
+		summarizeBy: none
+		sourceColumn: outcome
+		sortByColumn: sort
 
 		annotation SummarizationSetBy = Automatic
 
@@ -24,7 +33,7 @@ table dim_realization_type
 		mode: import
 		source =
 				let
-				    Source = #table(type table [realization_type = text, sort = Int64.Type], {{"median", 1}, {"severe (P90)", 2}})
+				    Source = #table(type table [realization_type = text, sort = Int64.Type, outcome = text], {{"median", 1, "Typical (median)"}, {"severe (P90)", 2, "Bad case (worst 10%)"}})
 				in
 				    Source
 

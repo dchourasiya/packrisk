@@ -65,8 +65,8 @@
                                                                                                                      }
                                                                                                      },
                                                                                            "queryRef":  "_Measures.Gating Frequency",
-                                                                                           "nativeQueryRef":  "Share of realizations gated",
-                                                                                           "displayName":  "Share of realizations gated"
+                                                                                           "nativeQueryRef":  "Share of runs",
+                                                                                           "displayName":  "Share of runs"
                                                                                        }
                                                                                    ]
                                                                }
@@ -149,7 +149,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Gating heatmap - share of realizations where the part stops the line (Do nothing)\u0027"
+                                                                                                                                 "Value":  "\u0027How often each part stops the line, by week (do nothing; SR + LR added together)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -169,7 +169,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter017",
+                                             "name":  "filter016",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {
@@ -223,7 +223,7 @@
                                              "howCreated":  "User"
                                          },
                                          {
-                                             "name":  "filter018",
+                                             "name":  "filter017",
                                              "field":  {
                                                            "Measure":  {
                                                                            "Expression":  {

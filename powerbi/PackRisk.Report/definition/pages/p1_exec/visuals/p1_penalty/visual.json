@@ -1,0 +1,144 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+    "name":  "p1_penalty",
+    "position":  {
+                     "x":  936,
+                     "y":  316,
+                     "z":  1000,
+                     "height":  148,
+                     "width":  328,
+                     "tabOrder":  1000
+                 },
+    "visual":  {
+                   "visualType":  "clusteredColumnChart",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Category":  {
+                                                                     "projections":  [
+                                                                                         {
+                                                                                             "field":  {
+                                                                                                           "Column":  {
+                                                                                                                          "Expression":  {
+                                                                                                                                             "SourceRef":  {
+                                                                                                                                                               "Entity":  "fact_penalty_sensitivity"
+                                                                                                                                                           }
+                                                                                                                                         },
+                                                                                                                          "Property":  "penalty_label"
+                                                                                                                      }
+                                                                                                       },
+                                                                                             "queryRef":  "fact_penalty_sensitivity.penalty_label",
+                                                                                             "nativeQueryRef":  "Value of a lost pack",
+                                                                                             "displayName":  "Value of a lost pack"
+                                                                                         }
+                                                                                     ]
+                                                                 },
+                                                    "Y":  {
+                                                              "projections":  [
+                                                                                  {
+                                                                                      "field":  {
+                                                                                                    "Measure":  {
+                                                                                                                    "Expression":  {
+                                                                                                                                       "SourceRef":  {
+                                                                                                                                                         "Entity":  "_Measures"
+                                                                                                                                                     }
+                                                                                                                                   },
+                                                                                                                    "Property":  "Penalty Test Net Saving"
+                                                                                                                }
+                                                                                                },
+                                                                                      "queryRef":  "_Measures.Penalty Test Net Saving",
+                                                                                      "nativeQueryRef":  "Net savings",
+                                                                                      "displayName":  "Net savings"
+                                                                                  }
+                                                                              ]
+                                                          }
+                                                },
+                                 "sortDefinition":  {
+                                                        "sort":  [
+                                                                     {
+                                                                         "field":  {
+                                                                                       "Column":  {
+                                                                                                      "Expression":  {
+                                                                                                                         "SourceRef":  {
+                                                                                                                                           "Entity":  "fact_penalty_sensitivity"
+                                                                                                                                       }
+                                                                                                                     },
+                                                                                                      "Property":  "penalty_label"
+                                                                                                  }
+                                                                                   },
+                                                                         "direction":  "Ascending"
+                                                                     }
+                                                                 ],
+                                                        "isDefaultSort":  false
+                                                    }
+                             },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Net savings by value of a lost pack\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true,
+                   "objects":  {
+                                   "dataPoint":  [
+                                                     {
+                                                         "properties":  {
+                                                                            "fill":  {
+                                                                                         "solid":  {
+                                                                                                       "color":  {
+                                                                                                                     "expr":  {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027#1B998B\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                 }
+                                                                                                   }
+                                                                                     }
+                                                                        }
+                                                     }
+                                                 ],
+                                   "labels":  [
+                                                  {
+                                                      "properties":  {
+                                                                         "show":  {
+                                                                                      "expr":  {
+                                                                                                   "Literal":  {
+                                                                                                                   "Value":  "true"
+                                                                                                               }
+                                                                                               }
+                                                                                  },
+                                                                         "labelPrecision":  {
+                                                                                                "expr":  {
+                                                                                                             "Literal":  {
+                                                                                                                             "Value":  "1L"
+                                                                                                                         }
+                                                                                                         }
+                                                                                            }
+                                                                     }
+                                                  }
+                                              ]
+                               }
+               }
+}

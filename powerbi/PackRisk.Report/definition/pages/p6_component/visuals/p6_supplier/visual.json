@@ -180,7 +180,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter023",
+                                             "name":  "filter022",
                                              "field":  {
                                                            "Measure":  {
                                                                            "Expression":  {

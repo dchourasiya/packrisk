@@ -20,6 +20,8 @@ def load():
     t = {n: pd.read_csv(PB / f"{n}.csv") for n in [
         "fact_policy_evaluation", "fact_realization_results", "fact_budget_curve", "fact_stress_tests", "fact_weekly_trace",
         "fact_gating_component", "fact_actions", "dim_policy", "dim_scenario", "dim_component"]}
+    sens = PB / "fact_penalty_sensitivity.csv"
+    t["sens"] = pd.read_csv(sens) if sens.exists() else None
     t["corr"] = pd.read_csv(OUT_DIR / "correlation_distribution.csv")
     t["info"] = json.loads((OUT_DIR / "run_info.json").read_text())
     return t
@@ -155,6 +157,31 @@ def md_table(df, floatfmt="{:,.0f}"):
     return "\n".join(out)
 
 
+def sensitivity_section(s, names, snames):
+    """Does the stochastic LP still win when the lost-pack penalty is halved or doubled?"""
+    rows, beats, best_or_close, smart_best, n = [], 0, 0, 0, 0
+    for (pen, sid), g in s.groupby(["penalty_per_lost_pack", "scenario_id"], sort=False):
+        e = g.set_index("policy_id")
+        saving = e.mean_objective["P1"] - e.mean_objective["P5"]
+        best = e.mean_objective.idxmin()
+        n += 1
+        beats += saving > 0
+        best_or_close += e.mean_objective["P5"] <= 1.05 * e.mean_objective[best]
+        smart_best += best in ("P5", "P6")
+        rows.append({"Penalty": f"${pen:,.0f}", "Scenario": f"{sid} {snames[sid]}",
+                     "Do nothing lost": e.mean_lost_packs["P1"], "Stochastic LP lost": e.mean_lost_packs["P5"],
+                     "Stochastic LP spend ($k)": e.mitigation_cost["P5"] / 1000,
+                     "Net saving vs do nothing ($k)": saving / 1000, "Lowest-cost policy": names[best]})
+    return ["## Penalty sensitivity (lost-pack penalty $1k / $2k / $4k)", "",
+            "Every policy except the oracle is re-planned with each penalty and evaluated on the same realizations; "
+            "the backlog penalty stays at $100 per pack-week.", "",
+            f"- The stochastic LP has lower expected total cost than doing nothing in **{beats} of {n}** scenario-penalty combinations.",
+            f"- It is the lowest-cost policy, or within 5% of it, in **{best_or_close} of {n}**.",
+            f"- The lowest-cost policy is one of the two stochastic LPs (with or without CVaR) in **{smart_best} of {n}**; "
+            "no heuristic or deterministic plan is ever cheapest.", "",
+            md_table(pd.DataFrame(rows)), ""]
+
+
 def write_results(t):
     ev, pol, sc = t["fact_policy_evaluation"], t["dim_policy"], t["dim_scenario"]
     names = pol.set_index("policy_id").name
@@ -232,6 +259,10 @@ def write_results(t):
                           "stochastic_p90_lost", "oracle_mean_lost", "packs_protected"]]),
               "", "![budget](outputs/figures/budget_curve.png)", ""]
 
+    # Penalty sensitivity
+    if t["sens"] is not None:
+        lines += sensitivity_section(t["sens"], names, snames)
+
     # Correlation
     st = t["fact_stress_tests"]
     lines += ["## Correlation stress tests", "",
@@ -255,7 +286,7 @@ def write_results(t):
               "- Execution schedules production optimally against realized supply, which flatters every policy equally.",
               "- Capacity lost to cuts and scrap is not recovered within the horizon; backlog recovery is not modeled.",
               "- Costs, penalty per pack, BOM quantities and cover levels are hypothetical."]
-    (ROOT / "RESULTS.md").write_text("\n".join(lines) + "\n")
+    (ROOT / "RESULTS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main():

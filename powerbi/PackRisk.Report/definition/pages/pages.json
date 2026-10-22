@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
-  "pageOrder": [
-    "p2_supplier",
-    "p1_exec",
-    "p3_production",
-    "p4_explorer",
-    "p5_assumptions",
-    "p6_component"
-  ],
-  "activePageName": "p2_supplier"
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+    "pageOrder":  [
+                      "p2_supplier",
+                      "p1_exec",
+                      "p3_production",
+                      "p4_explorer",
+                      "p5_assumptions",
+                      "p6_component"
+                  ],
+    "activePageName":  "p2_supplier"
 }

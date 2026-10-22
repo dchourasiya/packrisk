@@ -1,10 +1,10 @@
 table dim_week
-	lineageTag: 53f590fd-4167-4617-8a20-b95774b3b785
+	lineageTag: f0d83887-2bc2-4a89-84da-852ac4ae554f
 
 	column week
 		dataType: int64
 		formatString: 0
-		lineageTag: b56a55b1-d269-498e-b62d-503a856cafb3
+		lineageTag: 5aea3f4c-d391-46b1-926f-05b4e4acaa62
 		summarizeBy: none
 		sourceColumn: week
 
@@ -12,7 +12,7 @@ table dim_week
 
 	column week_label
 		dataType: string
-		lineageTag: 1757538b-dba8-4579-92e7-dd6e6934ce2e
+		lineageTag: 41a104f5-036a-4b58-abac-12a0b40a838a
 		summarizeBy: none
 		sourceColumn: week_label
 		sortByColumn: week

@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Plan attainment - Do nothing\u0027"
+                                                                                                                                 "Value":  "\u0027Share of plan built (do nothing)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -106,7 +106,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter011",
+                                             "name":  "filter010",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

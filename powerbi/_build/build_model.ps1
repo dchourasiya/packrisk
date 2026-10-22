@@ -51,11 +51,12 @@ $colFormats = @{
   "fact_budget_curve.budget" = "\$#,0"
 }
 # Sort-by-column (guide section 2)
-$sortBy = @{ "dim_policy.name" = "sort"; "dim_scenario.name" = "sort"; "dim_week.week_label" = "week"; "dim_realization_type.realization_type" = "sort" }
+$sortBy = @{ "fact_penalty_sensitivity.penalty_label" = "penalty_per_lost_pack"; "dim_policy.name" = "sort"; "dim_policy.plain_name" = "sort"; "dim_scenario.name" = "sort"; "dim_week.week_label" = "week"
+  "dim_realization_type.realization_type" = "sort"; "dim_realization_type.outcome" = "sort" }
 
 $tables = [ordered]@{}
 $csvs = Get-ChildItem $DataDir -Filter *.csv | Sort-Object Name
-if ($csvs.Count -ne 20) { throw "Expected 20 CSVs, found $($csvs.Count)" }
+if ($csvs.Count -ne 21) { throw "Expected 21 CSVs, found $($csvs.Count)" }
 
 foreach ($f in $csvs) {
   $name = $f.BaseName
@@ -76,12 +77,35 @@ foreach ($f in $csvs) {
   $tables[$name] = @{ types = $types; m = $m }
 }
 
-# Helper dimension so one realization-type slicer filters both trace tables (see report notes)
+# Readable penalty labels for the sensitivity chart ($1K, $2K, $4K)
+$ps = $tables["fact_penalty_sensitivity"]
+$ps.types["penalty_label"] = "text"
+$ps.m = @($ps.m[0..3]) + @(
+  "    Labeled = Table.AddColumn(Typed, `"penalty_label`", each `"$`" & Number.ToText([penalty_per_lost_pack] / 1000, `"0`") & `"K`", type text)",
+  "in",
+  "    Labeled"
+)
+$ps.m[3] = $ps.m[3] + ","
+
+# Plain-language strategy names for the dashboard (the model's own names stay in `name`)
+$pol = $tables["dim_policy"]
+$pol.types["plain_name"] = "text"
+$pol.m = @($pol.m[0..3]) + @(
+  "    Plain = Table.AddColumn(Typed, `"plain_name`", each Record.FieldOrDefault([",
+  "        P1 = `"Do nothing`", P2 = `"Fix worst suppliers first`", P3 = `"Fix lowest-stock parts first`",",
+  "        P4 = `"Plan for average delays`", P5 = `"Smart plan (stochastic)`", P6 = `"Smart plan + worst-case guard`",",
+  "        P7 = `"Perfect foresight (benchmark)`"], [policy_id], [name]), type text)",
+  "in",
+  "    Plain"
+)
+$pol.m[3] = $pol.m[3] + ","
+
+# Helper dimension so one outcome slicer filters both trace tables (see report notes)
 $tables["dim_realization_type"] = @{
-  types = [ordered]@{ realization_type = "text"; sort = "int" }
+  types = [ordered]@{ realization_type = "text"; sort = "int"; outcome = "text" }
   m = @(
     "let",
-    "    Source = #table(type table [realization_type = text, sort = Int64.Type], {{`"median`", 1}, {`"severe (P90)`", 2}})",
+    "    Source = #table(type table [realization_type = text, sort = Int64.Type, outcome = text], {{`"median`", 1, `"Typical (median)`"}, {`"severe (P90)`", 2, `"Bad case (worst 10%)`"}})",
     "in",
     "    Source"
   )
@@ -166,11 +190,15 @@ $measures = @(
       'RETURN',
       '    IF (',
       '        HASONEVALUE ( dim_scenario[scenario_id] ),',
-      '        "Stochastic LP protects " & FORMAT ( prot, "#,0" ) & " packs and cuts expected total cost by " & money',
-      '            & ", net of " & spendTx & " mitigation spend"',
-      '            & IF ( spend > 0, " (" & FORMAT ( DIVIDE ( avoided, spend ), "0.0" ) & "x net return).", "." ),',
+      '        "The smart plan protects " & FORMAT ( prot, "#,0" ) & " packs and saves " & money & " net"',
+      '            & " for " & spendTx & " of fixes"',
+      '            & IF ( spend > 0, " (" & FORMAT ( DIVIDE ( avoided, spend ), "0.0" ) & "x return).", "." ),',
       '        "Select one scenario to see the headline."',
       '    )') },
+  @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
+      'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )',
+      'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )',
+      'RETURN doNothing - smart') },
   @{ n = "Held-out Wins"; f = $null; e = @(
       'VAR heldOut = CALCULATETABLE ( VALUES ( dim_scenario[scenario_id] ), REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out" )',
       'VAR wins = COUNTROWS ( FILTER ( heldOut, VAR s = dim_scenario[scenario_id] RETURN CALCULATE ( [Expected Cost Avoided], REMOVEFILTERS ( dim_scenario ), dim_scenario[scenario_id] = s, dim_policy[policy_id] = "P5" ) > 0 ) )',
@@ -228,6 +256,7 @@ $rels += @{ from = "dim_component.primary_supplier_id"; to = "dim_supplier.suppl
 $rels += @{ from = "fact_receipts.supplier_id"; to = "dim_supplier.supplier_id"; inactive = $true }
 foreach ($f in "fact_weekly_trace","fact_inventory_trace","fact_gating_frequency","fact_actions") { $rels += @{ from = "$f.week"; to = "dim_week.week" } }
 foreach ($f in "fact_weekly_trace","fact_inventory_trace") { $rels += @{ from = "$f.realization_type"; to = "dim_realization_type.realization_type" } }
+foreach ($k in "scenario_id", "policy_id") { $rels += @{ from = "fact_penalty_sensitivity.$k"; to = $(if ($k -eq "scenario_id") { "dim_scenario.scenario_id" } else { "dim_policy.policy_id" }) } }
 
 $sb = New-Object Text.StringBuilder
 foreach ($r in $rels) {

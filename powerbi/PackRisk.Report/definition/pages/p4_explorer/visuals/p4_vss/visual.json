@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Value of stochastic solution (P4 - P5 cost)\u0027"
+                                                                                                                                 "Value":  "\u0027Value of planning for uncertainty\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

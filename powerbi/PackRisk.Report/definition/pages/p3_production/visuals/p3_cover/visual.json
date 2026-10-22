@@ -103,7 +103,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Weeks of cover - top 5 gating parts (Do nothing)\u0027"
+                                                                                                                                 "Value":  "\u0027Weeks of stock left: top 5 problem parts (do nothing)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -123,7 +123,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter015",
+                                             "name":  "filter014",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {
@@ -177,7 +177,7 @@
                                              "howCreated":  "User"
                                          },
                                          {
-                                             "name":  "filter016",
+                                             "name":  "filter015",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

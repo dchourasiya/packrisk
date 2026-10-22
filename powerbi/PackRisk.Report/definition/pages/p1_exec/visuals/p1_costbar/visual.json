@@ -23,12 +23,12 @@
                                                                                                                                                                "Entity":  "dim_policy"
                                                                                                                                                            }
                                                                                                                                          },
-                                                                                                                          "Property":  "name"
+                                                                                                                          "Property":  "plain_name"
                                                                                                                       }
                                                                                                        },
-                                                                                             "queryRef":  "dim_policy.name",
-                                                                                             "nativeQueryRef":  "Policy",
-                                                                                             "displayName":  "Policy"
+                                                                                             "queryRef":  "dim_policy.plain_name",
+                                                                                             "nativeQueryRef":  "Strategy",
+                                                                                             "displayName":  "Strategy"
                                                                                          }
                                                                                      ]
                                                                  },
@@ -61,7 +61,7 @@
                                                                                                                                            "Entity":  "dim_policy"
                                                                                                                                        }
                                                                                                                      },
-                                                                                                      "Property":  "name"
+                                                                                                      "Property":  "plain_name"
                                                                                                   }
                                                                                    },
                                                                          "direction":  "Ascending"
@@ -84,7 +84,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Expected total cost by policy\u0027"
+                                                                                                                                 "Value":  "\u0027Expected total cost by strategy (lower is better)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -117,7 +117,20 @@
                                                                                      }
                                                                         }
                                                      }
-                                                 ]
+                                                 ],
+                                   "categoryAxis":  [
+                                                        {
+                                                            "properties":  {
+                                                                               "maxMarginFactor":  {
+                                                                                                       "expr":  {
+                                                                                                                    "Literal":  {
+                                                                                                                                    "Value":  "45L"
+                                                                                                                                }
+                                                                                                                }
+                                                                                                   }
+                                                                           }
+                                                        }
+                                                    ]
                                }
                }
 }

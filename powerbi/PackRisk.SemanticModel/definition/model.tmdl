@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["DataFolder","dim_component","dim_lane","dim_policy","dim_scenario","dim_supplier","dim_tier2","dim_week","fact_actions","fact_bom","fact_budget_curve","fact_component_exposure","fact_gating_component","fact_gating_frequency","fact_inventory_trace","fact_policy_evaluation","fact_realization_results","fact_receipts","fact_shared_dependency","fact_stress_tests","fact_weekly_trace","dim_realization_type","_Measures"]
+annotation PBI_QueryOrder = ["DataFolder","dim_component","dim_lane","dim_policy","dim_scenario","dim_supplier","dim_tier2","dim_week","fact_actions","fact_bom","fact_budget_curve","fact_component_exposure","fact_gating_component","fact_gating_frequency","fact_inventory_trace","fact_penalty_sensitivity","fact_policy_evaluation","fact_realization_results","fact_receipts","fact_shared_dependency","fact_stress_tests","fact_weekly_trace","dim_realization_type","_Measures"]
 ref table _Measures
 ref table dim_component
 ref table dim_lane
@@ -24,6 +24,7 @@ ref table fact_component_exposure
 ref table fact_gating_component
 ref table fact_gating_frequency
 ref table fact_inventory_trace
+ref table fact_penalty_sensitivity
 ref table fact_policy_evaluation
 ref table fact_realization_results
 ref table fact_receipts

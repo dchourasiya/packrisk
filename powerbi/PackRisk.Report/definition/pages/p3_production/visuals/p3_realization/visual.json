@@ -23,11 +23,11 @@
                                                                                                                                                              "Entity":  "dim_realization_type"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "realization_type"
+                                                                                                                        "Property":  "outcome"
                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_realization_type.realization_type",
-                                                                                           "nativeQueryRef":  "realizationtype"
+                                                                                           "queryRef":  "dim_realization_type.outcome",
+                                                                                           "nativeQueryRef":  "outcome"
                                                                                        }
                                                                                    ]
                                                                }
@@ -73,7 +73,7 @@
                                                                          "text":  {
                                                                                       "expr":  {
                                                                                                    "Literal":  {
-                                                                                                                   "Value":  "\u0027Realization\u0027"
+                                                                                                                   "Value":  "\u0027Outcome\u0027"
                                                                                                                }
                                                                                                }
                                                                                   }
@@ -105,7 +105,7 @@
                                                                                                                                                                                                                                    "Source":  "t"
                                                                                                                                                                                                                                }
                                                                                                                                                                                                              },
-                                                                                                                                                                                              "Property":  "realization_type"
+                                                                                                                                                                                              "Property":  "outcome"
                                                                                                                                                                                           }
                                                                                                                                                                            }
                                                                                                                                                                        ],
@@ -113,7 +113,7 @@
                                                                                                                                                                       [
                                                                                                                                                                           {
                                                                                                                                                                               "Literal":  {
-                                                                                                                                                                                              "Value":  "\u0027severe (P90)\u0027"
+                                                                                                                                                                                              "Value":  "\u0027Bad case (worst 10%)\u0027"
                                                                                                                                                                                           }
                                                                                                                                                                           }
                                                                                                                                                                       ]

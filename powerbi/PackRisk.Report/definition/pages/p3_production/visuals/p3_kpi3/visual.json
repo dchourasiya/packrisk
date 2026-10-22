@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Backlog pack-weeks - Do nothing\u0027"
+                                                                                                                                 "Value":  "\u0027Backlog pack-weeks (do nothing)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -106,7 +106,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter013",
+                                             "name":  "filter012",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

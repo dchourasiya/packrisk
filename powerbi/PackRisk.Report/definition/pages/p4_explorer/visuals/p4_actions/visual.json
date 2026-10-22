@@ -23,12 +23,12 @@
                                                                                                                                                              "Entity":  "dim_policy"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "name"
+                                                                                                                        "Property":  "plain_name"
                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_policy.name",
-                                                                                           "nativeQueryRef":  "Policy",
-                                                                                           "displayName":  "Policy"
+                                                                                           "queryRef":  "dim_policy.plain_name",
+                                                                                           "nativeQueryRef":  "Strategy",
+                                                                                           "displayName":  "Strategy"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -201,7 +201,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter020",
+                                             "name":  "filter019",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {

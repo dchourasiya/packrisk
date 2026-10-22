@@ -24,7 +24,7 @@ All policies are evaluated on the same realizations, including five **held-out**
 
 ```bash
 pip install -r requirements.txt
-make all          # tests, full evaluation (~2 min), figures, RESULTS.md
+make all          # tests, full evaluation (~4 min), penalty sensitivity (~10 min), figures, RESULTS.md
 ```
 
 Without `make` (e.g. Windows):
@@ -33,6 +33,7 @@ Without `make` (e.g. Windows):
 set PYTHONPATH=src          # PowerShell: $env:PYTHONPATH="src"
 python tests/run_tests.py
 python -m packrisk.evaluate
+python -m packrisk.sensitivity
 python -m packrisk.report
 ```
 
@@ -53,6 +54,7 @@ python -m packrisk.report
 | `src/packrisk/optimize.py` | Planning LPs (deterministic, stochastic, CVaR, oracle) and the execution model |
 | `src/packrisk/policies.py` | Heuristic baselines |
 | `src/packrisk/evaluate.py` | Runs everything and writes `outputs/` |
+| `src/packrisk/sensitivity.py` | Re-plans every policy with a $1k / $2k / $4k lost-pack penalty |
 | `src/packrisk/report.py` | Figures + RESULTS.md |
 | `src/packrisk/calibrate.py` | Fits lane delay parameters from public shipment data |
 | `tests/` | Invariants: inventory ≥ 0, capacity, budget, approved alternates only, oracle bound, no leakage, reproducibility |
@@ -81,9 +83,10 @@ Independent portfolio project. Not affiliated with, endorsed by, or based on dat
 | Simulator with correlated lane and tier-2 shocks | Done |
 | Deterministic LP, stochastic LP, CVaR, oracle | Done (pure LP; no integer lot sizes) |
 | Evaluation vs 7 policies, held-out scenarios, budget sweep, correlation tests, failure analysis | Done |
+| Penalty sensitivity ($1k / $2k / $4k per lost pack) | Done |
 | Tests and CI | Done |
 | Delay calibration on real data | Script done; **data not yet downloaded**, so current delays are placeholders |
 | Weekly rolling re-planning | Not done; decisions are made once at week 0 |
 | dbt + DuckDB | SQL is portable; dbt project not yet created (SQLite runs it today) |
 | Power BI report | Done (`powerbi/PackRisk.pbip`) |
-| Video, one-page brief | Not done |
+| Written walkthrough | Done (`WALKTHROUGH.md`) |

@@ -9,7 +9,7 @@ Everything operational in this project is **simulated**. This file lists every m
 - Weekly plan: SR 900, LR 600 (12,000 packs over 8 weeks). Line capacity 1,600 packs/week, so up to 100 packs/week of catch-up is possible.
 - **Lost packs** = plan − built at the end of week 8.
 - **Backlog pack-weeks** = sum over weeks of (cumulative plan − cumulative built). It measures how far and how long production runs behind, even if it catches up by week 8.
-- Penalties (hypothetical): **$2,000 per lost pack** (contribution-margin proxy) and **$100 per backlog pack-week** (lateness cost). These two numbers set how much mitigation is "worth it"; results change if they change.
+- Penalties (hypothetical): **$2,000 per lost pack** (contribution-margin proxy) and **$100 per backlog pack-week** (lateness cost). These two numbers set how much mitigation is "worth it"; results change if they change. `packrisk.sensitivity` re-plans every policy at $1,000 and $4,000 per lost pack (see "Penalty sensitivity" in RESULTS.md).
 
 ## 2. Supply
 

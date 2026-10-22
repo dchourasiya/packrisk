@@ -46,8 +46,8 @@
                                                                                                                 }
                                                                                                 },
                                                                                       "queryRef":  "_Measures.Gating Frequency",
-                                                                                      "nativeQueryRef":  "Share of realizations gated",
-                                                                                      "displayName":  "Share of realizations gated"
+                                                                                      "nativeQueryRef":  "Share of runs",
+                                                                                      "displayName":  "Share of runs"
                                                                                   }
                                                                               ]
                                                           },
@@ -61,12 +61,12 @@
                                                                                                                                                              "Entity":  "dim_policy"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "name"
+                                                                                                                        "Property":  "plain_name"
                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_policy.name",
-                                                                                           "nativeQueryRef":  "Policy",
-                                                                                           "displayName":  "Policy"
+                                                                                           "queryRef":  "dim_policy.plain_name",
+                                                                                           "nativeQueryRef":  "Strategy",
+                                                                                           "displayName":  "Strategy"
                                                                                        }
                                                                                    ]
                                                                }
@@ -104,7 +104,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Gating share by week\u0027"
+                                                                                                                                 "Value":  "\u0027How often this part stops the line, by week\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

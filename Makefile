@@ -1,12 +1,15 @@
 PY ?= python
 export PYTHONPATH := src
 
-.PHONY: all evaluate report test calibrate clean
+.PHONY: all evaluate sensitivity report test calibrate clean
 
-all: test evaluate report
+all: test evaluate sensitivity report
 
 evaluate:
 	$(PY) -m packrisk.evaluate
+
+sensitivity:
+	$(PY) -m packrisk.sensitivity
 
 report:
 	$(PY) -m packrisk.report

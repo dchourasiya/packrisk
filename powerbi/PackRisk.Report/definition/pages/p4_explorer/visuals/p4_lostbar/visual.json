@@ -23,12 +23,12 @@
                                                                                                                                                                "Entity":  "dim_policy"
                                                                                                                                                            }
                                                                                                                                          },
-                                                                                                                          "Property":  "name"
+                                                                                                                          "Property":  "plain_name"
                                                                                                                       }
                                                                                                        },
-                                                                                             "queryRef":  "dim_policy.name",
-                                                                                             "nativeQueryRef":  "Policy",
-                                                                                             "displayName":  "Policy"
+                                                                                             "queryRef":  "dim_policy.plain_name",
+                                                                                             "nativeQueryRef":  "Strategy",
+                                                                                             "displayName":  "Strategy"
                                                                                          }
                                                                                      ]
                                                                  },
@@ -46,7 +46,8 @@
                                                                                                                 }
                                                                                                 },
                                                                                       "queryRef":  "_Measures.Lost Packs (mean)",
-                                                                                      "nativeQueryRef":  "Lost Packs mean"
+                                                                                      "nativeQueryRef":  "Average",
+                                                                                      "displayName":  "Average"
                                                                                   },
                                                                                   {
                                                                                       "field":  {
@@ -60,7 +61,8 @@
                                                                                                                 }
                                                                                                 },
                                                                                       "queryRef":  "_Measures.Lost Packs (P90)",
-                                                                                      "nativeQueryRef":  "Lost Packs P90"
+                                                                                      "nativeQueryRef":  "Bad case P90",
+                                                                                      "displayName":  "Bad case (P90)"
                                                                                   }
                                                                               ]
                                                           }
@@ -75,7 +77,7 @@
                                                                                                                                            "Entity":  "dim_policy"
                                                                                                                                        }
                                                                                                                      },
-                                                                                                      "Property":  "name"
+                                                                                                      "Property":  "plain_name"
                                                                                                   }
                                                                                    },
                                                                          "direction":  "Ascending"
@@ -98,7 +100,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Lost packs by policy - mean and P90\u0027"
+                                                                                                                                 "Value":  "\u0027Lost packs by strategy: average vs bad case (worst 10%)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -113,6 +115,21 @@
                                                                 }
                                                             ]
                                               },
-                   "drillFilterOtherVisuals":  true
+                   "drillFilterOtherVisuals":  true,
+                   "objects":  {
+                                   "categoryAxis":  [
+                                                        {
+                                                            "properties":  {
+                                                                               "maxMarginFactor":  {
+                                                                                                       "expr":  {
+                                                                                                                    "Literal":  {
+                                                                                                                                    "Value":  "45L"
+                                                                                                                                }
+                                                                                                                }
+                                                                                                   }
+                                                                           }
+                                                        }
+                                                    ]
+                               }
                }
 }

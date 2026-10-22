@@ -1,9 +1,9 @@
 table dim_supplier
-	lineageTag: 40b31427-3211-4831-ada7-209342a11dad
+	lineageTag: 50ddb6ae-aacf-4ee0-ab08-72d287b78c42
 
 	column supplier_id
 		dataType: string
-		lineageTag: 8b1d940e-f39e-490c-baaa-080a83f19216
+		lineageTag: 06a3935f-4a01-4ac4-b60f-125e961df546
 		summarizeBy: none
 		sourceColumn: supplier_id
 
@@ -11,7 +11,7 @@ table dim_supplier
 
 	column supplies
 		dataType: string
-		lineageTag: 71e6a9f5-d31f-4557-a147-8f5989e9ca0b
+		lineageTag: 0ed74e08-05ac-4761-98cc-0413308578fc
 		summarizeBy: none
 		sourceColumn: supplies
 
@@ -19,7 +19,7 @@ table dim_supplier
 
 	column region
 		dataType: string
-		lineageTag: 16610902-6bad-4790-86d8-870b4f9b3ca1
+		lineageTag: 2f9fecaf-5307-4f73-a355-63faac7cfc7f
 		summarizeBy: none
 		sourceColumn: region
 
@@ -27,7 +27,7 @@ table dim_supplier
 
 	column lane_id
 		dataType: string
-		lineageTag: c3a107d0-15f5-4ae2-ad41-d82d8904a503
+		lineageTag: a883c849-f38b-4c4b-80be-b8b726dedbed
 		summarizeBy: none
 		sourceColumn: lane_id
 
@@ -35,7 +35,7 @@ table dim_supplier
 
 	column tier2_id
 		dataType: string
-		lineageTag: ece3fe01-1d80-450a-ac9c-2fe76b6e207b
+		lineageTag: 8764418f-9b88-4fa0-8c68-aee7337908a2
 		summarizeBy: none
 		sourceColumn: tier2_id
 
@@ -43,7 +43,7 @@ table dim_supplier
 
 	column lateness_multiplier
 		dataType: double
-		lineageTag: e65e31fe-61b4-4777-a929-b0798d52c1ee
+		lineageTag: 7430b29c-d8ce-4cbe-a1f0-d30cc5b018d5
 		summarizeBy: sum
 		sourceColumn: lateness_multiplier
 
@@ -51,7 +51,7 @@ table dim_supplier
 
 	column po_lines
 		dataType: double
-		lineageTag: e3d20478-47a9-46bc-bdd4-7ef57c94303f
+		lineageTag: d11f71b1-6181-422e-af0c-7345e1892682
 		summarizeBy: sum
 		sourceColumn: po_lines
 
@@ -60,7 +60,7 @@ table dim_supplier
 	column otif_rate
 		dataType: double
 		formatString: 0.0%
-		lineageTag: 529f6709-3621-4b4a-83b7-19f3afd82853
+		lineageTag: 958e3d15-268f-49c3-b75e-5eebae3bee48
 		summarizeBy: sum
 		sourceColumn: otif_rate
 
@@ -69,7 +69,7 @@ table dim_supplier
 	column late_rate
 		dataType: double
 		formatString: 0.0%
-		lineageTag: 5c791834-1967-4184-85a2-619abbdc30fa
+		lineageTag: 63b6a4eb-5883-4048-90a6-87318520cf79
 		summarizeBy: sum
 		sourceColumn: late_rate
 
@@ -77,7 +77,7 @@ table dim_supplier
 
 	column avg_days_late
 		dataType: double
-		lineageTag: e1b91e3f-f78b-4af4-9104-31d9ac4774c2
+		lineageTag: 62c58bb3-56e5-4d5b-9c1d-2d3816e0f34c
 		summarizeBy: sum
 		sourceColumn: avg_days_late
 
@@ -86,7 +86,7 @@ table dim_supplier
 	column partial_rate
 		dataType: double
 		formatString: 0.0%
-		lineageTag: 767a7605-44b9-4d76-9b4c-5b5bc2dc92e5
+		lineageTag: 4e9218ec-2c64-4ea7-9d73-82307d39e804
 		summarizeBy: sum
 		sourceColumn: partial_rate
 
@@ -95,7 +95,7 @@ table dim_supplier
 	column quality_hold_rate
 		dataType: double
 		formatString: 0.0%
-		lineageTag: 8a8ee96c-b837-4563-a771-69cc7e3e06a1
+		lineageTag: 10632d81-2ec9-45bb-8b11-ae0e05e23a79
 		summarizeBy: sum
 		sourceColumn: quality_hold_rate
 
@@ -103,7 +103,7 @@ table dim_supplier
 
 	column avg_lead_time_days
 		dataType: double
-		lineageTag: e2193d36-46d7-4d78-bf02-0a8f7361dfcc
+		lineageTag: 02e49859-7866-4671-a260-d2a58ffb0166
 		summarizeBy: sum
 		sourceColumn: avg_lead_time_days
 
@@ -112,7 +112,7 @@ table dim_supplier
 	column sd_lead_time_days
 		dataType: double
 		formatString: 0.00
-		lineageTag: 004ed171-b239-4387-8873-d2d43e1218cd
+		lineageTag: 0240e70c-a094-4675-a842-20194dde0995
 		summarizeBy: sum
 		sourceColumn: sd_lead_time_days
 
@@ -121,7 +121,7 @@ table dim_supplier
 	column spend
 		dataType: double
 		formatString: \$#,0
-		lineageTag: 72a501bb-e3ed-49f7-bd53-72a58b4ce4dd
+		lineageTag: f9f3b686-d200-41bd-b573-dde60208d0ee
 		summarizeBy: sum
 		sourceColumn: spend
 

@@ -84,7 +84,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Top 5 gating parts (Do nothing)\u0027"
+                                                                                                                                 "Value":  "\u0027Top 5 parts that stop the line (if we do nothing)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -117,7 +117,20 @@
                                                                                      }
                                                                         }
                                                      }
-                                                 ]
+                                                 ],
+                                   "categoryAxis":  [
+                                                        {
+                                                            "properties":  {
+                                                                               "maxMarginFactor":  {
+                                                                                                       "expr":  {
+                                                                                                                    "Literal":  {
+                                                                                                                                    "Value":  "45L"
+                                                                                                                                }
+                                                                                                                }
+                                                                                                   }
+                                                                           }
+                                                        }
+                                                    ]
                                }
                },
     "filterConfig":  {

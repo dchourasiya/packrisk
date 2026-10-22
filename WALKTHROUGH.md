@@ -6,7 +6,7 @@ A text version of the demo, for readers who'd rather read than watch. It follows
 
 - When Asia's ocean shipping congests, doing nothing loses about **1,037** of 12,000 planned battery packs over 8 weeks.
 - A plan that optimizes across 100 possible futures (stochastic LP) spends **$181K** of a $250K budget, cuts losses to **75 packs**, and lowers expected total cost by **$2.4M net**.
-- It also beats doing nothing on all **5 held-out scenarios** it was never tuned on.
+- It also beats doing nothing on all **5 held-out scenarios** it was never tuned on, and in all **33** combinations of 11 scenarios × 3 values for a lost pack ($1K, $2K, $4K).
 
 All operational data is simulated, and the shipping-delay parameters are placeholders until they're calibrated against public shipment records.
 
@@ -15,6 +15,18 @@ All operational data is simulated, and the shipping-delay parameters are placeho
 A battery-pack line needs 50 parts from 20 suppliers, shipped over 4 lanes. When a disruption is announced, the planner has $250,000 to spend *today* on three kinds of fixes: **expedite** a shipment (air freight or a team driver), **order extra inventory**, or **switch some volume to an approved alternate supplier**. Which parts could stop production, and where should the money go?
 
 I compared seven strategies, from doing nothing and two rules of thumb up to three optimization models, plus a perfect-foresight "oracle" as an upper bound. Each strategy was run on 100 simulated futures for each of 11 scenarios.
+
+The dashboard uses plain names for the strategies:
+
+| Dashboard name | Model |
+|---|---|
+| Do nothing | P1, baseline |
+| Fix worst suppliers first | P2, rule of thumb |
+| Fix lowest-stock parts first | P3, rule of thumb |
+| Plan for average delays | P4, deterministic LP |
+| **Smart plan (stochastic)** | **P5, stochastic LP over 100 sampled futures** |
+| Smart plan + worst-case guard | P6, stochastic LP + CVaR |
+| Perfect foresight (benchmark) | P7, oracle |
 
 ## 1. Supplier Performance: being late isn't the same as stopping the line
 
@@ -39,6 +51,16 @@ I compared seven strategies, from doing nothing and two rules of thumb up to thr
 - **Held-out test:** five scenarios behave differently from what the planner assumed (for example, a copper shortage and port congestion 30% worse than expected). The plan beat doing nothing in **5 of 5**, protecting **716 packs per scenario** on average and avoiding **$9.1M** in total.
 
 Expected total cost = mitigation spend + $2,000 per lost pack + $100 per pack-week of backlog. Both penalties are assumptions.
+
+**Does the answer depend on the $2,000 assumption?** No. I re-planned every strategy with a lost pack worth $1,000 and $4,000 and scored them on the same simulated futures:
+
+| Value of a lost pack | D1 net savings, smart plan vs doing nothing |
+|---|---|
+| $1,000 | $1.4M |
+| $2,000 | $2.4M |
+| $4,000 | $4.3M |
+
+Across all 11 scenarios and 3 penalty values, the smart plan beats doing nothing **33 of 33** times. The cheapest strategy is always one of the two smart plans; a rule of thumb or the average-delay plan is never the cheapest.
 
 ## 3. Production Risk: where and when it breaks
 
@@ -70,12 +92,12 @@ Expected total cost = mitigation spend + $2,000 per lost pack + $100 per pack-we
 
 - **Simulated operations** and **placeholder delays.** The calibration script fits lane delays from the public USAID Supply Chain Shipment Pricing dataset, but it hasn't been run yet. That data is health-commodity freight, not battery parts, so it would give realistic delay *shape*, not battery-specific truth.
 - **Static decisions:** everything is decided once at week 0. There is no weekly re-planning yet.
-- **Hypothetical costs:** the $2,000 lost-pack penalty and $100 backlog penalty drive the trade-off. Results will change if they change.
+- **Hypothetical costs:** the $2,000 lost-pack penalty and $100 backlog penalty drive the trade-off. The penalty test shows the ranking holds at $1K and $4K per lost pack, but the size of the savings scales with the penalty.
 - **Shared risk matters:** if the planner wrongly assumes suppliers' delays are independent, the bad-case loss rises from **106 to 578 packs**.
 - **Small disruptions:** for a single-supplier plant outage (D3) only about 60 packs are at risk, and no plan adds much. The net return there is 0.8x.
 
 ## What I'd build next
 
 1. Run the delay calibration on real shipment data.
-2. Test how sensitive the results are to the penalty assumptions ($1K, $2K, $4K per lost pack).
-3. Add weekly re-planning, so the plan can react as the disruption unfolds.
+2. Add weekly re-planning, so the plan can react as the disruption unfolds.
+3. Test the backlog penalty and the budget level the same way as the lost-pack penalty.

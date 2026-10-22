@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Held-out: packs protected per scenario\u0027"
+                                                                                                                                 "Value":  "\u0027Unseen tests: packs saved per scenario\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

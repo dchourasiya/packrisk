@@ -93,7 +93,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Held-out: net cost avoided (total)\u0027"
+                                                                                                                                 "Value":  "\u0027Unseen tests: total net savings\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

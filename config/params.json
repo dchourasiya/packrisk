@@ -54,5 +54,10 @@
   "budget_sweep_scenarios": [
     "D1",
     "H4"
+  ],
+  "penalty_sensitivity": [
+    1000,
+    2000,
+    4000
   ]
 }

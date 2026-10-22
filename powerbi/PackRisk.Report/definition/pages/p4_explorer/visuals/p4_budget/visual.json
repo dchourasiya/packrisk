@@ -51,8 +51,8 @@
                                                                                                                     }
                                                                                                 },
                                                                                       "queryRef":  "Sum(fact_budget_curve.do_nothing_mean_lost)",
-                                                                                      "nativeQueryRef":  "Do nothing mean lost",
-                                                                                      "displayName":  "Do nothing mean lost"
+                                                                                      "nativeQueryRef":  "Do nothing average",
+                                                                                      "displayName":  "Do nothing (average)"
                                                                                   },
                                                                                   {
                                                                                       "field":  {
@@ -71,8 +71,8 @@
                                                                                                                     }
                                                                                                 },
                                                                                       "queryRef":  "Sum(fact_budget_curve.stochastic_mean_lost)",
-                                                                                      "nativeQueryRef":  "Stochastic mean lost",
-                                                                                      "displayName":  "Stochastic mean lost"
+                                                                                      "nativeQueryRef":  "Smart plan average",
+                                                                                      "displayName":  "Smart plan (average)"
                                                                                   },
                                                                                   {
                                                                                       "field":  {
@@ -91,8 +91,8 @@
                                                                                                                     }
                                                                                                 },
                                                                                       "queryRef":  "Sum(fact_budget_curve.stochastic_p90_lost)",
-                                                                                      "nativeQueryRef":  "Stochastic P90 lost",
-                                                                                      "displayName":  "Stochastic P90 lost"
+                                                                                      "nativeQueryRef":  "Smart plan bad case",
+                                                                                      "displayName":  "Smart plan (bad case)"
                                                                                   },
                                                                                   {
                                                                                       "field":  {
@@ -111,8 +111,8 @@
                                                                                                                     }
                                                                                                 },
                                                                                       "queryRef":  "Sum(fact_budget_curve.oracle_mean_lost)",
-                                                                                      "nativeQueryRef":  "Oracle mean lost",
-                                                                                      "displayName":  "Oracle mean lost"
+                                                                                      "nativeQueryRef":  "Perfect foresight average",
+                                                                                      "displayName":  "Perfect foresight (average)"
                                                                                   }
                                                                               ]
                                                           }
