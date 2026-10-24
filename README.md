@@ -30,7 +30,7 @@ All policies are evaluated on the same realizations, including five **held-out**
 | **Scenario Explorer** | **Assumptions & Limitations** |
 | ![Scenario Explorer](docs/images/4_scenario_explorer.png) | ![Assumptions](docs/images/5_assumptions.png) |
 
-Full dashboard as a PDF (no Power BI needed): [docs/PackRisk_Dashboard.pdf](docs/PackRisk_Dashboard.pdf). Scenario shown: D1, Asia ocean-lane port congestion.
+Full dashboard as a PDF (no Power BI needed): [docs/PackRisk_Dashboard_Full.pdf](docs/PackRisk_Dashboard_Full.pdf), with the Executive Overview for all 11 scenarios. A shorter 5-page version: [docs/PackRisk_Dashboard.pdf](docs/PackRisk_Dashboard.pdf). Scenario shown: D1, Asia ocean-lane port congestion.
 
 ## Quickstart
 
