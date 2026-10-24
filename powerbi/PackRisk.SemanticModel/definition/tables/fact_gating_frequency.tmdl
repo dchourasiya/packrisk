@@ -1,9 +1,9 @@
 table fact_gating_frequency
-	lineageTag: 407b46b0-1e98-4094-9823-c1d298c1d1ee
+	lineageTag: a1c97e9b-3da3-4ba2-bdfe-5f315fa54f35
 
 	column scenario_id
 		dataType: string
-		lineageTag: f191cee5-a12d-4c9b-b3d6-5baf40eb2803
+		lineageTag: 8181f710-5cfe-48e4-904e-fe46c850f501
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_gating_frequency
 
 	column policy_id
 		dataType: string
-		lineageTag: 9ed2c99c-036d-47f6-bcd5-f5d7abe50813
+		lineageTag: 24831908-8a81-490f-b1ef-b67d72209172
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -20,7 +20,7 @@ table fact_gating_frequency
 	column week
 		dataType: int64
 		formatString: 0
-		lineageTag: 8636d4d1-d38f-4543-b98a-28875e06cbeb
+		lineageTag: 76a9aed2-43f8-4267-9cab-49e8db30427a
 		summarizeBy: none
 		sourceColumn: week
 
@@ -28,7 +28,7 @@ table fact_gating_frequency
 
 	column variant
 		dataType: string
-		lineageTag: db283408-e84e-4476-8423-29d2919fc8a6
+		lineageTag: dc5dbf40-0357-438b-8f90-cc6527af2f4e
 		summarizeBy: none
 		sourceColumn: variant
 
@@ -36,7 +36,7 @@ table fact_gating_frequency
 
 	column component_id
 		dataType: string
-		lineageTag: 61346a54-2d9a-4714-8e6f-998154fb7c74
+		lineageTag: 13319f64-bcc5-4b67-9bda-83aa641f8c60
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -44,7 +44,7 @@ table fact_gating_frequency
 
 	column share_of_realizations
 		dataType: double
-		lineageTag: 3d8d4178-383d-492a-abcf-31244fa7c7ab
+		lineageTag: aa2f6cd6-0bcb-4804-9e67-d4b2214b31a4
 		summarizeBy: sum
 		sourceColumn: share_of_realizations
 

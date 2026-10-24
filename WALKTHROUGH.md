@@ -41,7 +41,9 @@ The dashboard uses plain names for the strategies:
 - **41 of the 50 parts have only one supplier,** so there is no fallback when one of them is hit.
 - Shared dependencies hide the real exposure. The Asia ocean lane (L1) carries **13 parts from 6 suppliers, about $10.7M of weekly spend**, so a single port problem hits all of them at once. The cathode-material source is even bigger by spend ($9.75M a week), but none of its parts are single-sourced, so it's better protected.
 
-**The point:** a "worst suppliers" list doesn't tell you which part will stop the line. Stock cover, single-sourcing and the disruption itself do. The red table on this page changes with the scenario selector, so you can see this scenario by scenario.
+**The point:** a "worst suppliers" list doesn't tell you which part will stop the line. Stock cover, single-sourcing and the disruption itself do.
+
+On the dashboard, supplier history is fixed, but every visual on this page shows its impact in the selected scenario: the KPI cards (parts and suppliers that stop the line, their average late rate, the worst part), a "stops line here" column in the scorecard and the dependency table, scatter bubbles sized by how often each supplier's parts stop the line, and the red table of parts. In Asia port congestion, 4 suppliers averaging 54% late cause the stoppages; in copper shortage, the top supplier (S05) is late only 17% of the time.
 
 ## 2. Executive Overview: the answer
 

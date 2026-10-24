@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "History is the same in every scenario. The red table changes: late rate alone is a poor guide; stock cover decides.",
+                                                                                                                      "value":  "Supplier history is fixed; everything on this page shows its impact in the selected scenario (if we do nothing).",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#C9D1D9"

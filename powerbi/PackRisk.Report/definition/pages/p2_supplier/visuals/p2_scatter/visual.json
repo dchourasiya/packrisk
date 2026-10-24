@@ -83,23 +83,18 @@
                                                                  "projections":  [
                                                                                      {
                                                                                          "field":  {
-                                                                                                       "Aggregation":  {
-                                                                                                                           "Expression":  {
-                                                                                                                                              "Column":  {
-                                                                                                                                                             "Expression":  {
-                                                                                                                                                                                "SourceRef":  {
-                                                                                                                                                                                                  "Entity":  "dim_supplier"
-                                                                                                                                                                                              }
-                                                                                                                                                                            },
-                                                                                                                                                             "Property":  "spend"
-                                                                                                                                                         }
-                                                                                                                                          },
-                                                                                                                           "Function":  0
-                                                                                                                       }
+                                                                                                       "Measure":  {
+                                                                                                                       "Expression":  {
+                                                                                                                                          "SourceRef":  {
+                                                                                                                                                            "Entity":  "_Measures"
+                                                                                                                                                        }
+                                                                                                                                      },
+                                                                                                                       "Property":  "Stops Line Share"
+                                                                                                                   }
                                                                                                    },
-                                                                                         "queryRef":  "Sum(dim_supplier.spend)",
-                                                                                         "nativeQueryRef":  "Spend",
-                                                                                         "displayName":  "Spend"
+                                                                                         "queryRef":  "_Measures.Stops Line Share",
+                                                                                         "nativeQueryRef":  "Stops line here",
+                                                                                         "displayName":  "Stops line here"
                                                                                      }
                                                                                  ]
                                                              },
@@ -138,7 +133,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Late rate vs lead-time variability (size = spend)\u0027"
+                                                                                                                                 "Value":  "\u0027Late rate vs lead-time SD (bubble = stops line here)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -154,5 +149,63 @@
                                                             ]
                                               },
                    "drillFilterOtherVisuals":  true
-               }
+               },
+    "filterConfig":  {
+                         "filters":  [
+                                         {
+                                             "name":  "filter015",
+                                             "field":  {
+                                                           "Column":  {
+                                                                          "Expression":  {
+                                                                                             "SourceRef":  {
+                                                                                                               "Entity":  "dim_policy"
+                                                                                                           }
+                                                                                         },
+                                                                          "Property":  "policy_id"
+                                                                      }
+                                                       },
+                                             "type":  "Categorical",
+                                             "filter":  {
+                                                            "Version":  2,
+                                                            "From":  [
+                                                                         {
+                                                                             "Name":  "t",
+                                                                             "Entity":  "dim_policy",
+                                                                             "Type":  0
+                                                                         }
+                                                                     ],
+                                                            "Where":  [
+                                                                          {
+                                                                              "Condition":  {
+                                                                                                "In":  {
+                                                                                                           "Expressions":  [
+                                                                                                                               {
+                                                                                                                                   "Column":  {
+                                                                                                                                                  "Expression":  {
+                                                                                                                                                                     "SourceRef":  {
+                                                                                                                                                                                       "Source":  "t"
+                                                                                                                                                                                   }
+                                                                                                                                                                 },
+                                                                                                                                                  "Property":  "policy_id"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                           ],
+                                                                                                           "Values":  [
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P1\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ]
+                                                                                                                      ]
+                                                                                                       }
+                                                                                            }
+                                                                          }
+                                                                      ]
+                                                        },
+                                             "howCreated":  "User"
+                                         }
+                                     ]
+                     }
 }

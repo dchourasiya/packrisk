@@ -169,7 +169,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter018",
+                                             "name":  "filter025",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {
@@ -223,7 +223,7 @@
                                              "howCreated":  "User"
                                          },
                                          {
-                                             "name":  "filter019",
+                                             "name":  "filter026",
                                              "field":  {
                                                            "Measure":  {
                                                                            "Expression":  {

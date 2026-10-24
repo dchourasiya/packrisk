@@ -65,20 +65,6 @@
                                                                                                                                                              "Entity":  "dim_supplier"
                                                                                                                                                          }
                                                                                                                                        },
-                                                                                                                        "Property":  "tier2_id"
-                                                                                                                    }
-                                                                                                     },
-                                                                                           "queryRef":  "dim_supplier.tier2_id",
-                                                                                           "nativeQueryRef":  "tier2id"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Column":  {
-                                                                                                                        "Expression":  {
-                                                                                                                                           "SourceRef":  {
-                                                                                                                                                             "Entity":  "dim_supplier"
-                                                                                                                                                         }
-                                                                                                                                       },
                                                                                                                         "Property":  "otif_rate"
                                                                                                                     }
                                                                                                      },
@@ -112,20 +98,6 @@
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.sd_lead_time_days",
                                                                                            "nativeQueryRef":  "sdleadtimedays"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Column":  {
-                                                                                                                        "Expression":  {
-                                                                                                                                           "SourceRef":  {
-                                                                                                                                                             "Entity":  "dim_supplier"
-                                                                                                                                                         }
-                                                                                                                                       },
-                                                                                                                        "Property":  "partial_rate"
-                                                                                                                    }
-                                                                                                     },
-                                                                                           "queryRef":  "dim_supplier.partial_rate",
-                                                                                           "nativeQueryRef":  "partialrate"
                                                                                        }
                                                                                    ]
                                                                }
@@ -180,7 +152,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter024",
+                                             "name":  "filter031",
                                              "field":  {
                                                            "Measure":  {
                                                                            "Expression":  {

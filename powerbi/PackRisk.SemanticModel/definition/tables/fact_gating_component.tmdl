@@ -1,9 +1,9 @@
 table fact_gating_component
-	lineageTag: e2a3d794-d16e-435d-a76c-ed6d17cc2f88
+	lineageTag: 6a0e4d08-e248-45ba-b946-1dab66ce63c4
 
 	column scenario_id
 		dataType: string
-		lineageTag: a96ce1bf-6552-4c0e-87b4-4e8cd79ab6af
+		lineageTag: ff318fae-0141-47fb-b218-71f6d162c982
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_gating_component
 
 	column policy_id
 		dataType: string
-		lineageTag: 9734bd9f-67e3-49d5-a37b-562e960af527
+		lineageTag: 3fdb88ce-4d96-4378-9fcf-d3d8e2fa585b
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -19,7 +19,7 @@ table fact_gating_component
 
 	column component_id
 		dataType: string
-		lineageTag: 6074185c-e457-4f32-b28b-2b8b44a3e657
+		lineageTag: 6a402456-3524-4267-ba27-1d482d568efa
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -27,7 +27,7 @@ table fact_gating_component
 
 	column share_of_realizations_gated
 		dataType: double
-		lineageTag: e347eb95-2dd6-4b34-95cc-54458afd5e7e
+		lineageTag: e7e4a8c9-8060-40fe-bb1f-41d00f48570e
 		summarizeBy: sum
 		sourceColumn: share_of_realizations_gated
 

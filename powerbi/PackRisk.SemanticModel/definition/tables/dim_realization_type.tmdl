@@ -1,9 +1,9 @@
 table dim_realization_type
-	lineageTag: 70697738-d363-4ff3-8bf1-61618a1f9151
+	lineageTag: c706bb42-a15e-4f1b-a17d-8b5be4858267
 
 	column realization_type
 		dataType: string
-		lineageTag: 66d36ac7-6ea1-454a-8c01-3f7238398bb1
+		lineageTag: f87755f6-9d37-4510-8d88-b86aaacb6693
 		summarizeBy: none
 		sourceColumn: realization_type
 		sortByColumn: sort
@@ -13,7 +13,7 @@ table dim_realization_type
 	column sort
 		dataType: int64
 		formatString: 0
-		lineageTag: 1fc437cf-4b57-418b-9989-c67fc3688517
+		lineageTag: 18f10c49-767c-4a95-86bf-9d717fd9019b
 		summarizeBy: none
 		sourceColumn: sort
 		isHidden
@@ -22,7 +22,7 @@ table dim_realization_type
 
 	column outcome
 		dataType: string
-		lineageTag: 760c3b6a-b785-4628-a998-ed3c966e35b3
+		lineageTag: 54e98cc8-0279-4c8f-b140-2c23082fd609
 		summarizeBy: none
 		sourceColumn: outcome
 		sortByColumn: sort

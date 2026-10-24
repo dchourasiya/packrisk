@@ -1,9 +1,9 @@
 table fact_penalty_sensitivity
-	lineageTag: afdff81d-a5c1-469d-92a0-30b4c0ebd334
+	lineageTag: 31080a9f-5fb5-41d1-9211-87d435deb14a
 
 	column penalty_per_lost_pack
 		dataType: double
-		lineageTag: 513177ea-acc7-4095-8eaf-f8f18e54bc06
+		lineageTag: a345f966-931b-420e-bed9-4a0d3fdbf91d
 		summarizeBy: sum
 		sourceColumn: penalty_per_lost_pack
 
@@ -11,7 +11,7 @@ table fact_penalty_sensitivity
 
 	column scenario_id
 		dataType: string
-		lineageTag: f33556f2-03a8-4835-a251-d575dd2f3941
+		lineageTag: e9b662de-b422-498a-a622-dae4b1f8ef61
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -19,7 +19,7 @@ table fact_penalty_sensitivity
 
 	column policy_id
 		dataType: string
-		lineageTag: 6124e2a9-918c-44d4-95c7-0244a579c0cd
+		lineageTag: 00045580-f70c-4ecc-a903-56feea4f6cb0
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -27,7 +27,7 @@ table fact_penalty_sensitivity
 
 	column mean_lost_packs
 		dataType: double
-		lineageTag: 474d1807-7c87-4931-bf7a-3f251e5451c7
+		lineageTag: 5c52d1c6-308c-4201-ba97-9c14f00dcd16
 		summarizeBy: sum
 		sourceColumn: mean_lost_packs
 
@@ -35,7 +35,7 @@ table fact_penalty_sensitivity
 
 	column p90_lost_packs
 		dataType: double
-		lineageTag: 36ce1d11-5a28-4489-b74d-331f5b87c247
+		lineageTag: 28941f69-cdcc-4072-8361-4fdc01babdbe
 		summarizeBy: sum
 		sourceColumn: p90_lost_packs
 
@@ -43,7 +43,7 @@ table fact_penalty_sensitivity
 
 	column mitigation_cost
 		dataType: double
-		lineageTag: e925eec6-fea5-4455-ba9d-4ee0140e3e18
+		lineageTag: c83c286e-b715-4dcf-bed3-b008a116b34e
 		summarizeBy: sum
 		sourceColumn: mitigation_cost
 
@@ -51,7 +51,7 @@ table fact_penalty_sensitivity
 
 	column mean_objective
 		dataType: double
-		lineageTag: 2895c25f-5f90-45ac-9def-9e4db847a122
+		lineageTag: 771b07ee-ab73-4f35-ac74-9780386df3a7
 		summarizeBy: sum
 		sourceColumn: mean_objective
 
@@ -59,7 +59,7 @@ table fact_penalty_sensitivity
 
 	column penalty_label
 		dataType: string
-		lineageTag: 54d24e76-3ca3-41a4-b01a-c0571eeff8dc
+		lineageTag: be23a079-65de-47fc-aaea-4adda4784a7b
 		summarizeBy: none
 		sourceColumn: penalty_label
 		sortByColumn: penalty_per_lost_pack

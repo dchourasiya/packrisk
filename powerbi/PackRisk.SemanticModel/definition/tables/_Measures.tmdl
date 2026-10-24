@@ -1,108 +1,108 @@
 table _Measures
-	lineageTag: 70fab627-d34d-45eb-b97b-9255b4f7caf0
+	lineageTag: f5111f72-eeed-42dd-ad1b-8f865341b2ab
 
 	measure 'Lost Packs (mean)' = AVERAGE ( fact_realization_results[lost_packs] )
 		formatString: #,0
-		lineageTag: 1a3751da-708b-434b-8a39-650c7412b89c
+		lineageTag: 31e235f9-26ac-4be1-a0ad-123cfecadf2d
 
 	measure 'Lost Packs (P90)' = PERCENTILEX.INC ( fact_realization_results, fact_realization_results[lost_packs], 0.9 )
 		formatString: #,0
-		lineageTag: 0f25e4e8-3352-496d-8499-2eb8cfb4cc4f
+		lineageTag: b49ee682-8755-4866-b6a6-be153f55100b
 
 	measure 'Plan Attainment' = DIVIDE ( SUM ( fact_realization_results[built_packs] ), SUM ( fact_realization_results[plan_packs] ) )
 		formatString: 0.0%
-		lineageTag: b3fdaebf-a8fa-4e8d-aee7-e5320c15033d
+		lineageTag: a9f0daac-537b-4f39-b2cb-0de476bac949
 
 	measure 'Backlog Pack-Weeks' = AVERAGE ( fact_realization_results[backlog_pack_weeks] )
 		formatString: #,0
-		lineageTag: 2751e7a9-d6c8-4c31-8f5c-0808241c2c6f
+		lineageTag: 66170169-0b8a-4ba3-b735-f2beb973dde1
 
 	measure 'Mitigation Spend' = AVERAGE ( fact_realization_results[mitigation_cost] )
 		formatString: \$#,0
-		lineageTag: 19a0c4f7-0b2a-4bb8-8293-9cb9d6ffd98c
+		lineageTag: d5965123-fe40-487e-9f88-8344def8423b
 
 	measure 'Expected Total Cost' = AVERAGE ( fact_realization_results[objective] )
 		formatString: \$#,0
-		lineageTag: ac9f74b5-9cc4-446a-812b-7639fdd7c0f4
+		lineageTag: d3fffa42-6f2f-4e59-8ce4-0e62016e8fb4
 
 	measure 'Budget Used %' = DIVIDE ( [Mitigation Spend], 250000 )
 		formatString: 0.0%
-		lineageTag: 052f88bd-011a-44df-ba4f-de8b3801d0b9
+		lineageTag: f37cace4-0c9f-4f84-8611-2192809f90d2
 
 	measure 'Packs Protected vs Do Nothing' =
 			VAR base = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = "P1" )
 			RETURN base - [Lost Packs (mean)]
 		formatString: #,0
-		lineageTag: 27f5ce36-f7cd-45cb-9b74-05763871a318
+		lineageTag: 266cafa2-4057-4ff2-8b87-ba0ed3cf6a49
 
 	measure 'Oracle Capture' =
 			VAR base   = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = "P1" )
 			VAR oracle = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = "P7" )
 			RETURN DIVIDE ( base - [Lost Packs (mean)], base - oracle )
 		formatString: 0.0%
-		lineageTag: af1c15b5-a339-4223-a263-0018159fb774
+		lineageTag: 87614e00-5462-42f8-96fb-5d02106e25c5
 
 	measure 'VSS ($)' =
 			CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = "P4" )
 			    - CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = "P5" )
 		formatString: \$#,0
-		lineageTag: 9e3a0a03-56cf-430e-8c97-c353871349a9
+		lineageTag: 5e6eae91-2486-4439-b7c0-3519147cadad
 
 	measure 'Shortfall vs Plan' = SUM ( fact_weekly_trace[cum_built] ) - SUM ( fact_weekly_trace[cum_plan] )
 		formatString: #,0
-		lineageTag: 48f08b12-bb12-47ce-bc4e-07834e514444
+		lineageTag: 20cd3588-1e0c-4caa-9dc3-deec03a4ed7c
 
 	measure 'Gated Share' = MAX ( fact_gating_component[share_of_realizations_gated] )
 		formatString: 0%
-		lineageTag: 3f4f08f4-70cc-473e-b822-ae32faaa38ff
+		lineageTag: 82ce867b-bedb-40a8-a8ad-4cc3b8b9ae8d
 
 	measure 'Weeks of Cover' = AVERAGE ( fact_inventory_trace[weeks_of_cover] )
 		formatString: 0.0
-		lineageTag: 0f21b519-1e19-4c41-a1ef-1bb3067adb49
+		lineageTag: e5ee3ccf-a551-40aa-bf26-6cae34eecf01
 
 	measure 'Action Spend' = SUM ( fact_actions[cost] )
 		formatString: \$#,0
-		lineageTag: 80427841-52ce-453f-80bd-6692d70e0e47
+		lineageTag: 1093b17b-44b9-4c01-9c5b-c845acc8e0a1
 
 	measure OTIF = AVERAGE ( dim_supplier[otif_rate] )
 		formatString: 0.0%
-		lineageTag: 4a78f4db-39c2-4b5b-8e58-b8183b5d39b5
+		lineageTag: 1af61440-3c17-4abd-804a-28f18b0e9a6d
 
 	measure 'Simulated Label' = "Simulated data. Placeholder delay parameters."
-		lineageTag: 6ac8bd49-f436-417d-a05e-8abcdcc87ad8
+		lineageTag: 80833986-958e-4a7a-9ddd-59b5f6ea43d8
 
 	measure 'Gating Frequency' = SUM ( fact_gating_frequency[share_of_realizations] )
 		formatString: 0%
-		lineageTag: ee1a1988-717d-4a82-92f3-06bf1ce42a72
+		lineageTag: ee6866e2-daa3-48ae-b2d9-6388eca17010
 
 	measure 'Scenario Description' = SELECTEDVALUE ( dim_scenario[description], "Select one scenario in the slicer." )
-		lineageTag: cfdba4e6-6d36-4894-9884-40dbdcf24f17
+		lineageTag: bcab7def-066a-4e36-95db-2fa874db0a42
 
 	measure 'Is Primary Supplier' = INT ( NOT ISEMPTY ( dim_component ) )
 		formatString: 0
-		lineageTag: 1d971568-764a-49e9-9b0f-7137a2bb66a2
+		lineageTag: f57615ba-821e-4c63-960e-abbff57ad361
 
 	measure 'Avg Late Rate' = AVERAGE ( dim_supplier[late_rate] )
 		formatString: 0.0%
-		lineageTag: 92e30158-4ca3-499c-a11a-6f549975f1b6
+		lineageTag: 0454ac43-4678-48a8-a6fa-5a454118672c
 
 	measure 'Suppliers Tracked' = COUNTROWS ( FILTER ( dim_supplier, NOT ISBLANK ( dim_supplier[otif_rate] ) ) )
 		formatString: 0
-		lineageTag: 089b7a2a-3469-4c62-bb5a-785f8dd88e63
+		lineageTag: 8d6ea1c8-ceea-47bd-9926-13d42a50daae
 
 	measure 'Single-Sourced Parts' = COUNTROWS ( FILTER ( dim_component, dim_component[single_sourced] ) )
 		formatString: 0
-		lineageTag: 0e5f5db6-5250-403a-ac5d-5e66670c3788
+		lineageTag: d4178451-4354-4c95-98a6-1a45cf8af143
 
 	measure 'Expected Cost Avoided' =
 			VAR base = CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = "P1" )
 			RETURN base - [Expected Total Cost]
 		formatString: \$#,0
-		lineageTag: fda62c52-8a2b-4a54-87a5-d7a1cbf12f06
+		lineageTag: c319465f-08a0-49c7-9310-f8164efe2776
 
 	measure 'Return on Mitigation' = DIVIDE ( [Expected Cost Avoided], [Mitigation Spend] )
 		formatString: 0.0"x"
-		lineageTag: 36b762ae-d485-4a11-9d58-17834616008d
+		lineageTag: 47ec27dd-39db-4efc-adca-c3dd4b692508
 
 	measure Headline =
 			VAR prot    = CALCULATE ( [Packs Protected vs Do Nothing], dim_policy[policy_id] = "P5" )
@@ -118,32 +118,54 @@ table _Measures
 			            & IF ( spend > 0, " (" & FORMAT ( DIVIDE ( avoided, spend ), "0.0" ) & "x return).", "." ),
 			        "Select one scenario to see the headline."
 			    )
-		lineageTag: 1308a3ea-1e77-4deb-ad13-5b61b31adf60
+		lineageTag: ff4d86a8-6d50-4191-b716-12148140d73a
 
 	measure 'Primary Supplier Late Rate' =
 			VAR s = SELECTEDVALUE ( dim_component[primary_supplier_id] )
 			RETURN IF ( NOT ISBLANK ( s ), LOOKUPVALUE ( dim_supplier[late_rate], dim_supplier[supplier_id], s ) )
 		formatString: 0.0%
-		lineageTag: 72efccd6-3e41-4011-8732-19890ba8f598
+		lineageTag: cf902233-3d62-4eb6-8201-de61e26c2838
 
 	measure 'Primary Supplier Late Rank' =
 			VAR r = [Primary Supplier Late Rate]
 			RETURN IF ( NOT ISBLANK ( r ), COUNTROWS ( FILTER ( ALL ( dim_supplier ), dim_supplier[late_rate] > r ) ) + 1 )
 		formatString: 0
-		lineageTag: 24fc0602-6bab-49d4-8cbc-3901838622fc
+		lineageTag: 60fa281b-f5f1-4ce6-8ad5-b5197ebe2aa8
+
+	measure 'Stops Line Share' = COALESCE ( [Gated Share], 0 )
+		formatString: 0%
+		lineageTag: eb117e40-ab26-4e12-929c-eb509916f600
+
+	measure 'Dependency Stops Line' =
+			VAR depId = SELECTEDVALUE ( fact_shared_dependency[dependency_id] )
+			RETURN COALESCE ( CALCULATE ( [Gated Share], FILTER ( ALL ( dim_component ), dim_component[lane_id] = depId || dim_component[tier2_id] = depId ) ), 0 )
+		formatString: 0%
+		lineageTag: 5837c9e9-0269-4fec-87c9-cb4044fed825
+
+	measure 'Parts Stopping Line' = COUNTROWS ( FILTER ( VALUES ( dim_component[component_id] ), [Gated Share] > 0 ) ) + 0
+		formatString: 0
+		lineageTag: 087ab10f-0efb-4c90-bad1-0da4588165df
+
+	measure 'Suppliers Stopping Line' = COUNTROWS ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ) ) + 0
+		formatString: 0
+		lineageTag: b5699f63-ffb5-48b8-b6f7-38e43b759155
+
+	measure 'Stopping Suppliers Late Rate' = AVERAGEX ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ), CALCULATE ( MAX ( dim_supplier[late_rate] ) ) )
+		formatString: 0.0%
+		lineageTag: 1529a21d-7ce5-4b21-979a-7297ee0ef038
 
 	measure 'Penalty Test Net Saving' =
 			VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )
 			VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )
 			RETURN doNothing - smart
 		formatString: \$#,0
-		lineageTag: cf002efa-b329-411e-a865-2173174fb125
+		lineageTag: 4991b48b-7a77-447d-b0b5-6b29e7e40764
 
 	measure 'Held-out Wins' =
 			VAR heldOut = CALCULATETABLE ( VALUES ( dim_scenario[scenario_id] ), REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out" )
 			VAR wins = COUNTROWS ( FILTER ( heldOut, VAR s = dim_scenario[scenario_id] RETURN CALCULATE ( [Expected Cost Avoided], REMOVEFILTERS ( dim_scenario ), dim_scenario[scenario_id] = s, dim_policy[policy_id] = "P5" ) > 0 ) )
 			RETURN FORMAT ( wins, "0" ) & " of " & FORMAT ( COUNTROWS ( heldOut ), "0" )
-		lineageTag: bf6a8cee-3892-44a3-8fe9-934334f0d5e2
+		lineageTag: 1d17b064-de1e-4116-abf8-4225540c8201
 
 	measure 'Held-out Packs Protected (avg)' =
 			CALCULATE (
@@ -151,7 +173,7 @@ table _Measures
 			    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", dim_policy[policy_id] = "P5"
 			)
 		formatString: #,0
-		lineageTag: 9c1f0b98-bcf5-401e-84a1-1849d0c4ca2e
+		lineageTag: 26c42c5c-bf8b-4fc4-9548-379629a3eee6
 
 	measure 'Held-out Cost Avoided' =
 			CALCULATE (
@@ -159,12 +181,12 @@ table _Measures
 			    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", dim_policy[policy_id] = "P5"
 			)
 		formatString: \$#,0
-		lineageTag: 4b8958aa-0810-4cd0-acd6-8ab5d59755d7
+		lineageTag: 7f6309b2-6c18-432c-8853-9e5bf2408797
 
 	column Value
 		dataType: string
 		isHidden
-		lineageTag: 105dec25-2623-4866-bf43-09d210a677eb
+		lineageTag: 8ad1766f-de12-4bee-a645-6bd4536495b5
 		summarizeBy: none
 		sourceColumn: Value
 

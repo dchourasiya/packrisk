@@ -27,7 +27,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.supplier_id",
-                                                                                           "nativeQueryRef":  "supplierid"
+                                                                                           "nativeQueryRef":  "Supplier",
+                                                                                           "displayName":  "Supplier"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -41,7 +42,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.supplies",
-                                                                                           "nativeQueryRef":  "supplies"
+                                                                                           "nativeQueryRef":  "Supplies",
+                                                                                           "displayName":  "Supplies"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -55,21 +57,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.lane_id",
-                                                                                           "nativeQueryRef":  "laneid"
-                                                                                       },
-                                                                                       {
-                                                                                           "field":  {
-                                                                                                         "Column":  {
-                                                                                                                        "Expression":  {
-                                                                                                                                           "SourceRef":  {
-                                                                                                                                                             "Entity":  "dim_supplier"
-                                                                                                                                                         }
-                                                                                                                                       },
-                                                                                                                        "Property":  "tier2_id"
-                                                                                                                    }
-                                                                                                     },
-                                                                                           "queryRef":  "dim_supplier.tier2_id",
-                                                                                           "nativeQueryRef":  "tier2id"
+                                                                                           "nativeQueryRef":  "Lane",
+                                                                                           "displayName":  "Lane"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -83,7 +72,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.otif_rate",
-                                                                                           "nativeQueryRef":  "otifrate"
+                                                                                           "nativeQueryRef":  "OTIF",
+                                                                                           "displayName":  "OTIF"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -97,7 +87,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.late_rate",
-                                                                                           "nativeQueryRef":  "laterate"
+                                                                                           "nativeQueryRef":  "Late rate",
+                                                                                           "displayName":  "Late rate"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -111,21 +102,23 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.sd_lead_time_days",
-                                                                                           "nativeQueryRef":  "sdleadtimedays"
+                                                                                           "nativeQueryRef":  "Leadtime SD",
+                                                                                           "displayName":  "Lead-time SD"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
-                                                                                                         "Column":  {
-                                                                                                                        "Expression":  {
-                                                                                                                                           "SourceRef":  {
-                                                                                                                                                             "Entity":  "dim_supplier"
-                                                                                                                                                         }
-                                                                                                                                       },
-                                                                                                                        "Property":  "partial_rate"
-                                                                                                                    }
+                                                                                                         "Measure":  {
+                                                                                                                         "Expression":  {
+                                                                                                                                            "SourceRef":  {
+                                                                                                                                                              "Entity":  "_Measures"
+                                                                                                                                                          }
+                                                                                                                                        },
+                                                                                                                         "Property":  "Stops Line Share"
+                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "dim_supplier.partial_rate",
-                                                                                           "nativeQueryRef":  "partialrate"
+                                                                                           "queryRef":  "_Measures.Stops Line Share",
+                                                                                           "nativeQueryRef":  "Stops line here",
+                                                                                           "displayName":  "Stops line here"
                                                                                        }
                                                                                    ]
                                                                }
@@ -134,14 +127,14 @@
                                                         "sort":  [
                                                                      {
                                                                          "field":  {
-                                                                                       "Column":  {
-                                                                                                      "Expression":  {
-                                                                                                                         "SourceRef":  {
-                                                                                                                                           "Entity":  "dim_supplier"
-                                                                                                                                       }
-                                                                                                                     },
-                                                                                                      "Property":  "late_rate"
-                                                                                                  }
+                                                                                       "Measure":  {
+                                                                                                       "Expression":  {
+                                                                                                                          "SourceRef":  {
+                                                                                                                                            "Entity":  "_Measures"
+                                                                                                                                        }
+                                                                                                                      },
+                                                                                                       "Property":  "Stops Line Share"
+                                                                                                   }
                                                                                    },
                                                                          "direction":  "Descending"
                                                                      }
@@ -214,6 +207,65 @@
                                                                                                      }
                                                                                        }
                                                                      }
+                                                  },
+                                                  {
+                                                      "selector":  {
+                                                                       "data":  [
+                                                                                    {
+                                                                                        "dataViewWildcard":  {
+                                                                                                                 "matchingOption":  1
+                                                                                                             }
+                                                                                    }
+                                                                                ],
+                                                                       "metadata":  "_Measures.Stops Line Share"
+                                                                   },
+                                                      "properties":  {
+                                                                         "backColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "_Measures"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Stops Line Share"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient2":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#FFFFFF\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#C8102E\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       }
+                                                                     }
                                                   }
                                               ],
                                    "total":  [
@@ -244,7 +296,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Supplier scorecard (sorted by late rate)\u0027"
+                                                                                                                                 "Value":  "\u0027Supplier scorecard: history + how often its parts stop the line here\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -260,5 +312,63 @@
                                                             ]
                                               },
                    "drillFilterOtherVisuals":  true
-               }
+               },
+    "filterConfig":  {
+                         "filters":  [
+                                         {
+                                             "name":  "filter014",
+                                             "field":  {
+                                                           "Column":  {
+                                                                          "Expression":  {
+                                                                                             "SourceRef":  {
+                                                                                                               "Entity":  "dim_policy"
+                                                                                                           }
+                                                                                         },
+                                                                          "Property":  "policy_id"
+                                                                      }
+                                                       },
+                                             "type":  "Categorical",
+                                             "filter":  {
+                                                            "Version":  2,
+                                                            "From":  [
+                                                                         {
+                                                                             "Name":  "t",
+                                                                             "Entity":  "dim_policy",
+                                                                             "Type":  0
+                                                                         }
+                                                                     ],
+                                                            "Where":  [
+                                                                          {
+                                                                              "Condition":  {
+                                                                                                "In":  {
+                                                                                                           "Expressions":  [
+                                                                                                                               {
+                                                                                                                                   "Column":  {
+                                                                                                                                                  "Expression":  {
+                                                                                                                                                                     "SourceRef":  {
+                                                                                                                                                                                       "Source":  "t"
+                                                                                                                                                                                   }
+                                                                                                                                                                 },
+                                                                                                                                                  "Property":  "policy_id"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                                           ],
+                                                                                                           "Values":  [
+                                                                                                                          [
+                                                                                                                              {
+                                                                                                                                  "Literal":  {
+                                                                                                                                                  "Value":  "\u0027P1\u0027"
+                                                                                                                                              }
+                                                                                                                              }
+                                                                                                                          ]
+                                                                                                                      ]
+                                                                                                       }
+                                                                                            }
+                                                                          }
+                                                                      ]
+                                                        },
+                                             "howCreated":  "User"
+                                         }
+                                     ]
+                     }
 }

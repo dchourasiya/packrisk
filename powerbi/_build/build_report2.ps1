@@ -202,22 +202,27 @@ Add-Visual $pg "p1_ho3" 936 616 328 64 (& { $hv = KPI "Held-out Cost Avoided" "U
 
 # ================= Page 2: Supplier Performance =================
 $pg = "p2_supplier"
-Add-Furniture $pg "Supplier Performance" "History is the same in every scenario. The red table changes: late rate alone is a poor guide; stock cover decides."
-$k = @(@{ m = "OTIF"; t = "Average OTIF"; c = $TEAL }, @{ m = "Avg Late Rate"; t = "Average late rate"; c = $RED }, @{ m = "Suppliers Tracked"; t = "Suppliers with history"; c = $CHAR }, @{ m = "Single-Sourced Parts"; t = "Single-sourced parts"; c = $STEEL })
-for ($i = 0; $i -lt $k.Count; $i++) { Add-Visual $pg "p2_kpi$($i+1)" (16 + $i * 315) 116 302 86 (KPI $k[$i].m $k[$i].t $k[$i].c) }
-$supCols = "supplier_id", "supplies", "lane_id", "tier2_id", "otif_rate", "late_rate", "sd_lead_time_days", "partial_rate"
-Add-Visual $pg "p2_suptable" 16 212 760 252 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) })) }) "Supplier scorecard (sorted by late rate)" ([ordered]@{ field = (Col "dim_supplier" "late_rate"); direction = "Descending" }) ([ordered]@{
-      values = (Gradient (Agg "dim_supplier" "otif_rate" 0) "dim_supplier.otif_rate" "#F6C1C7" "#BFE6DF") }))
+Add-Furniture $pg "Supplier Performance" "Supplier history is fixed; everything on this page shows its impact in the selected scenario (if we do nothing)."
+$k = @(@{ m = "Parts Stopping Line"; t = "Parts that stop the line"; c = $RED }, @{ m = "Suppliers Stopping Line"; t = "Suppliers whose parts stop it"; c = $CHAR },
+  @{ m = "Stopping Suppliers Late Rate"; t = "Their avg late rate (all: 28.8%)"; c = $STEEL }, @{ m = "Gated Share"; t = "Worst part stops the line"; c = $RED })
+for ($i = 0; $i -lt $k.Count; $i++) { Add-Visual $pg "p2_kpi$($i+1)" (16 + $i * 315) 116 302 86 (KPI $k[$i].m $k[$i].t $k[$i].c) @(PolicyF "P1") }
+$supNames = @{ supplier_id = "Supplier"; supplies = "Supplies"; lane_id = "Lane"; otif_rate = "OTIF"; late_rate = "Late rate"; sd_lead_time_days = "Lead-time SD" }
+$supCols = "supplier_id", "supplies", "lane_id", "otif_rate", "late_rate", "sd_lead_time_days"
+$supProj = @($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) $supNames[$_] }) + @(Proj (Meas "Stops Line Share") "Stops line here")
+$sup = V-Chart "tableEx" ([ordered]@{ Values = (Role $supProj) }) "Supplier scorecard: history + how often its parts stop the line here" ([ordered]@{ field = (Meas "Stops Line Share"); direction = "Descending" }) ([ordered]@{
+      values = @((Gradient (Agg "dim_supplier" "otif_rate" 0) "dim_supplier.otif_rate" "#F6C1C7" "#BFE6DF")[0], (Gradient (Meas "Stops Line Share") "_Measures.Stops Line Share" "#FFFFFF" "#C8102E")[0]) })
+Add-Visual $pg "p2_suptable" 16 212 760 252 $sup @(PolicyF "P1")
 Add-Visual $pg "p2_scatter" 788 212 476 252 (V-Chart "scatterChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_supplier" "supplier_id")))
       X = (Role (Proj (Agg "dim_supplier" "late_rate" 0) "Late rate"))
       Y = (Role (Proj (Agg "dim_supplier" "sd_lead_time_days" 0) "Lead-time SD (days)"))
-      Size = (Role (Proj (Agg "dim_supplier" "spend" 0) "Spend"))
-      Series = (Role (Proj (Col "dim_supplier" "lane_id") "Lane")) }) "Late rate vs lead-time variability (size = spend)")
-$depNames = @{ dependency_type = "Type"; dependency_id = "ID"; suppliers_exposed = "Suppliers"; components_exposed = "Parts"; single_sourced_components = "Single-src"; weekly_spend_exposed = "Weekly spend"; min_cover_weeks = "Min cover" }
-$depCols = "dependency_type", "dependency_id", "suppliers_exposed", "components_exposed", "single_sourced_components", "weekly_spend_exposed", "min_cover_weeks"
-Add-Visual $pg "p2_deptable" 16 474 590 206 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($depCols | ForEach-Object { Proj (Col "fact_shared_dependency" $_) $depNames[$_] })) }) "Shared dependencies (lanes and tier-2 sources)" ([ordered]@{ field = (Col "fact_shared_dependency" "weekly_spend_exposed"); direction = "Descending" }))
-# Scenario-aware insight: which suppliers' parts actually stop the line in the selected scenario (do nothing)
+      Size = (Role (Proj (Meas "Stops Line Share") "Stops line here"))
+      Series = (Role (Proj (Col "dim_supplier" "lane_id") "Lane")) }) "Late rate vs lead-time SD (bubble = stops line here)") @(PolicyF "P1")
+$depNames = @{ dependency_type = "Type"; dependency_id = "ID"; suppliers_exposed = "Suppliers"; components_exposed = "Parts"; single_sourced_components = "Single-src"; weekly_spend_exposed = "Weekly spend" }
+$depCols = "dependency_type", "dependency_id", "suppliers_exposed", "components_exposed", "single_sourced_components", "weekly_spend_exposed"
+$depProj = @($depCols | ForEach-Object { Proj (Col "fact_shared_dependency" $_) $depNames[$_] }) + @(Proj (Meas "Dependency Stops Line") "Stops line here")
+Add-Visual $pg "p2_deptable" 16 474 590 206 (V-Chart "tableEx" ([ordered]@{ Values = (Role $depProj) }) "Shared lanes and tier-2 sources: which one hurts here" ([ordered]@{ field = (Meas "Dependency Stops Line"); direction = "Descending" }) ([ordered]@{
+      values = (Gradient (Meas "Dependency Stops Line") "_Measures.Dependency Stops Line" "#FFFFFF" "#C8102E") })) @(PolicyF "P1")# Scenario-aware insight: which suppliers' parts actually stop the line in the selected scenario (do nothing)
 $stopCols = @((Proj (Col "dim_component" "primary_supplier_id") "Supplier"), (Proj (Col "dim_component" "name") "Part"),
   (Proj (Meas "Gated Share") "Stops line"), (Proj (Meas "Primary Supplier Late Rate") "Late rate"),
   (Proj (Agg "dim_component" "starting_cover_weeks" 3) "Stock (weeks)"))

@@ -1,5 +1,5 @@
 /// Folder that holds the 20 PackRisk CSVs. Change it in Transform data > Edit parameters, then Refresh.
 expression DataFolder = "C:\packrisk\outputs\powerbi\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: 6f8726fb-7a14-47a9-80cf-ba8196a518e1
+	lineageTag: 2f1ab7ad-6b46-4216-880b-49cdb34aa761
 
 	annotation PBI_ResultType = Text

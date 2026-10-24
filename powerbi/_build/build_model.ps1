@@ -201,6 +201,14 @@ $measures = @(
   @{ n = "Primary Supplier Late Rank"; f = "0"; e = @(
       'VAR r = [Primary Supplier Late Rate]',
       'RETURN IF ( NOT ISBLANK ( r ), COUNTROWS ( FILTER ( ALL ( dim_supplier ), dim_supplier[late_rate] > r ) ) + 1 )') },
+  # Scenario impact on suppliers and dependencies (used with a policy = P1 filter)
+  @{ n = "Stops Line Share"; f = "0%"; e = @("COALESCE ( [Gated Share], 0 )") },
+  @{ n = "Dependency Stops Line"; f = "0%"; e = @(
+      'VAR depId = SELECTEDVALUE ( fact_shared_dependency[dependency_id] )',
+      'RETURN COALESCE ( CALCULATE ( [Gated Share], FILTER ( ALL ( dim_component ), dim_component[lane_id] = depId || dim_component[tier2_id] = depId ) ), 0 )') },
+  @{ n = "Parts Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_component[component_id] ), [Gated Share] > 0 ) ) + 0") },
+  @{ n = "Suppliers Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ) ) + 0") },
+  @{ n = "Stopping Suppliers Late Rate"; f = "0.0%"; e = @("AVERAGEX ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ), CALCULATE ( MAX ( dim_supplier[late_rate] ) ) )") },
   @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
       'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )',
       'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )',
