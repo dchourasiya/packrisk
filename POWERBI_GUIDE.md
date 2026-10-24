@@ -110,7 +110,7 @@ Every page gets a footer text box bound to `[Simulated Label]`, plus a **scenari
 - **Policy slicer** (multi-select).
 - **Clustered bar:** policy × `[Lost Packs (mean)]` and `[Lost Packs (P90)]`.
 - **Table:** `fact_actions` component name, action, week, quantity, cost, for the selected policies. This is "what the plan actually buys."
-- **Line chart:** `fact_budget_curve`, budget on x, stochastic_mean_lost, stochastic_p90_lost, oracle_mean_lost, do_nothing_mean_lost. Only D1 and H4 have curves; add a text box saying so.
+- **Line chart:** `fact_budget_curve`, budget on x, stochastic_mean_lost, stochastic_p90_lost, oracle_mean_lost, do_nothing_mean_lost. Every scenario has a curve (budgets $0 to $600K).
 - **Card:** `[VSS ($)]`.
 - **Drill-through:** create a hidden page "Component detail" with drill-through field `dim_component[component_id]`, showing weeks of cover by policy, gating share by week, actions bought, and its supplier's scorecard row.
 

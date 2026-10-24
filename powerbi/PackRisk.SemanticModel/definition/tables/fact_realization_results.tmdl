@@ -1,9 +1,9 @@
 table fact_realization_results
-	lineageTag: 2ae68e0c-88a7-42d0-9de1-6f9667da0577
+	lineageTag: bc27c856-15c7-4cfc-9e88-74a54de8f760
 
 	column scenario_id
 		dataType: string
-		lineageTag: 58cfea72-e1b1-4ee4-be9f-6dee84aa9dcd
+		lineageTag: b6a6adb2-aef3-47ea-8246-4d3b7ff55f15
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_realization_results
 
 	column policy_id
 		dataType: string
-		lineageTag: fc8b3667-5340-4e60-be93-5e536d3fa7e1
+		lineageTag: dc0834c8-7ee7-4faa-9ebc-b60eacafab5e
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -20,7 +20,7 @@ table fact_realization_results
 	column realization
 		dataType: int64
 		formatString: 0
-		lineageTag: 3992f8fa-9453-48d2-923f-b777520f681f
+		lineageTag: 209f883a-cda5-4319-9efa-bbc46486cf6d
 		summarizeBy: none
 		sourceColumn: realization
 
@@ -28,7 +28,7 @@ table fact_realization_results
 
 	column plan_packs
 		dataType: double
-		lineageTag: ed2a7275-fd6e-41b5-8f17-2301c3f7d40f
+		lineageTag: 744e11c3-a0b0-4db7-a296-c42e69cb6c6f
 		summarizeBy: sum
 		sourceColumn: plan_packs
 
@@ -36,7 +36,7 @@ table fact_realization_results
 
 	column built_packs
 		dataType: double
-		lineageTag: 6bcc38fd-5ba1-441f-bfa2-5f7e8971db8a
+		lineageTag: 0e26e22b-e667-4985-9168-f1f177edd928
 		summarizeBy: sum
 		sourceColumn: built_packs
 
@@ -44,7 +44,7 @@ table fact_realization_results
 
 	column lost_packs
 		dataType: double
-		lineageTag: a59d6b0d-13c4-4fb9-9972-ca1150907cbd
+		lineageTag: 7d215f15-3202-46fb-9f20-cb54792ef2aa
 		summarizeBy: sum
 		sourceColumn: lost_packs
 
@@ -52,7 +52,7 @@ table fact_realization_results
 
 	column attainment
 		dataType: double
-		lineageTag: 8fc5e7f5-8e97-4ee0-99bb-c0cf2274a0e2
+		lineageTag: 4d428208-24a3-4ffc-b446-7ac98d37b249
 		summarizeBy: sum
 		sourceColumn: attainment
 
@@ -60,7 +60,7 @@ table fact_realization_results
 
 	column backlog_pack_weeks
 		dataType: double
-		lineageTag: 91004682-559a-4107-a395-45c9f29f8226
+		lineageTag: 518cc714-0748-4b06-a84e-3a3b2cdf3723
 		summarizeBy: sum
 		sourceColumn: backlog_pack_weeks
 
@@ -68,7 +68,7 @@ table fact_realization_results
 
 	column mitigation_cost
 		dataType: double
-		lineageTag: 2af63840-e3bd-4616-a1d9-fba82c12ca57
+		lineageTag: a7539fc9-6590-477d-893d-ac66b9896763
 		summarizeBy: sum
 		sourceColumn: mitigation_cost
 
@@ -76,7 +76,7 @@ table fact_realization_results
 
 	column objective
 		dataType: double
-		lineageTag: 878a1064-bfbe-4e45-a8e1-f69740a407c9
+		lineageTag: 0069e2a2-7549-451a-9211-59245f434997
 		summarizeBy: sum
 		sourceColumn: objective
 
@@ -84,7 +84,7 @@ table fact_realization_results
 
 	column shortage_weeks
 		dataType: double
-		lineageTag: 79dc822c-94be-483f-8ff0-8a8bed3b03a3
+		lineageTag: 82d3e6d9-b01b-4e01-88b0-386a3726785d
 		summarizeBy: sum
 		sourceColumn: shortage_weeks
 
@@ -92,7 +92,7 @@ table fact_realization_results
 
 	column first_shortage_week
 		dataType: double
-		lineageTag: a24e1c0d-8847-49d2-828c-337f71917f4d
+		lineageTag: 7c049edb-e902-491d-8ed7-1672ce2e4ff8
 		summarizeBy: sum
 		sourceColumn: first_shortage_week
 

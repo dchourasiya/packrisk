@@ -181,7 +181,7 @@ def run(verbose=True):
 
     # ---- Correlation stress test ----
     stress_rows, corr_dist = [], []
-    for sid in ["D1", "D2"]:
+    for sid in params["correlation_test_scenarios"]:
         k = list(SCENARIOS).index(sid)
         n = params["n_correlation_realizations"]
         _, _, w_corr = sample_sets(sid, k, m, params, n_eval=n, corr_world=True)

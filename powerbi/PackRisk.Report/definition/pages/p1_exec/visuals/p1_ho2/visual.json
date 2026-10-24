@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Unseen tests: packs saved per scenario\u0027"
+                                                                                                                                 "Value":  "\u0027All 5 unseen tests (fixed): packs saved, avg\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

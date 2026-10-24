@@ -133,7 +133,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Actions bought for this component\u0027"
+                                                                                                                                 "Value":  "\u0027Actions bought for this part (empty = no strategy buys anything for it)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
@@ -247,6 +247,55 @@
                                                                       ]
                                                         },
                                              "howCreated":  "User"
+                                         },
+                                         {
+                                             "name":  "filter034",
+                                             "field":  {
+                                                           "Measure":  {
+                                                                           "Expression":  {
+                                                                                              "SourceRef":  {
+                                                                                                                "Entity":  "_Measures"
+                                                                                                            }
+                                                                                          },
+                                                                           "Property":  "Component Selected"
+                                                                       }
+                                                       },
+                                             "type":  "Advanced",
+                                             "howCreated":  "User",
+                                             "filter":  {
+                                                            "Version":  2,
+                                                            "From":  [
+                                                                         {
+                                                                             "Name":  "m",
+                                                                             "Entity":  "_Measures",
+                                                                             "Type":  0
+                                                                         }
+                                                                     ],
+                                                            "Where":  [
+                                                                          {
+                                                                              "Condition":  {
+                                                                                                "Comparison":  {
+                                                                                                                   "ComparisonKind":  0,
+                                                                                                                   "Left":  {
+                                                                                                                                "Measure":  {
+                                                                                                                                                "Expression":  {
+                                                                                                                                                                   "SourceRef":  {
+                                                                                                                                                                                     "Source":  "m"
+                                                                                                                                                                                 }
+                                                                                                                                                               },
+                                                                                                                                                "Property":  "Component Selected"
+                                                                                                                                            }
+                                                                                                                            },
+                                                                                                                   "Right":  {
+                                                                                                                                 "Literal":  {
+                                                                                                                                                 "Value":  "1L"
+                                                                                                                                             }
+                                                                                                                             }
+                                                                                                               }
+                                                                                            }
+                                                                          }
+                                                                      ]
+                                                        }
                                          }
                                      ]
                      }

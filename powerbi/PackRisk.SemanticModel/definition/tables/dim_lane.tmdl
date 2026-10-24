@@ -1,9 +1,9 @@
 table dim_lane
-	lineageTag: 74e75384-0652-425b-af24-460ab5d81d0f
+	lineageTag: 770ef74d-c056-47dc-8943-03edb74d56e1
 
 	column lane_id
 		dataType: string
-		lineageTag: 52c58fea-52b0-44f9-bd3e-2f4741855104
+		lineageTag: c654eda9-83cb-446f-b40a-998b335318b5
 		summarizeBy: none
 		sourceColumn: lane_id
 
@@ -11,7 +11,7 @@ table dim_lane
 
 	column description
 		dataType: string
-		lineageTag: 588603b4-e9ef-4bfa-b088-28f6401741c8
+		lineageTag: b7d124dc-8f3e-475f-a5e0-1d14be7b1bd6
 		summarizeBy: none
 		sourceColumn: description
 
@@ -19,7 +19,7 @@ table dim_lane
 
 	column base_lead_weeks
 		dataType: double
-		lineageTag: 47bcd710-5e28-4c7d-9ee5-c0e1a58d05a0
+		lineageTag: 7f98b4be-52e8-4a51-97d2-ab7a9d6d8726
 		summarizeBy: sum
 		sourceColumn: base_lead_weeks
 
@@ -27,7 +27,7 @@ table dim_lane
 
 	column expedite_mode
 		dataType: string
-		lineageTag: b5589fa9-e071-4b97-a660-891859669957
+		lineageTag: 31c2d108-f98e-4d57-ab33-bbe72281edd5
 		summarizeBy: none
 		sourceColumn: expedite_mode
 
@@ -35,7 +35,7 @@ table dim_lane
 
 	column expedite_cost_share
 		dataType: double
-		lineageTag: 74957dca-fa63-497b-8097-5bb5b7d9fabb
+		lineageTag: e3a31f24-942e-4c3f-9562-33adab638bf7
 		summarizeBy: sum
 		sourceColumn: expedite_cost_share
 

@@ -101,11 +101,11 @@ Across all 11 scenarios and 3 penalty values, the smart plan beats doing nothing
 - **Simulated operations** and **placeholder delays.** The calibration script fits lane delays from the public USAID Supply Chain Shipment Pricing dataset, but it hasn't been run yet. That data is health-commodity freight, not battery parts, so it would give realistic delay *shape*, not battery-specific truth.
 - **Static decisions:** everything is decided once at week 0. There is no weekly re-planning yet.
 - **Hypothetical costs:** the $2,000 lost-pack penalty and $100 backlog penalty drive the trade-off. The penalty test shows the ranking holds at $1K and $4K per lost pack, but the size of the savings scales with the penalty.
-- **Shared risk matters:** if the planner wrongly assumes suppliers' delays are independent, the bad-case loss rises from **106 to 578 packs**.
+- **Shared risk matters, but not everywhere:** in Asia port congestion, a planner that wrongly assumes suppliers' delays are independent sees its bad-case loss rise from **106 to 578 packs**. Across all 11 scenarios, modelling the shared shock lowers the bad-case loss in 6, makes no difference in 4 (no loss either way), and is slightly worse in 2 (D6 and H5, by 14–28 packs).
 - **Small disruptions:** for a single-supplier plant outage (D3) only about 60 packs are at risk, and no plan adds much. The net return there is 0.8x.
 
 ## What I'd build next
 
 1. Run the delay calibration on real shipment data.
 2. Add weekly re-planning, so the plan can react as the disruption unfolds.
-3. Test the backlog penalty and the budget level the same way as the lost-pack penalty.
+3. Test the backlog penalty the same way as the lost-pack penalty.

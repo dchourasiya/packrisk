@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "Budget curves exist only for D1 and H4.",
+                                                                                                                      "value":  "How much budget is enough?",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "12pt",
                                                                                                                                         "fontWeight":  "bold",
@@ -43,7 +43,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "For other scenarios the budget chart is empty. It shows lost packs as the mitigation budget grows.",
+                                                                                                                      "value":  "The chart below re-plans the smart plan at budgets from $0 to $600K for the selected scenario. Where the lines flatten, more money stops helping.",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#4B5563"

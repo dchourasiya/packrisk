@@ -1,129 +1,133 @@
-relationship ed84f651-6e25-44f8-a5cb-a387173a2e90
+relationship 654eb4b6-cf46-4dc0-b2ce-a1992cabbcbc
 	fromColumn: fact_policy_evaluation.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 6eab7c4b-a6da-4c2b-83ec-57083ce56305
+relationship 3fdfba8f-9cab-4323-aa81-716c5320e67a
 	fromColumn: fact_realization_results.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 1878eef2-6028-48e5-b596-82a8e3b83940
+relationship 47771d40-36fc-4d5a-9f16-c5ad780ae80d
 	fromColumn: fact_weekly_trace.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 614e9c9f-34f1-466b-aa99-67133823dc31
+relationship 1c985559-f592-4a1c-84aa-fff649909bf3
 	fromColumn: fact_inventory_trace.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 586f6f46-21ab-4b1a-a7f1-438d22c15df8
+relationship a02f3d3a-6ccd-413a-84c4-0386a28e2125
 	fromColumn: fact_gating_frequency.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship b5565200-90f4-4185-8b84-f73514afc33a
+relationship a29ff2da-7226-48ed-8431-615056a0b9dd
 	fromColumn: fact_gating_component.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 28d03d8d-2082-4eaa-9f43-5430bc4eb3ca
+relationship 9c0e4440-de57-4f57-99c6-a093dd0bbe90
 	fromColumn: fact_actions.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 85d73eb9-fc5b-4f56-92cd-777bbbf64d69
+relationship 0cf742fe-2916-40bd-b680-59c26042d214
 	fromColumn: fact_budget_curve.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship ee849cc7-9adf-4b99-9928-c4fe26ea17e5
+relationship 625796f4-54c9-4556-97a3-0ced69cb78af
 	fromColumn: fact_policy_evaluation.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship 55b831fb-79b3-44a0-9dfa-bd0fc018d549
+relationship 89df2967-f277-4d7a-bae7-3a0a3544bce1
 	fromColumn: fact_realization_results.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship df5b560f-45f1-4a73-b5ad-310f804600be
+relationship 1c2de872-6068-446a-83fd-f9b29f042fd0
 	fromColumn: fact_weekly_trace.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship 1e522a14-a2c3-410b-80c6-4d48901127b5
+relationship c3f9b8f3-d534-47ad-91d4-327c8af05fe9
 	fromColumn: fact_inventory_trace.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship 580945f4-d9a3-4640-86b8-075f78befb09
+relationship 3f10668b-96d2-42e5-a175-2d4b141da58c
 	fromColumn: fact_gating_frequency.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship e3615631-2995-4d04-b73d-f229448227a1
+relationship 14cf6030-4acc-4eb7-95e6-284355adc5f1
 	fromColumn: fact_gating_component.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship 28de0353-1cfd-4664-91e7-ade5d974bb1c
+relationship fc897254-35bb-44f2-baca-f32f0e7c78ec
 	fromColumn: fact_actions.policy_id
 	toColumn: dim_policy.policy_id
 
-relationship 42712e13-2ee9-47eb-b09e-209a9aa63aec
+relationship b23997d8-ee0f-47c9-8dee-9a86ad89f968
 	fromColumn: fact_inventory_trace.component_id
 	toColumn: dim_component.component_id
 
-relationship 10c0a57c-fff8-44d2-8b95-5ce1513a529f
+relationship 0aa5d094-8f23-4448-a476-28a8635fd409
 	fromColumn: fact_gating_frequency.component_id
 	toColumn: dim_component.component_id
 
-relationship 57cc1649-b563-48ed-8678-8a8f6985c67e
+relationship 34f481f3-cabc-4d13-9b15-c4fa8ee913f4
 	fromColumn: fact_gating_component.component_id
 	toColumn: dim_component.component_id
 
-relationship 44c69973-8bf3-407a-8bd1-05e4f41283aa
+relationship 6734f3ab-f319-48d7-8659-8b0f11d117fe
 	fromColumn: fact_actions.component_id
 	toColumn: dim_component.component_id
 
-relationship 26a3119a-fdbe-4468-bf64-56b5496b4e63
+relationship 8b2d89f8-60ed-4517-9f25-255d211982ee
 	fromColumn: fact_bom.component_id
 	toColumn: dim_component.component_id
 
-relationship 3dd857b1-8c25-4835-a21a-8039a64dd32e
+relationship d0e1896e-1e37-4380-9db8-027ae7ea7927
 	fromColumn: fact_receipts.component_id
 	toColumn: dim_component.component_id
 
-relationship 7790b2fe-53f5-47d7-9baa-8d982912a5f0
+relationship d78f96ea-03ff-4a57-8861-5343843ecb26
 	fromColumn: fact_component_exposure.component_id
 	toColumn: dim_component.component_id
 
-relationship 23dde0e9-bea9-4d57-abb8-e4ab429cf005
+relationship aeaa122d-4a60-4d13-8fdf-d93ac445f142
 	fromColumn: dim_component.primary_supplier_id
 	toColumn: dim_supplier.supplier_id
 
-relationship 6aaaaf5d-4d9f-4008-ac5f-ea83234d2752
+relationship 1916e5a6-b1c4-4c47-ae4a-5f2867c0997a
 	isActive: false
 	fromColumn: fact_receipts.supplier_id
 	toColumn: dim_supplier.supplier_id
 
-relationship e704007c-1cb0-4ce7-a9e8-1195f9d275bc
+relationship aaee631a-788d-42ec-aecd-b6dea1ce1142
 	fromColumn: fact_weekly_trace.week
 	toColumn: dim_week.week
 
-relationship f097ec5b-e177-47fe-bf86-e4a61bdb5e00
+relationship dfecc94f-7c87-4fc2-b74a-0996423e6876
 	fromColumn: fact_inventory_trace.week
 	toColumn: dim_week.week
 
-relationship c59463bc-938e-41eb-9de7-c65a739fce9d
+relationship 8536deec-51e0-4e56-8e8f-bfd813af4ed4
 	fromColumn: fact_gating_frequency.week
 	toColumn: dim_week.week
 
-relationship f2a4fd90-a7ed-4d73-a3bf-64e191c08f78
+relationship 8ee931a1-fe23-4b1d-b256-4a9cdfae4089
 	fromColumn: fact_actions.week
 	toColumn: dim_week.week
 
-relationship f1db4a5d-cee2-45f2-8ec3-b34712a9a27e
+relationship dbf39776-a1dd-4776-ace9-8f69a159f2f1
 	fromColumn: fact_weekly_trace.realization_type
 	toColumn: dim_realization_type.realization_type
 
-relationship c1f6702d-4a37-4564-b2cd-4e541fefd4d9
+relationship 5a66005f-639b-473a-bd50-ffd7f1e84093
 	fromColumn: fact_inventory_trace.realization_type
 	toColumn: dim_realization_type.realization_type
 
-relationship 45213c39-2a0d-4bcc-9610-f2e7f8db0a85
+relationship 5752a375-92a1-4e9c-a585-2472b880c17f
+	fromColumn: fact_stress_tests.scenario_id
+	toColumn: dim_scenario.scenario_id
+
+relationship 6b743161-0730-4f5e-b13d-e7021633caa1
 	fromColumn: fact_penalty_sensitivity.scenario_id
 	toColumn: dim_scenario.scenario_id
 
-relationship 4933a5d3-81ab-4743-9ba1-22d2b370272c
+relationship 22f4cab8-685a-46e6-821e-4b2cb97455e1
 	fromColumn: fact_penalty_sensitivity.policy_id
 	toColumn: dim_policy.policy_id
 

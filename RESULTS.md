@@ -4,7 +4,7 @@ _All operational data is simulated. Results are "in simulation", never business 
 
 - Delay parameters: PLACEHOLDER values. Replace by running: python -m packrisk.calibrate --usaid data/raw/<file>.csv
 - 100 planning samples per scenario; 100 evaluation realizations per scenario
-- Mitigation budget: $250,000 per 8-week horizon; runtime 218.3s
+- Mitigation budget: $250,000 per 8-week horizon; runtime 1221.3s
 
 ## Mean lost packs (8-week horizon, plan = 12,000 packs)
 
@@ -78,6 +78,62 @@ VSS = expected total cost of the deterministic LP minus the stochastic LP. Oracl
 | D1 | 250000 | 181,246 | 75 | 106 | 3 | 963 |
 | D1 | 400000 | 181,246 | 75 | 106 | 1 | 963 |
 | D1 | 600000 | 181,246 | 75 | 106 | 0 | 963 |
+| D2 | 0 | 0 | 1,738 | 3,474 | 1,738 | 0 |
+| D2 | 50000 | 50,000 | 1,491 | 3,132 | 974 | 247 |
+| D2 | 100000 | 100,000 | 1,350 | 2,979 | 839 | 388 |
+| D2 | 150000 | 150,000 | 1,227 | 2,708 | 821 | 510 |
+| D2 | 250000 | 250,000 | 1,035 | 2,549 | 819 | 702 |
+| D2 | 400000 | 380,414 | 911 | 2,543 | 819 | 826 |
+| D2 | 600000 | 380,414 | 911 | 2,543 | 819 | 826 |
+| D3 | 0 | 0 | 60 | 4 | 60 | 0 |
+| D3 | 50000 | 17,979 | 46 | 0 | 4 | 14 |
+| D3 | 100000 | 17,979 | 46 | 0 | 4 | 14 |
+| D3 | 150000 | 17,979 | 46 | 0 | 4 | 14 |
+| D3 | 250000 | 17,979 | 46 | 0 | 4 | 14 |
+| D3 | 400000 | 17,979 | 46 | 0 | 4 | 14 |
+| D3 | 600000 | 17,979 | 46 | 0 | 4 | 14 |
+| D4 | 0 | 0 | 97 | 0 | 97 | 0 |
+| D4 | 50000 | 3,278 | 58 | 0 | 0 | 38 |
+| D4 | 100000 | 3,278 | 58 | 0 | 0 | 38 |
+| D4 | 150000 | 3,278 | 58 | 0 | 0 | 38 |
+| D4 | 250000 | 3,278 | 58 | 0 | 0 | 38 |
+| D4 | 400000 | 3,278 | 58 | 0 | 0 | 38 |
+| D4 | 600000 | 3,278 | 58 | 0 | 0 | 38 |
+| D5 | 0 | 0 | 257 | 540 | 257 | 0 |
+| D5 | 50000 | 33,845 | 84 | 141 | 0 | 172 |
+| D5 | 100000 | 33,845 | 84 | 141 | 0 | 172 |
+| D5 | 150000 | 33,845 | 84 | 141 | 0 | 172 |
+| D5 | 250000 | 33,845 | 84 | 141 | 0 | 172 |
+| D5 | 400000 | 33,845 | 84 | 141 | 0 | 172 |
+| D5 | 600000 | 33,845 | 84 | 141 | 0 | 172 |
+| D6 | 0 | 0 | 1,032 | 2,600 | 1,032 | 0 |
+| D6 | 50000 | 50,000 | 371 | 1,200 | 89 | 661 |
+| D6 | 100000 | 100,000 | 158 | 864 | 12 | 874 |
+| D6 | 150000 | 150,000 | 109 | 472 | 0 | 923 |
+| D6 | 250000 | 173,816 | 93 | 28 | 0 | 938 |
+| D6 | 400000 | 173,816 | 93 | 28 | 0 | 938 |
+| D6 | 600000 | 173,816 | 93 | 28 | 0 | 938 |
+| H1 | 0 | 0 | 1,674 | 2,610 | 1,674 | 0 |
+| H1 | 50000 | 39,086 | 218 | 580 | 4 | 1,456 |
+| H1 | 100000 | 39,086 | 218 | 580 | 0 | 1,456 |
+| H1 | 150000 | 39,086 | 218 | 580 | 0 | 1,456 |
+| H1 | 250000 | 39,086 | 218 | 580 | 0 | 1,456 |
+| H1 | 400000 | 39,086 | 218 | 580 | 0 | 1,456 |
+| H1 | 600000 | 39,086 | 218 | 580 | 0 | 1,456 |
+| H2 | 0 | 0 | 258 | 724 | 258 | 0 |
+| H2 | 50000 | 35,033 | 19 | 0 | 0 | 240 |
+| H2 | 100000 | 35,033 | 19 | 0 | 0 | 240 |
+| H2 | 150000 | 35,033 | 19 | 0 | 0 | 240 |
+| H2 | 250000 | 35,033 | 19 | 0 | 0 | 240 |
+| H2 | 400000 | 35,033 | 19 | 0 | 0 | 240 |
+| H2 | 600000 | 35,033 | 19 | 0 | 0 | 240 |
+| H3 | 0 | 0 | 52 | 0 | 52 | 0 |
+| H3 | 50000 | 5,913 | 37 | 0 | 0 | 15 |
+| H3 | 100000 | 5,913 | 37 | 0 | 0 | 15 |
+| H3 | 150000 | 5,913 | 37 | 0 | 0 | 15 |
+| H3 | 250000 | 5,913 | 37 | 0 | 0 | 15 |
+| H3 | 400000 | 5,913 | 37 | 0 | 0 | 15 |
+| H3 | 600000 | 5,913 | 37 | 0 | 0 | 15 |
 | H4 | 0 | 0 | 2,024 | 2,981 | 2,024 | 0 |
 | H4 | 50000 | 50,000 | 1,081 | 2,003 | 391 | 943 |
 | H4 | 100000 | 100,000 | 688 | 1,500 | 106 | 1,336 |
@@ -85,6 +141,13 @@ VSS = expected total cost of the deterministic LP minus the stochastic LP. Oracl
 | H4 | 250000 | 187,021 | 368 | 1,049 | 0 | 1,655 |
 | H4 | 400000 | 187,021 | 368 | 1,049 | 0 | 1,655 |
 | H4 | 600000 | 187,021 | 368 | 1,049 | 0 | 1,655 |
+| H5 | 0 | 0 | 295 | 1,100 | 295 | 0 |
+| H5 | 50000 | 21,836 | 83 | 65 | 0 | 212 |
+| H5 | 100000 | 21,836 | 83 | 65 | 0 | 212 |
+| H5 | 150000 | 21,836 | 83 | 65 | 0 | 212 |
+| H5 | 250000 | 21,836 | 83 | 65 | 0 | 212 |
+| H5 | 400000 | 21,836 | 83 | 65 | 0 | 212 |
+| H5 | 600000 | 21,836 | 83 | 65 | 0 | 212 |
 
 ![budget](outputs/figures/budget_curve.png)
 
@@ -164,11 +227,146 @@ Every policy except the oracle is re-planned with each penalty and evaluated on 
 | Planner correlation assumption | D2 | planner assumes independence | mean_lost_packs | 1,076.61 |
 | Planner correlation assumption | D2 | planner assumes independence | p90_lost_packs | 2,616.56 |
 | Planner correlation assumption | D2 | planner assumes independence | mitigation_cost | 250,000.00 |
+| Correlation (do nothing) | D3 | correlated | mean_lost_packs | 105.28 |
+| Correlation (do nothing) | D3 | correlated | p90_lost_packs | 314.39 |
+| Correlation (do nothing) | D3 | correlated | p95_lost_packs | 1,058.71 |
+| Correlation (do nothing) | D3 | correlated | prob_any_loss | 0.12 |
+| Correlation (do nothing) | D3 | independent | mean_lost_packs | 53.25 |
+| Correlation (do nothing) | D3 | independent | p90_lost_packs | 0.00 |
+| Correlation (do nothing) | D3 | independent | p95_lost_packs | 287.69 |
+| Correlation (do nothing) | D3 | independent | prob_any_loss | 0.07 |
+| Planner correlation assumption | D3 | planner assumes correlation | mean_lost_packs | 45.64 |
+| Planner correlation assumption | D3 | planner assumes correlation | p90_lost_packs | 0.00 |
+| Planner correlation assumption | D3 | planner assumes correlation | mitigation_cost | 17,978.87 |
+| Planner correlation assumption | D3 | planner assumes independence | mean_lost_packs | 23.36 |
+| Planner correlation assumption | D3 | planner assumes independence | p90_lost_packs | 0.00 |
+| Planner correlation assumption | D3 | planner assumes independence | mitigation_cost | 18,865.56 |
+| Correlation (do nothing) | D4 | correlated | mean_lost_packs | 87.04 |
+| Correlation (do nothing) | D4 | correlated | p90_lost_packs | 0.00 |
+| Correlation (do nothing) | D4 | correlated | p95_lost_packs | 1,160.00 |
+| Correlation (do nothing) | D4 | correlated | prob_any_loss | 0.08 |
+| Correlation (do nothing) | D4 | independent | mean_lost_packs | 78.46 |
+| Correlation (do nothing) | D4 | independent | p90_lost_packs | 0.00 |
+| Correlation (do nothing) | D4 | independent | p95_lost_packs | 563.77 |
+| Correlation (do nothing) | D4 | independent | prob_any_loss | 0.08 |
+| Planner correlation assumption | D4 | planner assumes correlation | mean_lost_packs | 58.36 |
+| Planner correlation assumption | D4 | planner assumes correlation | p90_lost_packs | 0.00 |
+| Planner correlation assumption | D4 | planner assumes correlation | mitigation_cost | 3,277.79 |
+| Planner correlation assumption | D4 | planner assumes independence | mean_lost_packs | 86.24 |
+| Planner correlation assumption | D4 | planner assumes independence | p90_lost_packs | 0.00 |
+| Planner correlation assumption | D4 | planner assumes independence | mitigation_cost | 3,838.80 |
+| Correlation (do nothing) | D5 | correlated | mean_lost_packs | 221.30 |
+| Correlation (do nothing) | D5 | correlated | p90_lost_packs | 361.07 |
+| Correlation (do nothing) | D5 | correlated | p95_lost_packs | 1,240.00 |
+| Correlation (do nothing) | D5 | correlated | prob_any_loss | 0.62 |
+| Correlation (do nothing) | D5 | independent | mean_lost_packs | 196.58 |
+| Correlation (do nothing) | D5 | independent | p90_lost_packs | 360.00 |
+| Correlation (do nothing) | D5 | independent | p95_lost_packs | 1,012.00 |
+| Correlation (do nothing) | D5 | independent | prob_any_loss | 0.64 |
+| Planner correlation assumption | D5 | planner assumes correlation | mean_lost_packs | 84.37 |
+| Planner correlation assumption | D5 | planner assumes correlation | p90_lost_packs | 141.00 |
+| Planner correlation assumption | D5 | planner assumes correlation | mitigation_cost | 33,845.32 |
+| Planner correlation assumption | D5 | planner assumes independence | mean_lost_packs | 108.82 |
+| Planner correlation assumption | D5 | planner assumes independence | p90_lost_packs | 213.55 |
+| Planner correlation assumption | D5 | planner assumes independence | mitigation_cost | 27,671.27 |
+| Correlation (do nothing) | D6 | correlated | mean_lost_packs | 973.57 |
+| Correlation (do nothing) | D6 | correlated | p90_lost_packs | 2,600.00 |
+| Correlation (do nothing) | D6 | correlated | p95_lost_packs | 2,600.00 |
+| Correlation (do nothing) | D6 | correlated | prob_any_loss | 0.70 |
+| Correlation (do nothing) | D6 | independent | mean_lost_packs | 1,269.34 |
+| Correlation (do nothing) | D6 | independent | p90_lost_packs | 2,600.00 |
+| Correlation (do nothing) | D6 | independent | p95_lost_packs | 2,700.00 |
+| Correlation (do nothing) | D6 | independent | prob_any_loss | 0.86 |
+| Planner correlation assumption | D6 | planner assumes correlation | mean_lost_packs | 93.43 |
+| Planner correlation assumption | D6 | planner assumes correlation | p90_lost_packs | 27.50 |
+| Planner correlation assumption | D6 | planner assumes correlation | mitigation_cost | 173,815.54 |
+| Planner correlation assumption | D6 | planner assumes independence | mean_lost_packs | 80.52 |
+| Planner correlation assumption | D6 | planner assumes independence | p90_lost_packs | 0.00 |
+| Planner correlation assumption | D6 | planner assumes independence | mitigation_cost | 198,533.42 |
+| Correlation (do nothing) | H1 | correlated | mean_lost_packs | 1,680.87 |
+| Correlation (do nothing) | H1 | correlated | p90_lost_packs | 2,700.00 |
+| Correlation (do nothing) | H1 | correlated | p95_lost_packs | 2,700.00 |
+| Correlation (do nothing) | H1 | correlated | prob_any_loss | 0.90 |
+| Correlation (do nothing) | H1 | independent | mean_lost_packs | 1,740.35 |
+| Correlation (do nothing) | H1 | independent | p90_lost_packs | 2,700.00 |
+| Correlation (do nothing) | H1 | independent | p95_lost_packs | 2,700.00 |
+| Correlation (do nothing) | H1 | independent | prob_any_loss | 0.96 |
+| Planner correlation assumption | H1 | planner assumes correlation | mean_lost_packs | 218.24 |
+| Planner correlation assumption | H1 | planner assumes correlation | p90_lost_packs | 580.26 |
+| Planner correlation assumption | H1 | planner assumes correlation | mitigation_cost | 39,086.43 |
+| Planner correlation assumption | H1 | planner assumes independence | mean_lost_packs | 160.13 |
+| Planner correlation assumption | H1 | planner assumes independence | p90_lost_packs | 756.89 |
+| Planner correlation assumption | H1 | planner assumes independence | mitigation_cost | 42,856.87 |
+| Correlation (do nothing) | H2 | correlated | mean_lost_packs | 272.47 |
+| Correlation (do nothing) | H2 | correlated | p90_lost_packs | 750.00 |
+| Correlation (do nothing) | H2 | correlated | p95_lost_packs | 1,200.00 |
+| Correlation (do nothing) | H2 | correlated | prob_any_loss | 0.52 |
+| Correlation (do nothing) | H2 | independent | mean_lost_packs | 241.03 |
+| Correlation (do nothing) | H2 | independent | p90_lost_packs | 660.00 |
+| Correlation (do nothing) | H2 | independent | p95_lost_packs | 1,100.00 |
+| Correlation (do nothing) | H2 | independent | prob_any_loss | 0.49 |
+| Planner correlation assumption | H2 | planner assumes correlation | mean_lost_packs | 18.73 |
+| Planner correlation assumption | H2 | planner assumes correlation | p90_lost_packs | 0.00 |
+| Planner correlation assumption | H2 | planner assumes correlation | mitigation_cost | 35,032.73 |
+| Planner correlation assumption | H2 | planner assumes independence | mean_lost_packs | 33.41 |
+| Planner correlation assumption | H2 | planner assumes independence | p90_lost_packs | 0.00 |
+| Planner correlation assumption | H2 | planner assumes independence | mitigation_cost | 35,475.47 |
+| Correlation (do nothing) | H3 | correlated | mean_lost_packs | 59.49 |
+| Correlation (do nothing) | H3 | correlated | p90_lost_packs | 0.00 |
+| Correlation (do nothing) | H3 | correlated | p95_lost_packs | 431.55 |
+| Correlation (do nothing) | H3 | correlated | prob_any_loss | 0.06 |
+| Correlation (do nothing) | H3 | independent | mean_lost_packs | 39.80 |
+| Correlation (do nothing) | H3 | independent | p90_lost_packs | 0.00 |
+| Correlation (do nothing) | H3 | independent | p95_lost_packs | 0.00 |
+| Correlation (do nothing) | H3 | independent | prob_any_loss | 0.03 |
+| Planner correlation assumption | H3 | planner assumes correlation | mean_lost_packs | 37.22 |
+| Planner correlation assumption | H3 | planner assumes correlation | p90_lost_packs | 0.00 |
+| Planner correlation assumption | H3 | planner assumes correlation | mitigation_cost | 5,913.00 |
+| Planner correlation assumption | H3 | planner assumes independence | mean_lost_packs | 36.22 |
+| Planner correlation assumption | H3 | planner assumes independence | p90_lost_packs | 0.00 |
+| Planner correlation assumption | H3 | planner assumes independence | mitigation_cost | 10,841.44 |
+| Correlation (do nothing) | H4 | correlated | mean_lost_packs | 2,019.89 |
+| Correlation (do nothing) | H4 | correlated | p90_lost_packs | 2,980.66 |
+| Correlation (do nothing) | H4 | correlated | p95_lost_packs | 4,200.00 |
+| Correlation (do nothing) | H4 | correlated | prob_any_loss | 0.94 |
+| Correlation (do nothing) | H4 | independent | mean_lost_packs | 2,221.56 |
+| Correlation (do nothing) | H4 | independent | p90_lost_packs | 3,303.50 |
+| Correlation (do nothing) | H4 | independent | p95_lost_packs | 4,200.00 |
+| Correlation (do nothing) | H4 | independent | prob_any_loss | 0.98 |
+| Planner correlation assumption | H4 | planner assumes correlation | mean_lost_packs | 368.44 |
+| Planner correlation assumption | H4 | planner assumes correlation | p90_lost_packs | 1,048.57 |
+| Planner correlation assumption | H4 | planner assumes correlation | mitigation_cost | 187,020.83 |
+| Planner correlation assumption | H4 | planner assumes independence | mean_lost_packs | 397.79 |
+| Planner correlation assumption | H4 | planner assumes independence | p90_lost_packs | 1,300.00 |
+| Planner correlation assumption | H4 | planner assumes independence | mitigation_cost | 201,142.82 |
+| Correlation (do nothing) | H5 | correlated | mean_lost_packs | 280.22 |
+| Correlation (do nothing) | H5 | correlated | p90_lost_packs | 1,064.00 |
+| Correlation (do nothing) | H5 | correlated | p95_lost_packs | 1,203.00 |
+| Correlation (do nothing) | H5 | correlated | prob_any_loss | 0.35 |
+| Correlation (do nothing) | H5 | independent | mean_lost_packs | 297.44 |
+| Correlation (do nothing) | H5 | independent | p90_lost_packs | 1,006.00 |
+| Correlation (do nothing) | H5 | independent | p95_lost_packs | 1,200.00 |
+| Correlation (do nothing) | H5 | independent | prob_any_loss | 0.39 |
+| Planner correlation assumption | H5 | planner assumes correlation | mean_lost_packs | 83.16 |
+| Planner correlation assumption | H5 | planner assumes correlation | p90_lost_packs | 65.30 |
+| Planner correlation assumption | H5 | planner assumes correlation | mitigation_cost | 21,835.81 |
+| Planner correlation assumption | H5 | planner assumes independence | mean_lost_packs | 70.67 |
+| Planner correlation assumption | H5 | planner assumes independence | p90_lost_packs | 51.00 |
+| Planner correlation assumption | H5 | planner assumes independence | mitigation_cost | 11,919.91 |
 
 ![correlation](outputs/figures/correlation_tests.png)
 
 - D1: with no mitigation, mean loss is lower when delays are correlated (1,034 vs 1,295). A planner that assumes independence, evaluated in the correlated world, has P90 loss 578 vs 106 for the planner that models correlation.
 - D2: with no mitigation, mean loss is lower when delays are correlated (1,683 vs 1,987). A planner that assumes independence, evaluated in the correlated world, has P90 loss 2,617 vs 2,549 for the planner that models correlation.
+- D3: with no mitigation, mean loss is higher when delays are correlated (105 vs 53). A planner that assumes independence, evaluated in the correlated world, has P90 loss 0 vs 0 for the planner that models correlation.
+- D4: with no mitigation, mean loss is higher when delays are correlated (87 vs 78). A planner that assumes independence, evaluated in the correlated world, has P90 loss 0 vs 0 for the planner that models correlation.
+- D5: with no mitigation, mean loss is higher when delays are correlated (221 vs 197). A planner that assumes independence, evaluated in the correlated world, has P90 loss 214 vs 141 for the planner that models correlation.
+- D6: with no mitigation, mean loss is lower when delays are correlated (974 vs 1,269). A planner that assumes independence, evaluated in the correlated world, has P90 loss 0 vs 28 for the planner that models correlation.
+- H1: with no mitigation, mean loss is lower when delays are correlated (1,681 vs 1,740). A planner that assumes independence, evaluated in the correlated world, has P90 loss 757 vs 580 for the planner that models correlation.
+- H2: with no mitigation, mean loss is higher when delays are correlated (272 vs 241). A planner that assumes independence, evaluated in the correlated world, has P90 loss 0 vs 0 for the planner that models correlation.
+- H3: with no mitigation, mean loss is higher when delays are correlated (59 vs 40). A planner that assumes independence, evaluated in the correlated world, has P90 loss 0 vs 0 for the planner that models correlation.
+- H4: with no mitigation, mean loss is lower when delays are correlated (2,020 vs 2,222). A planner that assumes independence, evaluated in the correlated world, has P90 loss 1,300 vs 1,049 for the planner that models correlation.
+- H5: with no mitigation, mean loss is lower when delays are correlated (280 vs 297). A planner that assumes independence, evaluated in the correlated world, has P90 loss 51 vs 65 for the planner that models correlation.
 
 ## Gating parts and centerpiece
 

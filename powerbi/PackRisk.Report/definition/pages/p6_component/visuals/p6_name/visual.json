@@ -17,22 +17,17 @@
                                                                    "projections":  [
                                                                                        {
                                                                                            "field":  {
-                                                                                                         "Aggregation":  {
-                                                                                                                             "Expression":  {
-                                                                                                                                                "Column":  {
-                                                                                                                                                               "Expression":  {
-                                                                                                                                                                                  "SourceRef":  {
-                                                                                                                                                                                                    "Entity":  "dim_component"
-                                                                                                                                                                                                }
-                                                                                                                                                                              },
-                                                                                                                                                               "Property":  "name"
-                                                                                                                                                           }
-                                                                                                                                            },
-                                                                                                                             "Function":  3
-                                                                                                                         }
+                                                                                                         "Measure":  {
+                                                                                                                         "Expression":  {
+                                                                                                                                            "SourceRef":  {
+                                                                                                                                                              "Entity":  "_Measures"
+                                                                                                                                                          }
+                                                                                                                                        },
+                                                                                                                         "Property":  "Drill Component"
+                                                                                                                     }
                                                                                                      },
-                                                                                           "queryRef":  "Min(dim_component.name)",
-                                                                                           "nativeQueryRef":  "Min of name"
+                                                                                           "queryRef":  "_Measures.Drill Component",
+                                                                                           "nativeQueryRef":  "Drill Component"
                                                                                        }
                                                                                    ]
                                                                }
@@ -45,7 +40,7 @@
                                                                          "fontSize":  {
                                                                                           "expr":  {
                                                                                                        "Literal":  {
-                                                                                                                       "Value":  "18D"
+                                                                                                                       "Value":  "16D"
                                                                                                                    }
                                                                                                    }
                                                                                       }

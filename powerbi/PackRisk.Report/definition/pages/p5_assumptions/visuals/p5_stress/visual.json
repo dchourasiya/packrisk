@@ -118,7 +118,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Stress tests (all scenarios; not filtered by the scenario slicer)\u0027"
+                                                                                                                                 "Value":  "\u0027Correlation stress tests for this scenario\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

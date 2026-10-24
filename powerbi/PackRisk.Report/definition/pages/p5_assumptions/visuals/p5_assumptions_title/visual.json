@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "Everything operational is simulated. Full detail in ASSUMPTIONS.md.",
+                                                                                                                      "value":  "The assumptions apply to every scenario. The two tables at the bottom change with the scenario.",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#C9D1D9"

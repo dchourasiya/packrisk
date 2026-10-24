@@ -1,9 +1,9 @@
 table fact_policy_evaluation
-	lineageTag: 461c0807-2ca8-4e02-92f6-39d8f0506d7b
+	lineageTag: 33d5ede7-36a3-4e76-af8d-5cc5a1fa4a1c
 
 	column scenario_id
 		dataType: string
-		lineageTag: e411ec0a-7ed4-495f-99e9-47a7fa79b23b
+		lineageTag: cf38cc3e-aceb-40ac-97f5-914ebe6f5890
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_policy_evaluation
 
 	column policy_id
 		dataType: string
-		lineageTag: 06466bfc-1611-4794-83d6-95955fd44088
+		lineageTag: aa2569fe-5b93-4ac5-ac1c-f790065ef51f
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -19,7 +19,7 @@ table fact_policy_evaluation
 
 	column mean_lost_packs
 		dataType: double
-		lineageTag: c86d3e37-5561-4aba-9c85-0e795cc471b4
+		lineageTag: 31622a23-9183-444a-854b-9b7f7b869e64
 		summarizeBy: sum
 		sourceColumn: mean_lost_packs
 
@@ -27,7 +27,7 @@ table fact_policy_evaluation
 
 	column p90_lost_packs
 		dataType: double
-		lineageTag: dc6c63ce-fc6f-45d4-ac71-f15b87e2f816
+		lineageTag: 77869fd3-13ed-45fb-aac8-9bfd32d1830d
 		summarizeBy: sum
 		sourceColumn: p90_lost_packs
 
@@ -35,7 +35,7 @@ table fact_policy_evaluation
 
 	column max_lost_packs
 		dataType: double
-		lineageTag: a7612776-2db7-48a7-819c-894271559d2f
+		lineageTag: 7dd785bc-9b18-46bd-8193-374bfaa13fbe
 		summarizeBy: sum
 		sourceColumn: max_lost_packs
 
@@ -43,7 +43,7 @@ table fact_policy_evaluation
 
 	column plan_attainment
 		dataType: double
-		lineageTag: 01bb8e7e-0344-4c37-a0b5-2e1549a6689b
+		lineageTag: 9a60af69-e677-4575-a169-b72db38af34b
 		summarizeBy: sum
 		sourceColumn: plan_attainment
 
@@ -51,7 +51,7 @@ table fact_policy_evaluation
 
 	column mean_shortage_weeks
 		dataType: double
-		lineageTag: 6a9e5f5d-3609-4275-abb7-ccb2b8399137
+		lineageTag: 98b314e8-ac69-4ef5-9c56-cdb8e5de7e82
 		summarizeBy: sum
 		sourceColumn: mean_shortage_weeks
 
@@ -59,7 +59,7 @@ table fact_policy_evaluation
 
 	column mean_backlog_pack_weeks
 		dataType: double
-		lineageTag: 1179d2e6-3cdd-409c-a7c0-a8624dc2b0c8
+		lineageTag: 5e44a343-cf58-4463-8768-8d333fc3ff75
 		summarizeBy: sum
 		sourceColumn: mean_backlog_pack_weeks
 
@@ -67,7 +67,7 @@ table fact_policy_evaluation
 
 	column mitigation_cost
 		dataType: double
-		lineageTag: 5223752d-c990-4fb8-b585-a4cde52c4e88
+		lineageTag: d43f7af4-3472-4ea5-ab0c-0d0ef06e6b1f
 		summarizeBy: sum
 		sourceColumn: mitigation_cost
 
@@ -75,7 +75,7 @@ table fact_policy_evaluation
 
 	column budget_used_share
 		dataType: double
-		lineageTag: a42b763a-8c9b-4b00-8e06-53a38ba05478
+		lineageTag: 55472d01-9f39-4c67-8a00-228ca08375fe
 		summarizeBy: sum
 		sourceColumn: budget_used_share
 
@@ -83,7 +83,7 @@ table fact_policy_evaluation
 
 	column mean_objective
 		dataType: double
-		lineageTag: cfd73553-6d1b-4acc-9d84-7db1cb822843
+		lineageTag: 98b8e155-36cb-45da-a168-9d52ac48b3d6
 		summarizeBy: sum
 		sourceColumn: mean_objective
 
@@ -91,7 +91,7 @@ table fact_policy_evaluation
 
 	column oracle_capture_share
 		dataType: double
-		lineageTag: bf104fce-ec01-4b4b-8a99-4b8d6830e59d
+		lineageTag: df4a72eb-5176-4711-aa27-1dc6616a06ce
 		summarizeBy: sum
 		sourceColumn: oracle_capture_share
 

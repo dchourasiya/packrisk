@@ -120,5 +120,58 @@
                                                             ]
                                               },
                    "drillFilterOtherVisuals":  true
-               }
+               },
+    "filterConfig":  {
+                         "filters":  [
+                                         {
+                                             "name":  "filter033",
+                                             "field":  {
+                                                           "Measure":  {
+                                                                           "Expression":  {
+                                                                                              "SourceRef":  {
+                                                                                                                "Entity":  "_Measures"
+                                                                                                            }
+                                                                                          },
+                                                                           "Property":  "Component Selected"
+                                                                       }
+                                                       },
+                                             "type":  "Advanced",
+                                             "howCreated":  "User",
+                                             "filter":  {
+                                                            "Version":  2,
+                                                            "From":  [
+                                                                         {
+                                                                             "Name":  "m",
+                                                                             "Entity":  "_Measures",
+                                                                             "Type":  0
+                                                                         }
+                                                                     ],
+                                                            "Where":  [
+                                                                          {
+                                                                              "Condition":  {
+                                                                                                "Comparison":  {
+                                                                                                                   "ComparisonKind":  0,
+                                                                                                                   "Left":  {
+                                                                                                                                "Measure":  {
+                                                                                                                                                "Expression":  {
+                                                                                                                                                                   "SourceRef":  {
+                                                                                                                                                                                     "Source":  "m"
+                                                                                                                                                                                 }
+                                                                                                                                                               },
+                                                                                                                                                "Property":  "Component Selected"
+                                                                                                                                            }
+                                                                                                                            },
+                                                                                                                   "Right":  {
+                                                                                                                                 "Literal":  {
+                                                                                                                                                 "Value":  "1L"
+                                                                                                                                             }
+                                                                                                                             }
+                                                                                                               }
+                                                                                            }
+                                                                          }
+                                                                      ]
+                                                        }
+                                         }
+                                     ]
+                     }
 }

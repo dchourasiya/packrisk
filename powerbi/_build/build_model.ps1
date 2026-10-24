@@ -209,6 +209,8 @@ $measures = @(
   @{ n = "Parts Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_component[component_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Suppliers Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Stopping Suppliers Late Rate"; f = "0.0%"; e = @("AVERAGEX ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ), CALCULATE ( MAX ( dim_supplier[late_rate] ) ) )") },
+  @{ n = "Drill Component"; f = $null; e = @("IF ( HASONEVALUE ( dim_component[component_id] ), SELECTEDVALUE ( dim_component[name] ), `"No part selected. On Scenario Explorer, right-click a part > Drill through.`" )") },
+  @{ n = "Component Selected"; f = "0"; e = @("INT ( HASONEVALUE ( dim_component[component_id] ) )") },
   @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
       'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )',
       'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )',
@@ -270,6 +272,7 @@ $rels += @{ from = "dim_component.primary_supplier_id"; to = "dim_supplier.suppl
 $rels += @{ from = "fact_receipts.supplier_id"; to = "dim_supplier.supplier_id"; inactive = $true }
 foreach ($f in "fact_weekly_trace","fact_inventory_trace","fact_gating_frequency","fact_actions") { $rels += @{ from = "$f.week"; to = "dim_week.week" } }
 foreach ($f in "fact_weekly_trace","fact_inventory_trace") { $rels += @{ from = "$f.realization_type"; to = "dim_realization_type.realization_type" } }
+$rels += @{ from = "fact_stress_tests.scenario_id"; to = "dim_scenario.scenario_id" }
 foreach ($k in "scenario_id", "policy_id") { $rels += @{ from = "fact_penalty_sensitivity.$k"; to = $(if ($k -eq "scenario_id") { "dim_scenario.scenario_id" } else { "dim_policy.policy_id" }) } }
 
 $sb = New-Object Text.StringBuilder

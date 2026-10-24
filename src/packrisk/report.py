@@ -101,8 +101,13 @@ def fig_gating(t, sid="D1"):
     plt.close(fig)
 
 
+FIG_BUDGET_SCENARIOS = ["D1", "H4"]        # static figure only; every scenario is in the CSV
+FIG_CORRELATION_SCENARIOS = ["D1", "D2"]
+
+
 def fig_budget(t):
     b = t["fact_budget_curve"]
+    b = b[b.scenario_id.isin(FIG_BUDGET_SCENARIOS)]
     fig, axes = plt.subplots(1, b.scenario_id.nunique(), figsize=(10, 3.8), sharey=False)
     for ax, (sid, d) in zip(np.atleast_1d(axes), b.groupby("scenario_id")):
         ax.plot(d.budget / 1000, d.do_nothing_mean_lost, "--", color=COLORS["P1"], label="Do nothing")
@@ -122,6 +127,7 @@ def fig_budget(t):
 def fig_correlation(t):
     c = t["corr"]
     st = t["fact_stress_tests"]
+    st = st[st.scenario_id.isin(FIG_CORRELATION_SCENARIOS)]
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
     d = c[c.scenario_id == "D1"]
     bins = np.linspace(0, d.lost_packs.max() + 1, 25)
