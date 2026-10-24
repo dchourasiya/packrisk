@@ -163,7 +163,7 @@ function PolicyF($id) { FIn "dim_policy" "policy_id" @($id) }
 
 # ================= Page 1: Executive Overview =================
 $pg = "p1_exec"
-Add-Furniture $pg "Executive Overview" "Battery-pack supply risk. KPIs compare the smart plan (stochastic optimization) with doing nothing, for the selected scenario."
+Add-Furniture $pg "Executive Overview" "Smart plan vs doing nothing for the selected scenario. On all 5 unseen test scenarios the smart plan won 5 of 5 (716 packs saved on average, `$9.1M net)."
 $head = V-Card (Meas "Headline") "" 14
 $head.visualContainerObjects = (NoTitle)
 Add-Visual $pg "p1_headline" 16 116 1248 50 (CardColor (Container $head $true "#FFFFFF" "#C8102E") "#111827")
@@ -196,10 +196,9 @@ $pen = DataColor $pen $TEAL
 $pen.objects.labels = @(@{ properties = [ordered]@{ show = (L "true"); labelPrecision = (L "1L") } })
 Add-Visual $pg "p1_penalty" 936 316 328 148 $pen
 # Held-out evidence: scenarios the planner was never tuned on (ignores the scenario slicer)
-Add-Visual $pg "p1_ho1" 936 472 328 64 (KPI "Held-out Wins" "All 5 unseen tests (fixed): won" $TEAL 16)
-Add-Visual $pg "p1_ho2" 936 544 328 64 (KPI "Held-out Packs Protected (avg)" "All 5 unseen tests (fixed): packs saved, avg" $TEAL 16)
-Add-Visual $pg "p1_ho3" 936 616 328 64 (& { $hv = KPI "Held-out Cost Avoided" "All 5 unseen tests (fixed): net savings" $TEAL 16; $hv.objects.labels[0].properties.labelPrecision = (L "1L"); $hv })
-
+Add-Visual $pg "p1_ho1" 936 472 328 64 (KPI "Scenario Type" "This scenario is a" $STEEL 14)
+Add-Visual $pg "p1_ho2" 936 544 328 64 (KPI "Lost Packs (P90)" "Bad case (worst 10%): do nothing" $RED 16) @(PolicyF "P1")
+Add-Visual $pg "p1_ho3" 936 616 328 64 (KPI "Lost Packs (P90)" "Bad case (worst 10%): smart plan" $TEAL 16) @(PolicyF "P5")
 # ================= Page 2: Supplier Performance =================
 $pg = "p2_supplier"
 Add-Furniture $pg "Supplier Performance" "Supplier history is fixed; everything on this page shows its impact in the selected scenario (if we do nothing)."
@@ -251,16 +250,13 @@ Add-Visual $pg "p3_heatmap" 16 444 1248 236 $heat @((PolicyF "P1"), (FMeasure "G
 
 # ================= Page 4: Scenario Explorer =================
 $pg = "p4_explorer"
-Add-Furniture $pg "Scenario Explorer" "Pick policies to compare. Right-click a component in the actions table > Drill through > Component detail."
+Add-Furniture $pg "Scenario Explorer" "Pick strategies to compare and see exactly what each plan buys in the selected scenario."
 Add-Visual $pg "p4_policy" 16 116 250 250 (V-Slicer "dim_policy" "plain_name" "Strategy (pick any)" $false "Basic" $null $null) @(FIn "dim_policy" "policy_id" $P1to7) 5
 Add-Visual $pg "p4_lostbar" 278 116 660 250 (V-Chart "clusteredBarChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")); Y = (Role (Proj (Meas "Lost Packs (mean)") "Average"), (Proj (Meas "Lost Packs (P90)") "Bad case (P90)")) }) "Lost packs by strategy: average vs bad case (worst 10%)" ([ordered]@{ field = (Col "dim_policy" "plain_name"); direction = "Ascending" }))
 $vss = KPI "VSS (`$)" "Value of planning for uncertainty" $TEAL 24; $vss.objects.labels[0].properties.labelPrecision = (L "1L")
 Add-Visual $pg "p4_vss" 950 116 314 110 $vss
-Add-Visual $pg "p4_budgetnote" 950 236 314 130 (Container (V-Text @(
-      (P "NOTE" 9 $true "#C8102E"),
-      (P "How much budget is enough?" 12 $true "#111827"),
-      (P "The chart below re-plans the smart plan at budgets from `$0 to `$600K for the selected scenario. Where the lines flatten, more money stops helping." 9 $false "#4B5563"))) $true)
+Add-Visual $pg "p4_budgetnote" 950 236 314 130 (& { $bn = KPI "Budget Enough" "Budget needed (more barely helps)" $CHAR 24; $bn })
 $actCols = @((Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "dim_component" "component_id") "ID"), (Proj (Col "dim_component" "name") "Component"),
   (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost"))
 Add-Visual $pg "p4_actions" 16 376 616 304 (V-Chart "tableEx" ([ordered]@{ Values = (Role $actCols) }) "What the plan actually buys (empty = buys nothing in this scenario)" ([ordered]@{ field = (Col "fact_actions" "week"); direction = "Ascending" })) @(FIn "fact_actions" "policy_id" $P1to7)
@@ -309,27 +305,6 @@ $stCols = "test", "scenario_id", "setting", "metric", "value"
 Add-Visual $pg "p5_stress" 16 446 828 234 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($stCols | ForEach-Object { Proj (Col "fact_stress_tests" $_) })) }) "Correlation stress tests for this scenario (all numbers)")
 Add-Visual $pg "p5_corr" 856 446 408 234 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "fact_actions" "policy_id") "Policy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "What the smart plan buys if it assumes shared vs independent shocks") @(FIn "fact_actions" "policy_id" @("P5-corr", "P5-indep"))
 
-# ================= Hidden drill-through: Component detail =================
-$pg = "p6_component"
-Add-Furniture $pg "Component detail" "Drill-through page. Use the back arrow (top left) or Ctrl+click it to return."
-Add-Visual $pg "p6_realization" 16 116 300 70 (V-Slicer "dim_realization_type" "outcome" "Outcome" $true "Dropdown" @("Bad case (worst 10%)") "RealizationSync") $null 5
-Add-Visual $pg "p6_name" 328 116 936 70 (V-Card (Meas "Drill Component") "Component" 16)
-Add-Visual $pg "p6_cover" 16 196 616 238 (V-Chart "lineChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Weeks of Cover")))
-      Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "Weeks of stock left, by strategy" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
-Add-Visual $pg "p6_gating" 648 196 616 238 (V-Chart "clusteredColumnChart" ([ordered]@{
-      Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Gating Frequency") "Share of runs"))
-      Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "How often this part stops the line, by week" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
-Add-Visual $pg "p6_actions" 16 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "Actions bought for this part (empty = no strategy buys anything for it)") @(FIn "fact_actions" "policy_id" $P1to7)
-Add-Visual $pg "p6_supplier" 648 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) $supNames[$_] })) }) "Primary supplier scorecard") @(FMeasure "Is Primary Supplier" 0 "1L")
-
-# Drill page: the detail visuals stay empty until a single part is selected (avoids mixing all parts)
-foreach ($v in $script:pageVisuals["p6_component"]) {
-  if ($v.name -in "p6_cover", "p6_gating", "p6_actions", "p6_supplier") {
-    $f = FMeasure "Component Selected" 0 "1L"
-    if ($v.filterConfig) { $v.filterConfig.filters = @($v.filterConfig.filters) + @($f) } else { $v.filterConfig = @{ filters = @($f) } }
-  }
-}
 # Wider category labels on bar charts whose axis holds strategy or part names
 foreach ($pv in $script:pageVisuals.Values) { foreach ($v in $pv) { if ($v.name -in "p1_costbar", "p1_gating", "p4_lostbar") { [void](Margin $v.visual) } } }
 
@@ -340,17 +315,11 @@ $pageBg = @(@{ properties = [ordered]@{
       transparency = (L "0D") } })
 $pages = [ordered]@{
   p2_supplier = "Supplier Performance"; p1_exec = "Executive Overview"; p3_production = "Production Risk"
-  p4_explorer = "Scenario Explorer"; p5_assumptions = "Assumptions & Limitations"; p6_component = "Component detail"
+  p4_explorer = "Scenario Explorer"; p5_assumptions = "Assumptions & Limitations"
 }
 foreach ($pn in $pages.Keys) {
   $page = [ordered]@{ '$schema' = "$SCHEMA/page/2.0.0/schema.json"; name = $pn; displayName = $pages[$pn]; displayOption = "FitToPage"; height = 720; width = 1280
     objects = [ordered]@{ background = $pageBg; outspace = @(@{ properties = @{ color = @{ solid = @{ color = (S "#0B0F14") } } } }) } }
-  if ($pn -eq "p6_component") {
-    $dname = FName
-    $page.filterConfig = @{ filters = @([ordered]@{ name = $dname; field = (Col "dim_component" "component_id"); type = "Categorical"; howCreated = "Drillthrough" }) }
-    $page.visibility = "HiddenInViewMode"
-    $page.pageBinding = [ordered]@{ name = "ComponentDrill"; type = "Drillthrough"; acceptsFilterContext = "None"; parameters = @([ordered]@{ name = "ComponentParam"; boundFilter = $dname; fieldExpr = (Col "dim_component" "component_id") }) }
-  }
   Write-Json (Join-Path $rdef "pages\$pn\page.json") $page
   foreach ($v in $script:pageVisuals[$pn]) { Write-Json (Join-Path $rdef "pages\$pn\visuals\$($v.name)\visual.json") $v }
 }

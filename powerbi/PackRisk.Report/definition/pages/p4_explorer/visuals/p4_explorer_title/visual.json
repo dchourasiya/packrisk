@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "Pick policies to compare. Right-click a component in the actions table \u003e Drill through \u003e Component detail.",
+                                                                                                                      "value":  "Pick strategies to compare and see exactly what each plan buys in the selected scenario.",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#C9D1D9"

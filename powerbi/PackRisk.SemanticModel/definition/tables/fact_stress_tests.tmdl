@@ -1,9 +1,9 @@
 table fact_stress_tests
-	lineageTag: 4c13bf6a-a7b2-4817-9f72-5d34db897dbe
+	lineageTag: b8915353-bd15-413b-b32a-bbd75da2f354
 
 	column test
 		dataType: string
-		lineageTag: 22b2565a-bab2-4843-a0ad-4506ef8cfd53
+		lineageTag: 5dd18b42-5c27-4080-a820-a560672e8a5b
 		summarizeBy: none
 		sourceColumn: test
 
@@ -11,7 +11,7 @@ table fact_stress_tests
 
 	column scenario_id
 		dataType: string
-		lineageTag: e1bbeeeb-68a3-425a-8ead-6f74e3f4cab1
+		lineageTag: 6490282e-23de-411d-94b4-d61608251798
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -19,7 +19,7 @@ table fact_stress_tests
 
 	column setting
 		dataType: string
-		lineageTag: 83724e4f-cce0-4250-8d97-0a1c28fd7b23
+		lineageTag: 17e1888c-9714-40bf-bf89-a72e9835e0bc
 		summarizeBy: none
 		sourceColumn: setting
 
@@ -27,7 +27,7 @@ table fact_stress_tests
 
 	column metric
 		dataType: string
-		lineageTag: 94527583-e617-46f2-b225-e441ec91c93c
+		lineageTag: 05f6b08d-84dc-42b8-99b7-4fe947a53a20
 		summarizeBy: none
 		sourceColumn: metric
 
@@ -36,7 +36,7 @@ table fact_stress_tests
 	column value
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 0833ec4a-e2bd-4e37-b7ef-71092b80ab72
+		lineageTag: 49c67c53-8699-42b0-ae37-054aed049145
 		summarizeBy: sum
 		sourceColumn: value
 

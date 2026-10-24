@@ -1,5 +1,5 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": { "type": "SemanticModel", "displayName": "PackRisk" },
-  "config": { "version": "2.0", "logicalId": "749d2005-15f4-4e6f-8a40-971d17599d0d" }
+  "config": { "version": "2.0", "logicalId": "d369d018-97e6-4d91-b4d9-22f8d0564c67" }
 }

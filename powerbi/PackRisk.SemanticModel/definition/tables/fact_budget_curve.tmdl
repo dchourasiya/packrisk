@@ -1,9 +1,9 @@
 table fact_budget_curve
-	lineageTag: 042a4d48-56dd-465f-8aa2-25cfdece080e
+	lineageTag: c5a710fd-3da4-465f-a737-6cd75382a981
 
 	column scenario_id
 		dataType: string
-		lineageTag: c23003f3-fb2f-403f-a725-b156944350c3
+		lineageTag: 9a8711ae-bc03-40f3-a177-5c89401ef5ea
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -12,7 +12,7 @@ table fact_budget_curve
 	column budget
 		dataType: double
 		formatString: \$#,0
-		lineageTag: 2d0ffc06-9ff0-4203-8009-3e6abea5acb3
+		lineageTag: c594fef8-f36b-460d-b86b-409c2a4bfff1
 		summarizeBy: sum
 		sourceColumn: budget
 
@@ -20,7 +20,7 @@ table fact_budget_curve
 
 	column do_nothing_mean_lost
 		dataType: double
-		lineageTag: d021a114-b587-4942-9ff9-90d9d7f99f59
+		lineageTag: 1930c09b-5e7e-4bcf-b6f7-1a9b6c064d88
 		summarizeBy: sum
 		sourceColumn: do_nothing_mean_lost
 
@@ -28,7 +28,7 @@ table fact_budget_curve
 
 	column stochastic_mean_lost
 		dataType: double
-		lineageTag: 4216377b-5d0e-4c31-a7ca-d005ab23ad5c
+		lineageTag: 4f58af2d-4426-4e21-887d-bbbb1fbd2bf0
 		summarizeBy: sum
 		sourceColumn: stochastic_mean_lost
 
@@ -36,7 +36,7 @@ table fact_budget_curve
 
 	column stochastic_p90_lost
 		dataType: double
-		lineageTag: e9671144-73c3-48a4-aaf2-30fb88b67cce
+		lineageTag: 3053f5bb-3292-4ec5-89e7-6915850a5632
 		summarizeBy: sum
 		sourceColumn: stochastic_p90_lost
 
@@ -44,7 +44,7 @@ table fact_budget_curve
 
 	column oracle_mean_lost
 		dataType: double
-		lineageTag: efb38708-0867-4533-a743-6b9a3a0a111e
+		lineageTag: bc677b2a-6426-44d2-8498-d3f0f6f3d7ce
 		summarizeBy: sum
 		sourceColumn: oracle_mean_lost
 
@@ -52,7 +52,7 @@ table fact_budget_curve
 
 	column mitigation_cost
 		dataType: double
-		lineageTag: fbcbb992-eaf0-47e3-86f6-923203be674f
+		lineageTag: b44d3ae3-9206-45a2-b2e5-bd7a76dfbe0b
 		summarizeBy: sum
 		sourceColumn: mitigation_cost
 
@@ -60,7 +60,7 @@ table fact_budget_curve
 
 	column packs_protected
 		dataType: double
-		lineageTag: e6b3a4e1-ba98-412d-8915-4f970633b537
+		lineageTag: 6d085451-a6a3-4cc9-8870-822aba9c92da
 		summarizeBy: sum
 		sourceColumn: packs_protected
 

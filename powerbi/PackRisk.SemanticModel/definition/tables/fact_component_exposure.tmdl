@@ -1,9 +1,9 @@
 table fact_component_exposure
-	lineageTag: bb7db592-f3d7-4cc8-9339-e72f5a483ea4
+	lineageTag: 397483c4-0cbe-4e88-b384-65225b4e9f26
 
 	column component_id
 		dataType: string
-		lineageTag: d7f44dfa-95e5-4fd7-987c-2f5a24360e6a
+		lineageTag: 53c37e6d-35bb-4cda-a01a-e678c4a808b5
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -11,7 +11,7 @@ table fact_component_exposure
 
 	column name
 		dataType: string
-		lineageTag: 27d4ef0e-2455-4188-9244-0922b834d255
+		lineageTag: a23a36fa-1678-4de2-9b8d-b68899383d7e
 		summarizeBy: none
 		sourceColumn: name
 
@@ -19,7 +19,7 @@ table fact_component_exposure
 
 	column category
 		dataType: string
-		lineageTag: a6fc4aa6-112e-4521-ba78-d30e505fa420
+		lineageTag: 9a073392-bfcc-4fdc-bb78-dda71b73e56a
 		summarizeBy: none
 		sourceColumn: category
 
@@ -27,7 +27,7 @@ table fact_component_exposure
 
 	column primary_supplier_id
 		dataType: string
-		lineageTag: 27ada394-3b16-4567-8e9a-4f9bcca8feb4
+		lineageTag: 569e5c15-3603-44ff-99e0-09ec78eec5ce
 		summarizeBy: none
 		sourceColumn: primary_supplier_id
 
@@ -35,7 +35,7 @@ table fact_component_exposure
 
 	column alt_supplier_id
 		dataType: string
-		lineageTag: 8e73a483-5ef1-4cdc-825e-913deae61694
+		lineageTag: 7057f226-b369-4793-8d83-70badbc648b4
 		summarizeBy: none
 		sourceColumn: alt_supplier_id
 
@@ -43,7 +43,7 @@ table fact_component_exposure
 
 	column single_sourced
 		dataType: double
-		lineageTag: 6470c7ff-d068-4c47-afd3-64475192861c
+		lineageTag: afd098a9-266a-4316-9705-e7570ee3489f
 		summarizeBy: sum
 		sourceColumn: single_sourced
 
@@ -51,7 +51,7 @@ table fact_component_exposure
 
 	column lane_id
 		dataType: string
-		lineageTag: ba330d50-368e-4d42-b879-29b56107be4a
+		lineageTag: 292ffa5c-78f3-4fc0-b42e-2db711624d93
 		summarizeBy: none
 		sourceColumn: lane_id
 
@@ -59,7 +59,7 @@ table fact_component_exposure
 
 	column tier2_id
 		dataType: string
-		lineageTag: 2979b046-de32-4e81-9347-17a126061bd8
+		lineageTag: 32aa00b1-8172-4d47-99b6-741f7416e067
 		summarizeBy: none
 		sourceColumn: tier2_id
 
@@ -67,7 +67,7 @@ table fact_component_exposure
 
 	column weekly_requirement
 		dataType: double
-		lineageTag: d84b997b-4780-41bb-a1f4-501a3e404296
+		lineageTag: 3114b43c-05fd-4d29-b495-f7ec5d8ac50b
 		summarizeBy: sum
 		sourceColumn: weekly_requirement
 
@@ -75,7 +75,7 @@ table fact_component_exposure
 
 	column weekly_spend
 		dataType: double
-		lineageTag: 08bf40d7-0205-4c33-9bc8-f1f6ceedb535
+		lineageTag: 3fb53f4e-e495-47f4-886b-2dd7eda680b8
 		summarizeBy: sum
 		sourceColumn: weekly_spend
 
@@ -83,7 +83,7 @@ table fact_component_exposure
 
 	column starting_cover_weeks
 		dataType: double
-		lineageTag: f1bac385-7f73-4052-baa4-464158f090e6
+		lineageTag: ee878b68-aa02-401b-b034-c93843bd1bb0
 		summarizeBy: sum
 		sourceColumn: starting_cover_weeks
 
@@ -91,7 +91,7 @@ table fact_component_exposure
 
 	column primary_late_rate
 		dataType: double
-		lineageTag: 6fbcd9e0-09e5-4dcf-98aa-5225ffda0c33
+		lineageTag: b3997cc0-d8f0-4c8b-9ef8-dc73e33a4d0b
 		summarizeBy: sum
 		sourceColumn: primary_late_rate
 
@@ -99,7 +99,7 @@ table fact_component_exposure
 
 	column primary_otif_rate
 		dataType: double
-		lineageTag: aeb042f5-2331-45ea-b365-93d88288d9d4
+		lineageTag: 1019d5ac-f27b-4f59-94ac-006b09c4a34a
 		summarizeBy: sum
 		sourceColumn: primary_otif_rate
 

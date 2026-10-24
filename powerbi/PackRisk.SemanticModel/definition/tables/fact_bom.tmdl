@@ -1,9 +1,9 @@
 table fact_bom
-	lineageTag: aedb7f1d-a393-4371-887e-e30bd77e6d68
+	lineageTag: 06bb3725-1ad0-449d-8f05-33deaae12c3f
 
 	column component_id
 		dataType: string
-		lineageTag: 0822e98c-a133-4e4d-ba37-fb36c55f545b
+		lineageTag: c911670b-cff9-4bda-b9c0-34080b6fdf74
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -11,7 +11,7 @@ table fact_bom
 
 	column variant
 		dataType: string
-		lineageTag: 547f4862-8a67-4460-bf72-3a725c1da3e7
+		lineageTag: 42e05bb3-7e77-4a22-a377-478e50deb6c1
 		summarizeBy: none
 		sourceColumn: variant
 
@@ -19,7 +19,7 @@ table fact_bom
 
 	column qty_per_pack
 		dataType: double
-		lineageTag: a1deaec6-c1d1-4ddc-a14d-cf794b64da9a
+		lineageTag: 452f47fe-31d9-4951-8bcd-e3362b98d923
 		summarizeBy: sum
 		sourceColumn: qty_per_pack
 

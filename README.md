@@ -82,7 +82,7 @@ python -m packrisk.report
 
 Open `powerbi/PackRisk.pbip` in Power BI Desktop. The report reads the CSVs in `outputs/powerbi/`; by default it looks in `C:\packrisk\outputs\powerbi\`. If you cloned the repo somewhere else, set the folder in **Transform data > Edit parameters > DataFolder**, then click **Refresh**.
 
-Pages: Supplier Performance, Executive Overview, Production Risk, Scenario Explorer, Assumptions & Limitations, plus a drill-through Component detail page. Power BI only filters the precomputed results; it doesn't run the optimizer.
+Pages: Supplier Performance, Executive Overview, Production Risk, Scenario Explorer, Assumptions & Limitations. Power BI only filters the precomputed results; it doesn't run the optimizer.
 
 ## Disclaimer
 

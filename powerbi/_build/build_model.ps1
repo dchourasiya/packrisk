@@ -172,7 +172,6 @@ $measures = @(
   # Helpers (not in the guide)
   @{ n = "Gating Frequency"; f = "0%"; e = @("SUM ( fact_gating_frequency[share_of_realizations] )") },
   @{ n = "Scenario Description"; f = $null; e = @("SELECTEDVALUE ( dim_scenario[description], `"Select one scenario in the slicer.`" )") },
-  @{ n = "Is Primary Supplier"; f = "0"; e = @("INT ( NOT ISEMPTY ( dim_component ) )") },
   @{ n = "Avg Late Rate"; f = "0.0%"; e = @("AVERAGE ( dim_supplier[late_rate] )") },
   @{ n = "Suppliers Tracked"; f = "0"; e = @("COUNTROWS ( FILTER ( dim_supplier, NOT ISBLANK ( dim_supplier[otif_rate] ) ) )") },
   @{ n = "Single-Sourced Parts"; f = "0"; e = @("COUNTROWS ( FILTER ( dim_component, dim_component[single_sourced] ) )") },
@@ -209,8 +208,11 @@ $measures = @(
   @{ n = "Parts Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_component[component_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Suppliers Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Stopping Suppliers Late Rate"; f = "0.0%"; e = @("AVERAGEX ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ), CALCULATE ( MAX ( dim_supplier[late_rate] ) ) )") },
-  @{ n = "Drill Component"; f = $null; e = @("IF ( ISFILTERED ( dim_component[component_id] ) && HASONEVALUE ( dim_component[component_id] ), SELECTEDVALUE ( dim_component[name] ), `"No part selected. On Scenario Explorer, right-click a part > Drill through.`" )") },
-  @{ n = "Component Selected"; f = "0"; e = @("INT ( ISFILTERED ( dim_component[component_id] ) && HASONEVALUE ( dim_component[component_id] ) )") },
+  @{ n = "Scenario Type"; f = $null; e = @("SWITCH ( SELECTEDVALUE ( dim_scenario[split] ), `"held-out`", `"Unseen test (held out)`", `"development`", `"Development scenario`", `"Pick one scenario`" )") },
+  @{ n = "Budget Enough"; f = $null; e = @(
+      'VAR floorLost = MIN ( fact_budget_curve[stochastic_mean_lost] )',
+      'VAR b = MINX ( FILTER ( fact_budget_curve, fact_budget_curve[stochastic_mean_lost] <= floorLost + 5 ), fact_budget_curve[budget] )',
+      'RETURN IF ( HASONEVALUE ( dim_scenario[scenario_id] ), "About " & FORMAT ( b / 1000, "$0" ) & "K", "Pick one scenario" )') },
   @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
       'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P1" )',
       'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" )',

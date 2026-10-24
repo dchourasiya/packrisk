@@ -23,11 +23,11 @@
                                                                                                                                                               "Entity":  "_Measures"
                                                                                                                                                           }
                                                                                                                                         },
-                                                                                                                         "Property":  "Held-out Wins"
+                                                                                                                         "Property":  "Scenario Type"
                                                                                                                      }
                                                                                                      },
-                                                                                           "queryRef":  "_Measures.Held-out Wins",
-                                                                                           "nativeQueryRef":  "Heldout Wins"
+                                                                                           "queryRef":  "_Measures.Scenario Type",
+                                                                                           "nativeQueryRef":  "Scenario Type"
                                                                                        }
                                                                                    ]
                                                                }
@@ -40,7 +40,7 @@
                                                                          "fontSize":  {
                                                                                           "expr":  {
                                                                                                        "Literal":  {
-                                                                                                                       "Value":  "16D"
+                                                                                                                       "Value":  "14D"
                                                                                                                    }
                                                                                                    }
                                                                                       },
@@ -49,7 +49,7 @@
                                                                                                      "color":  {
                                                                                                                    "expr":  {
                                                                                                                                 "Literal":  {
-                                                                                                                                                "Value":  "\u0027#1B998B\u0027"
+                                                                                                                                                "Value":  "\u0027#2E5E8C\u0027"
                                                                                                                                             }
                                                                                                                             }
                                                                                                                }
@@ -86,7 +86,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027All 5 unseen tests (fixed): won\u0027"
+                                                                                                                                 "Value":  "\u0027This scenario is a\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

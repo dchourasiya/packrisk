@@ -10,129 +10,97 @@
                      "tabOrder":  1000
                  },
     "visual":  {
-                   "visualType":  "textbox",
-                   "objects":  {
-                                   "general":  [
-                                                   {
-                                                       "properties":  {
-                                                                          "paragraphs":  [
-                                                                                             {
-                                                                                                 "textRuns":  [
-                                                                                                                  {
-                                                                                                                      "value":  "NOTE",
-                                                                                                                      "textStyle":  {
-                                                                                                                                        "fontSize":  "9pt",
-                                                                                                                                        "fontWeight":  "bold",
-                                                                                                                                        "color":  "#C8102E"
-                                                                                                                                    }
-                                                                                                                  }
-                                                                                                              ]
-                                                                                             },
-                                                                                             {
-                                                                                                 "textRuns":  [
-                                                                                                                  {
-                                                                                                                      "value":  "How much budget is enough?",
-                                                                                                                      "textStyle":  {
-                                                                                                                                        "fontSize":  "12pt",
-                                                                                                                                        "fontWeight":  "bold",
-                                                                                                                                        "color":  "#111827"
-                                                                                                                                    }
-                                                                                                                  }
-                                                                                                              ]
-                                                                                             },
-                                                                                             {
-                                                                                                 "textRuns":  [
-                                                                                                                  {
-                                                                                                                      "value":  "The chart below re-plans the smart plan at budgets from $0 to $600K for the selected scenario. Where the lines flatten, more money stops helping.",
-                                                                                                                      "textStyle":  {
-                                                                                                                                        "fontSize":  "9pt",
-                                                                                                                                        "color":  "#4B5563"
-                                                                                                                                    }
-                                                                                                                  }
-                                                                                                              ]
-                                                                                             }
-                                                                                         ]
-                                                                      }
-                                                   }
-                                               ]
-                               },
-                   "drillFilterOtherVisuals":  true,
-                   "visualContainerObjects":  {
-                                                  "background":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "true"
-                                                                                                                                  }
-                                                                                                                  }
+                   "visualType":  "card",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Measure":  {
+                                                                                                                         "Expression":  {
+                                                                                                                                            "SourceRef":  {
+                                                                                                                                                              "Entity":  "_Measures"
+                                                                                                                                                          }
+                                                                                                                                        },
+                                                                                                                         "Property":  "Budget Enough"
+                                                                                                                     }
                                                                                                      },
-                                                                                            "color":  {
-                                                                                                          "solid":  {
-                                                                                                                        "color":  {
-                                                                                                                                      "expr":  {
-                                                                                                                                                   "Literal":  {
-                                                                                                                                                                   "Value":  "\u0027#FFFFFF\u0027"
-                                                                                                                                                               }
-                                                                                                                                               }
-                                                                                                                                  }
-                                                                                                                    }
-                                                                                                      },
-                                                                                            "transparency":  {
-                                                                                                                 "expr":  {
-                                                                                                                              "Literal":  {
-                                                                                                                                              "Value":  "0D"
-                                                                                                                                          }
-                                                                                                                          }
-                                                                                                             }
-                                                                                        }
-                                                                     }
-                                                                 ],
-                                                  "border":  [
-                                                                 {
-                                                                     "properties":  {
-                                                                                        "show":  {
-                                                                                                     "expr":  {
-                                                                                                                  "Literal":  {
-                                                                                                                                  "Value":  "true"
-                                                                                                                              }
-                                                                                                              }
-                                                                                                 },
-                                                                                        "color":  {
-                                                                                                      "solid":  {
-                                                                                                                    "color":  {
-                                                                                                                                  "expr":  {
-                                                                                                                                               "Literal":  {
-                                                                                                                                                               "Value":  "\u0027#DDE2E8\u0027"
-                                                                                                                                                           }
-                                                                                                                                           }
-                                                                                                                              }
-                                                                                                                }
-                                                                                                  },
-                                                                                        "radius":  {
-                                                                                                       "expr":  {
-                                                                                                                    "Literal":  {
-                                                                                                                                    "Value":  "8D"
-                                                                                                                                }
-                                                                                                                }
+                                                                                           "queryRef":  "_Measures.Budget Enough",
+                                                                                           "nativeQueryRef":  "Budget Enough"
+                                                                                       }
+                                                                                   ]
+                                                               }
+                                                }
+                             },
+                   "objects":  {
+                                   "labels":  [
+                                                  {
+                                                      "properties":  {
+                                                                         "fontSize":  {
+                                                                                          "expr":  {
+                                                                                                       "Literal":  {
+                                                                                                                       "Value":  "24D"
+                                                                                                                   }
                                                                                                    }
-                                                                                    }
-                                                                 }
-                                                             ],
-                                                  "dropShadow":  [
-                                                                     {
-                                                                         "properties":  {
-                                                                                            "show":  {
-                                                                                                         "expr":  {
-                                                                                                                      "Literal":  {
-                                                                                                                                      "Value":  "true"
-                                                                                                                                  }
-                                                                                                                  }
-                                                                                                     }
-                                                                                        }
+                                                                                      },
+                                                                         "color":  {
+                                                                                       "solid":  {
+                                                                                                     "color":  {
+                                                                                                                   "expr":  {
+                                                                                                                                "Literal":  {
+                                                                                                                                                "Value":  "\u0027#3E4A59\u0027"
+                                                                                                                                            }
+                                                                                                                            }
+                                                                                                               }
+                                                                                                 }
+                                                                                   }
                                                                      }
-                                                                 ]
-                                              }
+                                                  }
+                                              ],
+                                   "categoryLabels":  [
+                                                          {
+                                                              "properties":  {
+                                                                                 "show":  {
+                                                                                              "expr":  {
+                                                                                                           "Literal":  {
+                                                                                                                           "Value":  "false"
+                                                                                                                       }
+                                                                                                       }
+                                                                                          }
+                                                                             }
+                                                          }
+                                                      ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Budget needed (more barely helps)\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    }
+                                                                                   }
+                                                                }
+                                                            ]
+                                              },
+                   "drillFilterOtherVisuals":  true
                }
 }
