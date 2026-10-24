@@ -1,9 +1,9 @@
 table fact_shared_dependency
-	lineageTag: 7e14969b-b97e-4f6f-a1e7-146ea8f1c79a
+	lineageTag: db216389-e777-4a83-93f2-7ce9987efb21
 
 	column dependency_type
 		dataType: string
-		lineageTag: 2d9cf303-58d2-46e4-a9c7-aa644644299c
+		lineageTag: cb966814-47ba-4cae-b9bc-192a44eea7ce
 		summarizeBy: none
 		sourceColumn: dependency_type
 
@@ -11,7 +11,7 @@ table fact_shared_dependency
 
 	column dependency_id
 		dataType: string
-		lineageTag: 5c2fa612-ddd6-4cbe-b11c-debb4d398010
+		lineageTag: 5306f7c3-9ca3-42f5-bfb6-f1ebb5b2f970
 		summarizeBy: none
 		sourceColumn: dependency_id
 
@@ -20,7 +20,7 @@ table fact_shared_dependency
 	column suppliers_exposed
 		dataType: double
 		formatString: #,0
-		lineageTag: a2241a74-bb73-485e-9d8a-ef5f12e11399
+		lineageTag: 6d2bef90-9d48-4e4a-ba07-f53b7b8a93cf
 		summarizeBy: sum
 		sourceColumn: suppliers_exposed
 
@@ -29,7 +29,7 @@ table fact_shared_dependency
 	column components_exposed
 		dataType: double
 		formatString: #,0
-		lineageTag: acd3d170-b28f-480d-86a1-1b97a5aeede3
+		lineageTag: 5f65c94b-8d79-4861-aefa-325f55b3e3bc
 		summarizeBy: sum
 		sourceColumn: components_exposed
 
@@ -38,7 +38,7 @@ table fact_shared_dependency
 	column single_sourced_components
 		dataType: double
 		formatString: #,0
-		lineageTag: 6727483d-3eb0-4fa9-8af8-c2b0f38875c7
+		lineageTag: a4ec0d4b-0d9c-42ed-8919-402028ce8189
 		summarizeBy: sum
 		sourceColumn: single_sourced_components
 
@@ -47,7 +47,7 @@ table fact_shared_dependency
 	column weekly_spend_exposed
 		dataType: double
 		formatString: \$#,0
-		lineageTag: 1457763a-1194-40c5-ba10-36e3a7e60072
+		lineageTag: 846c3b3c-218a-47c3-ac94-9e385ebca624
 		summarizeBy: sum
 		sourceColumn: weekly_spend_exposed
 
@@ -56,7 +56,7 @@ table fact_shared_dependency
 	column min_cover_weeks
 		dataType: double
 		formatString: 0.0
-		lineageTag: 7614ceac-130b-494f-8cae-eba45f45a588
+		lineageTag: 5fd46473-c642-4a20-bf91-56b5400693c2
 		summarizeBy: sum
 		sourceColumn: min_cover_weeks
 

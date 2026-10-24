@@ -1,9 +1,9 @@
 table dim_policy
-	lineageTag: 42400f43-89c9-4584-90f5-637a0d8ecdce
+	lineageTag: 0c4ed486-9a7d-42f6-86ab-51307d2048ca
 
 	column policy_id
 		dataType: string
-		lineageTag: 26d505d9-990f-4f75-9354-9ac0d48e8c7f
+		lineageTag: 651350b3-e06f-41d3-8f0f-35403728392e
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -11,7 +11,7 @@ table dim_policy
 
 	column name
 		dataType: string
-		lineageTag: 59554eb2-2c52-40f0-86c1-45641c2af496
+		lineageTag: ae2c72af-7c41-4259-862f-00b7d2bb6bd2
 		summarizeBy: none
 		sourceColumn: name
 		sortByColumn: sort
@@ -20,7 +20,7 @@ table dim_policy
 
 	column description
 		dataType: string
-		lineageTag: 9242fee5-04ea-4062-a79a-3186a5419e1b
+		lineageTag: 51c300c6-f2ef-4db5-9e90-2a74fc4529c8
 		summarizeBy: none
 		sourceColumn: description
 
@@ -29,7 +29,7 @@ table dim_policy
 	column sort
 		dataType: int64
 		formatString: 0
-		lineageTag: 60946695-cd6a-4334-a4f3-99cd1d61f848
+		lineageTag: ad333d84-017e-4fe0-8e34-3a64fb6184f9
 		summarizeBy: none
 		sourceColumn: sort
 
@@ -37,7 +37,7 @@ table dim_policy
 
 	column plain_name
 		dataType: string
-		lineageTag: a38ccab0-8723-4c40-bade-f8b32c516b9a
+		lineageTag: eb1025d1-9e66-4c72-8961-a8182ea50c95
 		summarizeBy: none
 		sourceColumn: plain_name
 		sortByColumn: sort

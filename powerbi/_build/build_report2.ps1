@@ -202,7 +202,7 @@ Add-Visual $pg "p1_ho3" 936 616 328 64 (& { $hv = KPI "Held-out Cost Avoided" "U
 
 # ================= Page 2: Supplier Performance =================
 $pg = "p2_supplier"
-Add-Furniture $pg "Supplier Performance" "Historical scorecard from simulated purchase-order receipts. Supplier metrics do not change with the scenario."
+Add-Furniture $pg "Supplier Performance" "History is the same in every scenario. The red table changes: late rate alone is a poor guide; stock cover decides."
 $k = @(@{ m = "OTIF"; t = "Average OTIF"; c = $TEAL }, @{ m = "Avg Late Rate"; t = "Average late rate"; c = $RED }, @{ m = "Suppliers Tracked"; t = "Suppliers with history"; c = $CHAR }, @{ m = "Single-Sourced Parts"; t = "Single-sourced parts"; c = $STEEL })
 for ($i = 0; $i -lt $k.Count; $i++) { Add-Visual $pg "p2_kpi$($i+1)" (16 + $i * 315) 116 302 86 (KPI $k[$i].m $k[$i].t $k[$i].c) }
 $supCols = "supplier_id", "supplies", "lane_id", "tier2_id", "otif_rate", "late_rate", "sd_lead_time_days", "partial_rate"
@@ -214,14 +214,18 @@ Add-Visual $pg "p2_scatter" 788 212 476 252 (V-Chart "scatterChart" ([ordered]@{
       Y = (Role (Proj (Agg "dim_supplier" "sd_lead_time_days" 0) "Lead-time SD (days)"))
       Size = (Role (Proj (Agg "dim_supplier" "spend" 0) "Spend"))
       Series = (Role (Proj (Col "dim_supplier" "lane_id") "Lane")) }) "Late rate vs lead-time variability (size = spend)")
-$depNames = @{ dependency_type = "Type"; dependency_id = "ID"; suppliers_exposed = "Suppliers"; components_exposed = "Parts"; single_sourced_components = "Single-sourced"; weekly_spend_exposed = "Weekly spend"; min_cover_weeks = "Min cover (wks)" }
+$depNames = @{ dependency_type = "Type"; dependency_id = "ID"; suppliers_exposed = "Suppliers"; components_exposed = "Parts"; single_sourced_components = "Single-src"; weekly_spend_exposed = "Weekly spend"; min_cover_weeks = "Min cover" }
 $depCols = "dependency_type", "dependency_id", "suppliers_exposed", "components_exposed", "single_sourced_components", "weekly_spend_exposed", "min_cover_weeks"
-Add-Visual $pg "p2_deptable" 16 474 760 206 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($depCols | ForEach-Object { Proj (Col "fact_shared_dependency" $_) $depNames[$_] })) }) "Shared dependencies (lanes and tier-2 sources)" ([ordered]@{ field = (Col "fact_shared_dependency" "weekly_spend_exposed"); direction = "Descending" }))
-Add-Visual $pg "p2_callout" 788 474 476 206 (Container (V-Text @(
-      (P "KEY INSIGHT" 9 $true "#C8102E"),
-      (P "Late suppliers aren't necessarily the ones that stop the line." 15 $true "#111827"),
-      (P "Compare this scorecard with the gating heatmap on Production Risk: the parts that actually halt production are often single-sourced, low-cover items behind a shared lane or tier-2 source, not the suppliers with the worst late rate." 10 $false "#4B5563"))) $true "#FFFFFF" "#C8102E")
-
+Add-Visual $pg "p2_deptable" 16 474 590 206 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($depCols | ForEach-Object { Proj (Col "fact_shared_dependency" $_) $depNames[$_] })) }) "Shared dependencies (lanes and tier-2 sources)" ([ordered]@{ field = (Col "fact_shared_dependency" "weekly_spend_exposed"); direction = "Descending" }))
+# Scenario-aware insight: which suppliers' parts actually stop the line in the selected scenario (do nothing)
+$stopCols = @((Proj (Col "dim_component" "primary_supplier_id") "Supplier"), (Proj (Col "dim_component" "name") "Part"),
+  (Proj (Meas "Gated Share") "Stops line"), (Proj (Meas "Primary Supplier Late Rate") "Late rate"),
+  (Proj (Agg "dim_component" "starting_cover_weeks" 3) "Stock (weeks)"))
+$stop = V-Chart "tableEx" ([ordered]@{ Values = (Role $stopCols) }) "KEY INSIGHT: parts that stop the line in this scenario (do nothing)" ([ordered]@{ field = (Meas "Gated Share"); direction = "Descending" }) ([ordered]@{
+    values = (Gradient (Meas "Gated Share") "_Measures.Gated Share" "#FFFFFF" "#C8102E") })
+$stop.visualContainerObjects.title[0].properties.fontColor = @{ solid = @{ color = (S "#C8102E") } }
+$stop.visualContainerObjects.border = @(@{ properties = [ordered]@{ show = (L "true"); color = @{ solid = @{ color = (S "#C8102E") } }; radius = (L "8D") } })
+Add-Visual $pg "p2_stopline" 618 474 646 206 $stop @((PolicyF "P1"), (FMeasure "Gated Share" 1 "0D"))
 # ================= Page 3: Production Risk =================
 $pg = "p3_production"
 Add-Furniture $pg "Production Risk" "Severe (P90) realization is the default: in the median realization most policies show no shortfall."

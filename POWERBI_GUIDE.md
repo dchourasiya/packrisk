@@ -97,7 +97,7 @@ Every page gets a footer text box bound to `[Simulated Label]`, plus a **scenari
 - **Table:** `dim_supplier` supplier_id, supplies, lane_id, tier2_id, otif_rate, late_rate, sd_lead_time_days, partial_rate. Conditional formatting on otif_rate.
 - **Scatter:** x = late_rate, y = sd_lead_time_days, size = spend, legend = lane_id.
 - **Table:** `fact_shared_dependency` (dependency, suppliers exposed, single-sourced components, weekly spend exposed).
-- **Callout text:** "Late suppliers aren't necessarily the ones that stop the line." Compare with Page 3.
+- **Key insight table (scenario-aware):** parts that stop the line in the selected scenario, with their supplier's late rate and starting stock. Late rate alone is a poor guide; stock cover decides. Compare with Page 3.
 
 ### Page 3: Production Risk
 

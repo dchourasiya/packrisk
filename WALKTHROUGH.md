@@ -32,14 +32,16 @@ The dashboard uses plain names for the strategies:
 | Smart plan + worst-case guard | P6, stochastic LP + CVaR |
 | Perfect foresight (benchmark) | P7, oracle |
 
-## 1. Supplier Performance: being late isn't the same as stopping the line
+## 1. Supplier Performance: late rate alone is a poor guide
 
 - On average, **65%** of deliveries arrive on time and in full, and **28.8%** arrive late.
 - The worst suppliers are the Asia ocean-lane suppliers of NMC cells, electronics boards, fire-barrier mica and fasteners. Each is late about **58%** of the time.
-- **41 of the 50 parts have only one supplier.** That matters more than late rates.
+- **Stock cover decides which late supplier hurts you.** From those same 58%-late suppliers, the parts with 4 weeks of starting stock (NMC cells, aerogel spacer, M6 bolt) never stop the line in any scenario. The parts with 2 weeks of stock (cell monitoring board, BMS controller, rivet nut, M8 bolt) are the ones that do.
+- **Low-late suppliers can still stop the line.** In three held-out scenarios (Europe lane, copper shortage, multi-event), the part that stops production most often comes from a supplier that is late only 17–29% of the time.
+- **41 of the 50 parts have only one supplier,** so there is no fallback when one of them is hit.
 - Shared dependencies hide the real exposure. The Asia ocean lane (L1) carries **13 parts from 6 suppliers, about $10.7M of weekly spend**, so a single port problem hits all of them at once. The cathode-material source is even bigger by spend ($9.75M a week), but none of its parts are single-sourced, so it's better protected.
 
-**The point:** a "worst suppliers" list doesn't tell you which part will stop the line. Stock levels and single-sourcing do.
+**The point:** a "worst suppliers" list doesn't tell you which part will stop the line. Stock cover, single-sourcing and the disruption itself do. The red table on this page changes with the scenario selector, so you can see this scenario by scenario.
 
 ## 2. Executive Overview: the answer
 

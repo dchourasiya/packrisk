@@ -195,6 +195,12 @@ $measures = @(
       '            & IF ( spend > 0, " (" & FORMAT ( DIVIDE ( avoided, spend ), "0.0" ) & "x return).", "." ),',
       '        "Select one scenario to see the headline."',
       '    )') },
+  @{ n = "Primary Supplier Late Rate"; f = "0.0%"; e = @(
+      'VAR s = SELECTEDVALUE ( dim_component[primary_supplier_id] )',
+      'RETURN IF ( NOT ISBLANK ( s ), LOOKUPVALUE ( dim_supplier[late_rate], dim_supplier[supplier_id], s ) )') },
+  @{ n = "Primary Supplier Late Rank"; f = "0"; e = @(
+      'VAR r = [Primary Supplier Late Rate]',
+      'RETURN IF ( NOT ISBLANK ( r ), COUNTROWS ( FILTER ( ALL ( dim_supplier ), dim_supplier[late_rate] > r ) ) + 1 )') },
   @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
       'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )',
       'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )',

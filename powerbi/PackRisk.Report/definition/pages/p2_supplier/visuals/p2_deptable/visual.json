@@ -6,7 +6,7 @@
                      "y":  474,
                      "z":  1000,
                      "height":  206,
-                     "width":  760,
+                     "width":  590,
                      "tabOrder":  1000
                  },
     "visual":  {
@@ -87,8 +87,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "fact_shared_dependency.single_sourced_components",
-                                                                                           "nativeQueryRef":  "Singlesourced",
-                                                                                           "displayName":  "Single-sourced"
+                                                                                           "nativeQueryRef":  "Singlesrc",
+                                                                                           "displayName":  "Single-src"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -117,8 +117,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "fact_shared_dependency.min_cover_weeks",
-                                                                                           "nativeQueryRef":  "Min cover wks",
-                                                                                           "displayName":  "Min cover (wks)"
+                                                                                           "nativeQueryRef":  "Min cover",
+                                                                                           "displayName":  "Min cover"
                                                                                        }
                                                                                    ]
                                                                }

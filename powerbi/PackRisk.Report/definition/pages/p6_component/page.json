@@ -67,7 +67,7 @@
     "filterConfig":  {
                          "filters":  [
                                          {
-                                             "name":  "filter023",
+                                             "name":  "filter025",
                                              "field":  {
                                                            "Column":  {
                                                                           "Expression":  {
@@ -90,7 +90,7 @@
                         "parameters":  [
                                            {
                                                "name":  "ComponentParam",
-                                               "boundFilter":  "filter023",
+                                               "boundFilter":  "filter025",
                                                "fieldExpr":  {
                                                                  "Column":  {
                                                                                 "Expression":  {

@@ -31,7 +31,7 @@
                                                                                              {
                                                                                                  "textRuns":  [
                                                                                                                   {
-                                                                                                                      "value":  "Historical scorecard from simulated purchase-order receipts. Supplier metrics do not change with the scenario.",
+                                                                                                                      "value":  "History is the same in every scenario. The red table changes: late rate alone is a poor guide; stock cover decides.",
                                                                                                                       "textStyle":  {
                                                                                                                                         "fontSize":  "9pt",
                                                                                                                                         "color":  "#C9D1D9"
