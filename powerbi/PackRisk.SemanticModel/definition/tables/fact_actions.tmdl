@@ -1,9 +1,9 @@
 table fact_actions
-	lineageTag: cc4f05ff-b091-49c3-a052-05401e3507b1
+	lineageTag: b2cd22d7-7a3e-4d7c-8164-1abf2db59f3d
 
 	column scenario_id
 		dataType: string
-		lineageTag: 9197f440-2e7b-4d23-8b01-a5999533c80d
+		lineageTag: 43aa79d8-71dd-40c9-840d-31b9adebd0d6
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_actions
 
 	column policy_id
 		dataType: string
-		lineageTag: 0ea740af-89e3-4a2c-87ef-8c4dfac5da30
+		lineageTag: 35fa3c65-48bb-4c0e-89e0-10748d686c67
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -19,7 +19,7 @@ table fact_actions
 
 	column component_id
 		dataType: string
-		lineageTag: a9736d32-8316-4853-b32b-e93dec5fa406
+		lineageTag: 69676cf7-844b-42d5-9256-e987a7e62303
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -27,7 +27,7 @@ table fact_actions
 
 	column action
 		dataType: string
-		lineageTag: bc18aae1-229e-453a-84ad-bd061a056b3c
+		lineageTag: 0f828164-0605-4dac-a08a-6c65e6df11ce
 		summarizeBy: none
 		sourceColumn: action
 
@@ -36,7 +36,7 @@ table fact_actions
 	column week
 		dataType: int64
 		formatString: 0
-		lineageTag: eda2fccb-e752-4fd8-8659-3fb61929d912
+		lineageTag: 84227d1a-e824-4c71-b0d4-72fd1cf40ed6
 		summarizeBy: none
 		sourceColumn: week
 
@@ -45,7 +45,7 @@ table fact_actions
 	column quantity
 		dataType: double
 		formatString: #,0
-		lineageTag: 1472440a-e1ef-4102-b3b9-29385a6ca0d6
+		lineageTag: 00d21777-e833-4a32-aece-32ad95eb3a2b
 		summarizeBy: sum
 		sourceColumn: quantity
 
@@ -54,7 +54,7 @@ table fact_actions
 	column cost
 		dataType: double
 		formatString: \$#,0
-		lineageTag: e06ffef5-ea9d-4446-afc3-93d09f44e76d
+		lineageTag: 35732d67-6db5-4e45-9dbd-91f46aa4fcbd
 		summarizeBy: sum
 		sourceColumn: cost
 

@@ -1,9 +1,9 @@
 table fact_inventory_trace
-	lineageTag: f09fd876-a5de-4931-8305-6a6326ffc509
+	lineageTag: 6cc42a48-1a99-495e-b18e-8b4e3c3d4035
 
 	column scenario_id
 		dataType: string
-		lineageTag: 1a1747c3-2563-4b7a-9692-f645e0c942b8
+		lineageTag: 190cec60-16e5-4f3a-9ccd-21d0939fc7a2
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_inventory_trace
 
 	column policy_id
 		dataType: string
-		lineageTag: c4d7aa8a-2f8e-4395-9301-9f748e63ed56
+		lineageTag: a04768f4-01bb-41f8-8092-286e5e7b8389
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -19,7 +19,7 @@ table fact_inventory_trace
 
 	column realization_type
 		dataType: string
-		lineageTag: 9a6615a8-d482-4f42-bc8a-86f953c3aaea
+		lineageTag: 4be9aa9d-6830-4241-9ee0-b7cf647a2558
 		summarizeBy: none
 		sourceColumn: realization_type
 
@@ -28,7 +28,7 @@ table fact_inventory_trace
 	column week
 		dataType: int64
 		formatString: 0
-		lineageTag: 7990b620-3a4f-4bef-bcd5-6f5654b8ad0f
+		lineageTag: db31ebbd-d8c4-420f-aeea-50bc40c3c220
 		summarizeBy: none
 		sourceColumn: week
 
@@ -36,7 +36,7 @@ table fact_inventory_trace
 
 	column component_id
 		dataType: string
-		lineageTag: 83db6d84-6532-4fc5-a24b-3f8d68a88174
+		lineageTag: 95c77b12-78ce-469c-bd86-5a843255d2f3
 		summarizeBy: none
 		sourceColumn: component_id
 
@@ -44,7 +44,7 @@ table fact_inventory_trace
 
 	column inventory_end
 		dataType: double
-		lineageTag: 42c7a655-c143-4030-9b5f-eace777d6466
+		lineageTag: 10f2282d-33eb-499f-a754-63fcb691c56f
 		summarizeBy: sum
 		sourceColumn: inventory_end
 
@@ -52,7 +52,7 @@ table fact_inventory_trace
 
 	column weeks_of_cover
 		dataType: double
-		lineageTag: 532fdf90-2941-4ed4-aff9-1dbf0b151658
+		lineageTag: e71cf5e5-f1db-42c8-ae1c-d59cb11ce36a
 		summarizeBy: sum
 		sourceColumn: weeks_of_cover
 

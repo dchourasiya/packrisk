@@ -154,15 +154,15 @@ $measures = @(
   @{ n = "Expected Total Cost"; f = "\$#,0"; e = @("AVERAGE ( fact_realization_results[objective] )") },
   @{ n = "Budget Used %"; f = "0.0%"; e = @("DIVIDE ( [Mitigation Spend], 250000 )") },
   @{ n = "Packs Protected vs Do Nothing"; f = "#,0"; e = @(
-      "VAR base = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = `"P1`" )",
+      "VAR base = CALCULATE ( [Lost Packs (mean)], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = `"P1`" )",
       "RETURN base - [Lost Packs (mean)]") },
   @{ n = "Oracle Capture"; f = "0.0%"; e = @(
-      "VAR base   = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = `"P1`" )",
-      "VAR oracle = CALCULATE ( [Lost Packs (mean)], dim_policy[policy_id] = `"P7`" )",
+      "VAR base   = CALCULATE ( [Lost Packs (mean)], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = `"P1`" )",
+      "VAR oracle = CALCULATE ( [Lost Packs (mean)], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = `"P7`" )",
       "RETURN DIVIDE ( base - [Lost Packs (mean)], base - oracle )") },
   @{ n = "VSS (`$)"; f = "\$#,0"; e = @(
-      "CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = `"P4`" )",
-      "    - CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = `"P5`" )") },
+      "CALCULATE ( [Expected Total Cost], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = `"P4`" )",
+      "    - CALCULATE ( [Expected Total Cost], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = `"P5`" )") },
   @{ n = "Shortfall vs Plan"; f = "#,0"; e = @("SUM ( fact_weekly_trace[cum_built] ) - SUM ( fact_weekly_trace[cum_plan] )") },
   @{ n = "Gated Share"; f = "0%"; e = @("MAX ( fact_gating_component[share_of_realizations_gated] )") },
   @{ n = "Weeks of Cover"; f = "0.0"; e = @("AVERAGE ( fact_inventory_trace[weeks_of_cover] )") },
@@ -178,13 +178,13 @@ $measures = @(
   @{ n = "Single-Sourced Parts"; f = "0"; e = @("COUNTROWS ( FILTER ( dim_component, dim_component[single_sourced] ) )") },
   # Director view: money, return, and held-out evidence
   @{ n = "Expected Cost Avoided"; f = "\$#,0"; e = @(
-      'VAR base = CALCULATE ( [Expected Total Cost], dim_policy[policy_id] = "P1" )',
+      'VAR base = CALCULATE ( [Expected Total Cost], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P1" )',
       'RETURN base - [Expected Total Cost]') },
   @{ n = "Return on Mitigation"; f = '0.0"x"'; e = @("DIVIDE ( [Expected Cost Avoided], [Mitigation Spend] )") },
   @{ n = "Headline"; f = $null; e = @(
-      'VAR prot    = CALCULATE ( [Packs Protected vs Do Nothing], dim_policy[policy_id] = "P5" )',
-      'VAR avoided = CALCULATE ( [Expected Cost Avoided], dim_policy[policy_id] = "P5" )',
-      'VAR spend   = CALCULATE ( [Mitigation Spend], dim_policy[policy_id] = "P5" )',
+      'VAR prot    = CALCULATE ( [Packs Protected vs Do Nothing], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" )',
+      'VAR avoided = CALCULATE ( [Expected Cost Avoided], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" )',
+      'VAR spend   = CALCULATE ( [Mitigation Spend], REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" )',
       'VAR money   = IF ( avoided >= 1000000, FORMAT ( avoided / 1000000, "$0.0" ) & "M", FORMAT ( avoided / 1000, "$0" ) & "K" )',
       'VAR spendTx = IF ( spend >= 1000000, FORMAT ( spend / 1000000, "$0.0" ) & "M", FORMAT ( spend / 1000, "$0" ) & "K" )',
       'RETURN',
@@ -209,25 +209,25 @@ $measures = @(
   @{ n = "Parts Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_component[component_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Suppliers Stopping Line"; f = "0"; e = @("COUNTROWS ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ) ) + 0") },
   @{ n = "Stopping Suppliers Late Rate"; f = "0.0%"; e = @("AVERAGEX ( FILTER ( VALUES ( dim_supplier[supplier_id] ), [Gated Share] > 0 ), CALCULATE ( MAX ( dim_supplier[late_rate] ) ) )") },
-  @{ n = "Drill Component"; f = $null; e = @("IF ( HASONEVALUE ( dim_component[component_id] ), SELECTEDVALUE ( dim_component[name] ), `"No part selected. On Scenario Explorer, right-click a part > Drill through.`" )") },
-  @{ n = "Component Selected"; f = "0"; e = @("INT ( HASONEVALUE ( dim_component[component_id] ) )") },
+  @{ n = "Drill Component"; f = $null; e = @("IF ( ISFILTERED ( dim_component[component_id] ) && HASONEVALUE ( dim_component[component_id] ), SELECTEDVALUE ( dim_component[name] ), `"No part selected. On Scenario Explorer, right-click a part > Drill through.`" )") },
+  @{ n = "Component Selected"; f = "0"; e = @("INT ( ISFILTERED ( dim_component[component_id] ) && HASONEVALUE ( dim_component[component_id] ) )") },
   @{ n = "Penalty Test Net Saving"; f = "\$#,0"; e = @(
-      'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P1" )',
-      'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), dim_policy[policy_id] = "P5" )',
+      'VAR doNothing = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P1" )',
+      'VAR smart     = CALCULATE ( AVERAGE ( fact_penalty_sensitivity[mean_objective] ), REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" )',
       'RETURN doNothing - smart') },
   @{ n = "Held-out Wins"; f = $null; e = @(
       'VAR heldOut = CALCULATETABLE ( VALUES ( dim_scenario[scenario_id] ), REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out" )',
-      'VAR wins = COUNTROWS ( FILTER ( heldOut, VAR s = dim_scenario[scenario_id] RETURN CALCULATE ( [Expected Cost Avoided], REMOVEFILTERS ( dim_scenario ), dim_scenario[scenario_id] = s, dim_policy[policy_id] = "P5" ) > 0 ) )',
+      'VAR wins = COUNTROWS ( FILTER ( heldOut, VAR s = dim_scenario[scenario_id] RETURN CALCULATE ( [Expected Cost Avoided], REMOVEFILTERS ( dim_scenario ), dim_scenario[scenario_id] = s, REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5" ) > 0 ) )',
       'RETURN FORMAT ( wins, "0" ) & " of " & FORMAT ( COUNTROWS ( heldOut ), "0" )') },
   @{ n = "Held-out Packs Protected (avg)"; f = "#,0"; e = @(
       'CALCULATE (',
       '    AVERAGEX ( VALUES ( dim_scenario[scenario_id] ), [Packs Protected vs Do Nothing] ),',
-      '    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", dim_policy[policy_id] = "P5"',
+      '    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5"',
       ')') },
   @{ n = "Held-out Cost Avoided"; f = "\$#,0"; e = @(
       'CALCULATE (',
       '    SUMX ( VALUES ( dim_scenario[scenario_id] ), [Expected Cost Avoided] ),',
-      '    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", dim_policy[policy_id] = "P5"',
+      '    REMOVEFILTERS ( dim_scenario ), dim_scenario[split] = "held-out", REMOVEFILTERS ( dim_policy ), dim_policy[policy_id] = "P5"',
       ')') }
 )
 $sb = New-Object Text.StringBuilder

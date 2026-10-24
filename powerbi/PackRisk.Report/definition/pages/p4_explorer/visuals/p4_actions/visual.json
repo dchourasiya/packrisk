@@ -181,7 +181,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027What the plan actually buys\u0027"
+                                                                                                                                 "Value":  "\u0027What the plan actually buys (empty = buys nothing in this scenario)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },

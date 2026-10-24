@@ -1,9 +1,9 @@
 table fact_weekly_trace
-	lineageTag: 9b6940f4-7d5e-4c38-aba8-6e27f1211214
+	lineageTag: 469a81c5-dee0-494e-a326-c2e15a143acf
 
 	column scenario_id
 		dataType: string
-		lineageTag: a2f55795-adc2-4709-956d-56c10e806719
+		lineageTag: 7dfbf4bc-e836-4320-ad5d-5dc725e0dd7a
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table fact_weekly_trace
 
 	column policy_id
 		dataType: string
-		lineageTag: 9cd5529d-966b-49b1-b205-84185722ce83
+		lineageTag: 7ab3535c-93a3-4ac7-a1c2-2e5740864ad0
 		summarizeBy: none
 		sourceColumn: policy_id
 
@@ -19,7 +19,7 @@ table fact_weekly_trace
 
 	column realization_type
 		dataType: string
-		lineageTag: c5cc6cc4-3554-4fb6-93bb-f6f7aae73a70
+		lineageTag: 102a7e85-09ee-492a-9a8c-bc6075067e00
 		summarizeBy: none
 		sourceColumn: realization_type
 
@@ -28,7 +28,7 @@ table fact_weekly_trace
 	column realization
 		dataType: int64
 		formatString: 0
-		lineageTag: 2013b484-14a5-4770-aa54-bdbbc3e4449f
+		lineageTag: 6fd02d15-45f5-4b90-b80d-c23007eee938
 		summarizeBy: none
 		sourceColumn: realization
 
@@ -37,7 +37,7 @@ table fact_weekly_trace
 	column week
 		dataType: int64
 		formatString: 0
-		lineageTag: a71ce29b-a547-4458-8f50-3c72527e997e
+		lineageTag: b8ead526-3480-4db7-a45a-5af27e3bfea3
 		summarizeBy: none
 		sourceColumn: week
 
@@ -45,7 +45,7 @@ table fact_weekly_trace
 
 	column variant
 		dataType: string
-		lineageTag: 9c3d2e83-16a1-436a-9687-655465c3a1af
+		lineageTag: 2f1b4403-8ab0-4c24-b26d-6893e9f45796
 		summarizeBy: none
 		sourceColumn: variant
 
@@ -53,7 +53,7 @@ table fact_weekly_trace
 
 	column plan_packs
 		dataType: double
-		lineageTag: 3ef0dd1f-533c-4744-a591-24376bdf31fa
+		lineageTag: 578b624d-09f5-4522-b31f-1fd9cd9b1aa5
 		summarizeBy: sum
 		sourceColumn: plan_packs
 
@@ -61,7 +61,7 @@ table fact_weekly_trace
 
 	column built_packs
 		dataType: double
-		lineageTag: e267b010-bc90-480c-9658-c656c445dc8a
+		lineageTag: 1bc5fc08-2c42-4bf0-9c37-0e3513d134a7
 		summarizeBy: sum
 		sourceColumn: built_packs
 
@@ -69,7 +69,7 @@ table fact_weekly_trace
 
 	column cum_plan
 		dataType: double
-		lineageTag: f622afbd-b4ef-4d7f-818f-303c5671014a
+		lineageTag: 095e2505-6dd6-45d8-8be0-97d8e7602925
 		summarizeBy: sum
 		sourceColumn: cum_plan
 
@@ -77,7 +77,7 @@ table fact_weekly_trace
 
 	column cum_built
 		dataType: double
-		lineageTag: a733c6ce-b519-4361-8d64-2f73579435a9
+		lineageTag: de53a65f-283b-4e38-9355-2a26a004ab91
 		summarizeBy: sum
 		sourceColumn: cum_built
 
@@ -85,7 +85,7 @@ table fact_weekly_trace
 
 	column gating_component_id
 		dataType: string
-		lineageTag: b65dcdda-4511-4172-a5d7-46fc15ce2b52
+		lineageTag: d920342a-9ad3-423c-88f8-1a34707e628d
 		summarizeBy: none
 		sourceColumn: gating_component_id
 

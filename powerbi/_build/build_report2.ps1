@@ -263,11 +263,11 @@ Add-Visual $pg "p4_budgetnote" 950 236 314 130 (Container (V-Text @(
       (P "The chart below re-plans the smart plan at budgets from `$0 to `$600K for the selected scenario. Where the lines flatten, more money stops helping." 9 $false "#4B5563"))) $true)
 $actCols = @((Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "dim_component" "component_id") "ID"), (Proj (Col "dim_component" "name") "Component"),
   (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost"))
-Add-Visual $pg "p4_actions" 16 376 616 304 (V-Chart "tableEx" ([ordered]@{ Values = (Role $actCols) }) "What the plan actually buys" ([ordered]@{ field = (Col "fact_actions" "week"); direction = "Ascending" })) @(FIn "fact_actions" "policy_id" $P1to7)
+Add-Visual $pg "p4_actions" 16 376 616 304 (V-Chart "tableEx" ([ordered]@{ Values = (Role $actCols) }) "What the plan actually buys (empty = buys nothing in this scenario)" ([ordered]@{ field = (Col "fact_actions" "week"); direction = "Ascending" })) @(FIn "fact_actions" "policy_id" $P1to7)
 Add-Visual $pg "p4_budget" 648 376 616 304 (V-Chart "lineChart" ([ordered]@{
       Category = (Role (Proj (Col "fact_budget_curve" "budget") "Budget"))
       Y = (Role (Proj (Agg "fact_budget_curve" "do_nothing_mean_lost" 0) "Do nothing (average)"), (Proj (Agg "fact_budget_curve" "stochastic_mean_lost" 0) "Smart plan (average)"),
-        (Proj (Agg "fact_budget_curve" "stochastic_p90_lost" 0) "Smart plan (bad case)"), (Proj (Agg "fact_budget_curve" "oracle_mean_lost" 0) "Perfect foresight (average)")) }) "Lost packs vs mitigation budget" ([ordered]@{ field = (Col "fact_budget_curve" "budget"); direction = "Ascending" }))
+        (Proj (Agg "fact_budget_curve" "stochastic_p90_lost" 0) "Smart plan (bad case)"), (Proj (Agg "fact_budget_curve" "oracle_mean_lost" 0) "Perfect foresight (average)")) }) "Lost packs vs mitigation budget (fixed strategies; not affected by the picker)" ([ordered]@{ field = (Col "fact_budget_curve" "budget"); direction = "Ascending" }))
 
 # ================= Page 5: Assumptions & Limitations =================
 $pg = "p5_assumptions"
@@ -299,12 +299,14 @@ Add-Visual $pg "p5_text2" 436 178 408 258 (Container (V-Text @(
       (P "- Simulated operations; placeholder delays; calibration source is not battery parts." 8),
       (P "- No rolling re-planning, no backlog recovery after capacity cuts, no MOQs or integer lots." 8),
       (P "- Heuristic baselines ignore the announcement; penalties are hypothetical." 8))) $true)
-$img = [ordered]@{ visualType = "image"; objects = [ordered]@{
-    general = @(@{ properties = @{ imageUrl = @{ expr = @{ ResourcePackageItem = [ordered]@{ PackageName = "RegisteredResources"; PackageType = 1; ItemName = "correlation_tests.png" } } } } })
-    imageScaling = @(@{ properties = @{ imageScalingType = (S "Fit") } }) }; drillFilterOtherVisuals = $true }
-Add-Visual $pg "p5_image" 856 178 408 258 (Container $img $true)
+# Live chart for the selected scenario (replaces the static D1/D2 figure)
+$corr = V-Chart "clusteredColumnChart" ([ordered]@{
+    Category = (Role (Proj (Col "fact_stress_tests" "setting") "Planner assumption"))
+    Y = (Role (Proj (Agg "fact_stress_tests" "value" 0) "Lost packs"))
+    Series = (Role (Proj (Col "fact_stress_tests" "metric") "Measure")) }) "Does modelling shared shocks help here? (lost packs)" $null
+Add-Visual $pg "p5_image" 856 178 408 258 $corr @((FIn "fact_stress_tests" "test" @("Planner correlation assumption")), (FIn "fact_stress_tests" "metric" @("mean_lost_packs", "p90_lost_packs")))
 $stCols = "test", "scenario_id", "setting", "metric", "value"
-Add-Visual $pg "p5_stress" 16 446 828 234 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($stCols | ForEach-Object { Proj (Col "fact_stress_tests" $_) })) }) "Correlation stress tests for this scenario")
+Add-Visual $pg "p5_stress" 16 446 828 234 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($stCols | ForEach-Object { Proj (Col "fact_stress_tests" $_) })) }) "Correlation stress tests for this scenario (all numbers)")
 Add-Visual $pg "p5_corr" 856 446 408 234 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "fact_actions" "policy_id") "Policy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "What the smart plan buys if it assumes shared vs independent shocks") @(FIn "fact_actions" "policy_id" @("P5-corr", "P5-indep"))
 
 # ================= Hidden drill-through: Component detail =================

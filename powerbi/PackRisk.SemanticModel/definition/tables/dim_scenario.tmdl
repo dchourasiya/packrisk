@@ -1,9 +1,9 @@
 table dim_scenario
-	lineageTag: 6b9a0adf-b94a-4766-8b42-e12f6c4a13fb
+	lineageTag: 6d7f56c2-893f-47df-82b9-a18c9b559157
 
 	column scenario_id
 		dataType: string
-		lineageTag: f6692528-4b92-4763-9e23-b200006b3fac
+		lineageTag: 828a5d02-3f97-45af-a34b-ab7b2a6400d2
 		summarizeBy: none
 		sourceColumn: scenario_id
 
@@ -11,7 +11,7 @@ table dim_scenario
 
 	column name
 		dataType: string
-		lineageTag: 39b4eb42-0411-4183-9f18-6c5f11fbf859
+		lineageTag: b8e77f29-f79c-4b23-8786-8eb2481f7b05
 		summarizeBy: none
 		sourceColumn: name
 		sortByColumn: sort
@@ -20,7 +20,7 @@ table dim_scenario
 
 	column split
 		dataType: string
-		lineageTag: abce137a-08d0-44c6-9609-b5de7faee423
+		lineageTag: 080ae008-eff3-4f26-9a2f-9bd072370d43
 		summarizeBy: none
 		sourceColumn: split
 
@@ -28,7 +28,7 @@ table dim_scenario
 
 	column description
 		dataType: string
-		lineageTag: 65bcfe74-338c-419e-8f23-98d0d815450a
+		lineageTag: 6c837e6c-78a0-4538-bb3a-c26d48b686fc
 		summarizeBy: none
 		sourceColumn: description
 
@@ -37,7 +37,7 @@ table dim_scenario
 	column sort
 		dataType: int64
 		formatString: 0
-		lineageTag: 2b2db928-bf2f-459b-ab2d-d25bb8ead570
+		lineageTag: 5b79e5d8-15ae-4a7f-b009-a1ccc9a51021
 		summarizeBy: none
 		sourceColumn: sort
 

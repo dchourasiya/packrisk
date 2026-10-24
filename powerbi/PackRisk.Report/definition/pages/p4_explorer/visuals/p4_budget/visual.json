@@ -150,7 +150,7 @@
                                                                                        "text":  {
                                                                                                     "expr":  {
                                                                                                                  "Literal":  {
-                                                                                                                                 "Value":  "\u0027Lost packs vs mitigation budget\u0027"
+                                                                                                                                 "Value":  "\u0027Lost packs vs mitigation budget (fixed strategies; not affected by the picker)\u0027"
                                                                                                                              }
                                                                                                              }
                                                                                                 },
