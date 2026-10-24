@@ -27,7 +27,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.supplier_id",
-                                                                                           "nativeQueryRef":  "supplierid"
+                                                                                           "nativeQueryRef":  "Supplier",
+                                                                                           "displayName":  "Supplier"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -41,7 +42,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.supplies",
-                                                                                           "nativeQueryRef":  "supplies"
+                                                                                           "nativeQueryRef":  "Supplies",
+                                                                                           "displayName":  "Supplies"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -55,7 +57,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.lane_id",
-                                                                                           "nativeQueryRef":  "laneid"
+                                                                                           "nativeQueryRef":  "Lane",
+                                                                                           "displayName":  "Lane"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -69,7 +72,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.otif_rate",
-                                                                                           "nativeQueryRef":  "otifrate"
+                                                                                           "nativeQueryRef":  "OTIF",
+                                                                                           "displayName":  "OTIF"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -83,7 +87,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.late_rate",
-                                                                                           "nativeQueryRef":  "laterate"
+                                                                                           "nativeQueryRef":  "Late rate",
+                                                                                           "displayName":  "Late rate"
                                                                                        },
                                                                                        {
                                                                                            "field":  {
@@ -97,7 +102,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_supplier.sd_lead_time_days",
-                                                                                           "nativeQueryRef":  "sdleadtimedays"
+                                                                                           "nativeQueryRef":  "Leadtime SD",
+                                                                                           "displayName":  "Lead-time SD"
                                                                                        }
                                                                                    ]
                                                                }

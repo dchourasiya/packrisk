@@ -87,6 +87,7 @@
     "pageBinding":  {
                         "name":  "ComponentDrill",
                         "type":  "Drillthrough",
+                        "acceptsFilterContext":  "None",
                         "parameters":  [
                                            {
                                                "name":  "ComponentParam",

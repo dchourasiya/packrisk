@@ -42,8 +42,8 @@
                                                                                                                     }
                                                                                                      },
                                                                                            "queryRef":  "dim_component.component_id",
-                                                                                           "nativeQueryRef":  "Component ID",
-                                                                                           "displayName":  "Component ID"
+                                                                                           "nativeQueryRef":  "ID",
+                                                                                           "displayName":  "ID"
                                                                                        },
                                                                                        {
                                                                                            "field":  {

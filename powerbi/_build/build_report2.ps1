@@ -255,12 +255,13 @@ Add-Furniture $pg "Scenario Explorer" "Pick policies to compare. Right-click a c
 Add-Visual $pg "p4_policy" 16 116 250 250 (V-Slicer "dim_policy" "plain_name" "Strategy (pick any)" $false "Basic" $null $null) @(FIn "dim_policy" "policy_id" $P1to7) 5
 Add-Visual $pg "p4_lostbar" 278 116 660 250 (V-Chart "clusteredBarChart" ([ordered]@{
       Category = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")); Y = (Role (Proj (Meas "Lost Packs (mean)") "Average"), (Proj (Meas "Lost Packs (P90)") "Bad case (P90)")) }) "Lost packs by strategy: average vs bad case (worst 10%)" ([ordered]@{ field = (Col "dim_policy" "plain_name"); direction = "Ascending" }))
-Add-Visual $pg "p4_vss" 950 116 314 110 (KPI "VSS (`$)" "Value of planning for uncertainty" $TEAL 24)
+$vss = KPI "VSS (`$)" "Value of planning for uncertainty" $TEAL 24; $vss.objects.labels[0].properties.labelPrecision = (L "1L")
+Add-Visual $pg "p4_vss" 950 116 314 110 $vss
 Add-Visual $pg "p4_budgetnote" 950 236 314 130 (Container (V-Text @(
       (P "NOTE" 9 $true "#C8102E"),
       (P "Budget curves exist only for D1 and H4." 12 $true "#111827"),
       (P "For other scenarios the budget chart is empty. It shows lost packs as the mitigation budget grows." 9 $false "#4B5563"))) $true)
-$actCols = @((Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "dim_component" "component_id") "Component ID"), (Proj (Col "dim_component" "name") "Component"),
+$actCols = @((Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "dim_component" "component_id") "ID"), (Proj (Col "dim_component" "name") "Component"),
   (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost"))
 Add-Visual $pg "p4_actions" 16 376 616 304 (V-Chart "tableEx" ([ordered]@{ Values = (Role $actCols) }) "What the plan actually buys" ([ordered]@{ field = (Col "fact_actions" "week"); direction = "Ascending" })) @(FIn "fact_actions" "policy_id" $P1to7)
 Add-Visual $pg "p4_budget" 648 376 616 304 (V-Chart "lineChart" ([ordered]@{
@@ -318,7 +319,7 @@ Add-Visual $pg "p6_gating" 648 196 616 238 (V-Chart "clusteredColumnChart" ([ord
       Category = (Role (Proj (Col "dim_week" "week_label") "Week")); Y = (Role (Proj (Meas "Gating Frequency") "Share of runs"))
       Series = (Role (Proj (Col "dim_policy" "plain_name") "Strategy")) }) "How often this part stops the line, by week" ([ordered]@{ field = (Col "dim_week" "week_label"); direction = "Ascending" }))
 Add-Visual $pg "p6_actions" 16 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role (Proj (Col "dim_policy" "plain_name") "Strategy"), (Proj (Col "fact_actions" "action") "Action"), (Proj (Col "fact_actions" "week") "Week"), (Proj (Agg "fact_actions" "quantity" 0) "Quantity"), (Proj (Agg "fact_actions" "cost" 0) "Cost")) }) "Actions bought for this component") @(FIn "fact_actions" "policy_id" $P1to7)
-Add-Visual $pg "p6_supplier" 648 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) })) }) "Primary supplier scorecard") @(FMeasure "Is Primary Supplier" 0 "1L")
+Add-Visual $pg "p6_supplier" 648 444 616 236 (V-Chart "tableEx" ([ordered]@{ Values = (Role ($supCols | ForEach-Object { Proj (Col "dim_supplier" $_) $supNames[$_] })) }) "Primary supplier scorecard") @(FMeasure "Is Primary Supplier" 0 "1L")
 
 # Wider category labels on bar charts whose axis holds strategy or part names
 foreach ($pv in $script:pageVisuals.Values) { foreach ($v in $pv) { if ($v.name -in "p1_costbar", "p1_gating", "p4_lostbar") { [void](Margin $v.visual) } } }
@@ -339,7 +340,7 @@ foreach ($pn in $pages.Keys) {
     $dname = FName
     $page.filterConfig = @{ filters = @([ordered]@{ name = $dname; field = (Col "dim_component" "component_id"); type = "Categorical"; howCreated = "Drillthrough" }) }
     $page.visibility = "HiddenInViewMode"
-    $page.pageBinding = [ordered]@{ name = "ComponentDrill"; type = "Drillthrough"; parameters = @([ordered]@{ name = "ComponentParam"; boundFilter = $dname; fieldExpr = (Col "dim_component" "component_id") }) }
+    $page.pageBinding = [ordered]@{ name = "ComponentDrill"; type = "Drillthrough"; acceptsFilterContext = "None"; parameters = @([ordered]@{ name = "ComponentParam"; boundFilter = $dname; fieldExpr = (Col "dim_component" "component_id") }) }
   }
   Write-Json (Join-Path $rdef "pages\$pn\page.json") $page
   foreach ($v in $script:pageVisuals[$pn]) { Write-Json (Join-Path $rdef "pages\$pn\visuals\$($v.name)\visual.json") $v }
